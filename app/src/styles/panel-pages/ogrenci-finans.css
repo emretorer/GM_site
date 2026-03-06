@@ -1,0 +1,342 @@
+/* =========================================
+   ÖĞRENCI FİNANS SAYFASI
+========================================= */
+
+/* Bakiye Kartı */
+.ogrenci-balance-card {
+    background: linear-gradient(135deg, #10B981, #059669);
+    border-radius: 24px;
+    padding: 35px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 24px;
+    box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.3);
+}
+
+.ogrenci-balance-card::after {
+    content: '';
+    position: absolute;
+    right: -20px;
+    bottom: -50px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.obc-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.obc-amount {
+    font-size: 48px;
+    font-weight: 800;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.obc-currency {
+    font-size: 28px;
+    color: #FDE68A;
+    text-shadow: 0 0 15px rgba(253, 230, 138, 0.4);
+}
+
+.obc-stats {
+    display: flex;
+    gap: 24px;
+    margin-top: 16px;
+}
+
+.obc-stat {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.obc-stat i {
+    font-size: 12px;
+}
+
+.obc-right {
+    position: relative;
+    z-index: 2;
+}
+
+.obc-big-icon {
+    font-size: 64px;
+    opacity: 0.25;
+    animation: obcFloat 4s ease-in-out infinite;
+}
+
+@keyframes obcFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Hızlı İstatistikler */
+.ogrenci-quick-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.oqs-card {
+    background: #fff;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.oqs-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.oqs-label {
+    font-size: 12px;
+    color: #64748B;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.oqs-value {
+    font-size: 18px;
+    font-weight: 800;
+    color: #1E293B;
+}
+
+/* Finans Grid (Hedef + Geçmiş) */
+.ogrenci-finans-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 24px;
+}
+
+/* Genel Kart */
+.of-card {
+    background: #fff;
+    border: 1px solid #E2E8F0;
+    border-radius: 20px;
+    padding: 24px;
+}
+
+.of-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.of-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1E293B;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.of-card-title i {
+    color: #3B82F6;
+}
+
+/* Birikim Hedefi */
+.of-goal-badge {
+    background: #ECFDF5;
+    color: #059669;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 8px;
+}
+
+.of-goal-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.of-goal-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #3B82F6;
+    flex-shrink: 0;
+}
+
+.of-goal-info {
+    flex: 1;
+}
+
+.of-goal-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1E293B;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.of-goal-cost {
+    font-size: 12px;
+    color: #64748B;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.of-goal-bar {
+    height: 8px;
+    background: #F1F5F9;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.of-goal-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10B981, #34D399);
+    border-radius: 6px;
+    transition: width 0.6s ease;
+}
+
+.of-goal-tip {
+    background: #FFFBEB;
+    border: 1px solid #FEF3C7;
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 12px;
+    color: #92400E;
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.of-goal-tip i {
+    color: #F59E0B;
+    margin-top: 1px;
+    flex-shrink: 0;
+}
+
+/* İşlem Geçmişi */
+.of-history-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.of-h-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid #F1F5F9;
+    transition: 0.2s;
+}
+
+.of-h-item:last-child {
+    border-bottom: none;
+}
+
+.of-h-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.of-h-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+.oh-bg-green { background: #ECFDF5; color: #10B981; }
+.oh-bg-red { background: #FEF2F2; color: #EF4444; }
+.oh-bg-blue { background: #EFF6FF; color: #3B82F6; }
+.oh-bg-gold { background: #FFFBEB; color: #F59E0B; }
+.oh-bg-purple { background: #F5F3FF; color: #8B5CF6; }
+
+.of-h-details h5 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    margin: 0 0 2px;
+}
+
+.of-h-details span {
+    font-size: 11px;
+    color: #94A3B8;
+}
+
+.of-h-amount {
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.of-amt-pos { color: #10B981; }
+.of-amt-neg { color: #EF4444; }
+
+/* Responsive */
+@media (max-width: 900px) {
+    .ogrenci-quick-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .ogrenci-finans-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .ogrenci-balance-card {
+        padding: 24px 20px;
+    }
+
+    .obc-amount {
+        font-size: 36px;
+    }
+
+    .obc-stats {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .obc-big-icon {
+        font-size: 48px;
+    }
+}

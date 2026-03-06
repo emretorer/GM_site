@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontrol Paneli</title>
+    <link rel="stylesheet" href="css/ana-navigasyon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo-area">
+            <div class="logo-part">
+                <span class="logo-icon"><i class="fa-solid fa-shapes"></i></span>
+                <span class="logo-text">Veli Paneli</span>
+            </div>
+            <button class="sidebar-toggle-btn" onclick="toggleSidebar()">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+        </div>
+
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="haberler.html"><i class="fa-regular fa-newspaper"></i> <span>Haber Akışı</span></a></li>
+                <li class="active"><a href="ana-navigasyon.html"><i class="fa-solid fa-border-all"></i> <span>Ana Panel</span></a></li>
+                <li><a href="oyun-suresi.html"><i class="fa-solid fa-chart-simple"></i> <span>Oyun Süresi</span></a></li>
+                <li><a href="yetenek.html"><i class="fa-solid fa-arrow-trend-up"></i> <span>Yetenek Gelişimi</span></a></li>
+                <li><a href="kariyer-yolu.html"><i class="fa-solid fa-road"></i> <span>Kariyer Yolu</span></a></li>
+                <li><a href="meslek-rehberi.html"><i class="fa-solid fa-book-open-reader"></i> <span>Meslek Rehberi</span></a></li>
+                <li><a href="basarilar.html"><i class="fa-solid fa-medal"></i> <span>Başarılar</span></a></li>
+                <li><a href="ilgi-alanlari.html"><i class="fa-regular fa-lightbulb"></i> <span>İlgi Alanları</span></a></li>
+                <li><a href="gelisim-agaci.html"><i class="fa-solid fa-tree"></i> <span>Gelişim Ağacı</span></a></li>
+                <li><a href="#"><i class="fa-solid fa-gamepad"></i> <span>Oyun Bilgileri</span></a></li>
+                <li><a href="#"><i class="fa-regular fa-circle-question"></i> <span>Yardım Paneli</span></a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="search-box">
+                </div>
+
+            <div class="profile-wrapper">
+                <div class="user-profile" onclick="toggleProfileMenu(event)">
+                    <img src="https://ui-avatars.com/api/?name=Elif&background=4F46E5&color=fff" alt="Profil">
+                </div>
+                
+                <div class="profile-dropdown" id="profileDropdown">
+                    <div class="pd-header">
+                        <strong>Elif Yılmaz</strong>
+                        <span style="font-size:12px; color:#64748b;">Bireysel Hesap</span>
+                    </div>
+                    <ul class="pd-menu">
+                        <li><a href="hesap-ayarlari.html"><i class="fa-solid fa-gear"></i> Hesap Ayarları</a></li>
+                        <li><a href="odemeler.html"><i class="fa-solid fa-credit-card"></i> Ödemeler</a></li>
+                    </ul>
+                    <div class="pd-divider"></div>
+                    <ul class="pd-menu">
+                        <li><a href="login.html" class="text-danger"><i class="fa-solid fa-right-from-bracket"></i> Çıkış Yap</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-body">
+            <div class="welcome-header">
+                <h1>Merhaba, Elif👋</h1>
+                <p>Bugünkü gelişim özetiniz.</p>
+            </div>
+
+            <div class="nav-grid">
+                <a href="haberler.html" class="nav-card">
+                    <div class="card-icon-box"><i class="fa-regular fa-newspaper"></i></div>
+                    <h3 class="card-title">Haber Akışı</h3>
+                    <p class="card-desc">Sistem duyuruları ve güncellemeler.</p>
+                    <div class="card-footer">
+                        <span style="font-size:12px; color:#2bb23f;">Son: 2 Saat Önce</span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </a>
+                <a href="gelisim-agaci.html" class="nav-card">
+                    <div class="card-icon-box" style="background:#F0FDF4; color:#22C55E;"><i class="fa-solid fa-tree"></i></div>
+                    <h3 class="card-title">Gelişim Ağacı</h3>
+                    <p class="card-desc">Pedagojik büyüme haritası.</p>
+                    <div class="card-footer">
+                        <span style="color: #2bb23f;">%85 Gelişim</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Sidebar Aç/Kapa
+        function toggleSidebar() {
+            // 'closed' sınıfını body'ye ekleyip çıkarır
+            document.body.classList.toggle('closed');
+        }
+
+        // Profil Menüsü Aç/Kapa
+        function toggleProfileMenu(e) {
+            e.stopPropagation();
+            document.getElementById("profileDropdown").classList.toggle("show");
+        }
+
+        // Dışarı tıklayınca menüyü kapat
+        window.onclick = function(e) {
+            if (!e.target.closest('.user-profile')) {
+                var dropdown = document.getElementById("profileDropdown");
+                if (dropdown.classList.contains('show')) {
+                    dropdown.classList.remove('show');
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

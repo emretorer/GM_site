@@ -1,0 +1,684 @@
+/* =====================================================
+   BIZ KIMIZ (ABOUT US) PAGE STYLES
+   ===================================================== */
+
+/* --- HERO SECTION --- */
+.marketing-bizkimiz .hero {
+    padding: 180px 0 100px;
+    background: radial-gradient(circle at 50% 0%, #EEF2FF 0%, #fff 70%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.marketing-bizkimiz .floating-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.15;
+    z-index: 0;
+    animation: float 6s ease-in-out infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 2rem;
+}
+
+.marketing-bizkimiz .shape-1 {
+    width: 120px;
+    height: 120px;
+    background: var(--primary);
+    top: 15%;
+    left: 10%;
+    opacity: 0.1;
+}
+
+.marketing-bizkimiz .shape-2 {
+    width: 80px;
+    height: 80px;
+    background: var(--accent);
+    top: 50%;
+    right: 10%;
+    animation-delay: 2s;
+    opacity: 0.1;
+}
+
+.marketing-bizkimiz .shape-icon-1 {
+    width: 100px;
+    height: 100px;
+    background: var(--neon-purple);
+    bottom: 20%;
+    left: 15%;
+    animation-delay: 3s;
+    opacity: 0.2;
+    color: white;
+    font-size: 2.5rem;
+}
+
+.marketing-bizkimiz .shape-icon-2 {
+    width: 90px;
+    height: 90px;
+    background: var(--neon-blue);
+    top: 20%;
+    right: 20%;
+    animation-delay: 1s;
+    opacity: 0.2;
+    color: white;
+    font-size: 2rem;
+}
+
+.marketing-bizkimiz .hero-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #EEF2FF;
+    color: var(--primary);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+}
+
+.marketing-bizkimiz .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 24px;
+    line-height: 1.1;
+    position: relative;
+    z-index: 1;
+}
+
+.marketing-bizkimiz .hero p {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    position: relative;
+    z-index: 1;
+    color: var(--text-muted);
+}
+
+/* --- SECTION LABEL --- */
+.marketing-bizkimiz .section-label {
+    display: inline-block;
+    padding: 6px 14px;
+    background: #EEF2FF;
+    color: var(--primary);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+/* --- STORY SECTION --- */
+.marketing-bizkimiz .story-section {
+    padding: 100px 0;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.marketing-bizkimiz .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.marketing-bizkimiz .story-content {
+    position: relative;
+    z-index: 2;
+    min-width: 0;
+}
+
+.marketing-bizkimiz .story-title {
+    font-size: 2.8rem;
+    line-height: 1.1;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 30px;
+}
+
+.marketing-bizkimiz .story-text {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+.marketing-bizkimiz .story-quote {
+    border-left: 4px solid var(--accent);
+    padding-left: 24px;
+    margin-top: 30px;
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* Story Visual */
+.marketing-bizkimiz .story-visual {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+}
+
+.marketing-bizkimiz .visual-card {
+    width: min(100%, 400px);
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.marketing-bizkimiz .visual-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.marketing-bizkimiz .visual-ring {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.marketing-bizkimiz .visual-ring.ring-1 {
+    width: 100%;
+    height: 100%;
+    border: 1px dashed rgba(79, 70, 229, 0.2);
+    animation: spin 30s linear infinite;
+}
+
+.marketing-bizkimiz .visual-ring.ring-2 {
+    width: 70%;
+    height: 70%;
+    border: 2px solid transparent;
+    border-top-color: var(--primary);
+    border-bottom-color: var(--accent);
+    animation: spinReverse 15s linear infinite;
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.1);
+}
+
+.marketing-bizkimiz .visual-core {
+    width: 120px;
+    height: 120px;
+    background: white;
+    border-radius: 50%;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: float 4s ease-in-out infinite;
+    border: 1px solid #E2E8F0;
+}
+
+.marketing-bizkimiz .visual-core i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.marketing-bizkimiz .visual-core span {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: 1px;
+}
+
+.marketing-bizkimiz .milestone {
+    position: absolute;
+    padding: 10px 18px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: floatCard 6s ease-in-out infinite;
+    z-index: 5;
+}
+
+.marketing-bizkimiz .milestone i {
+    font-size: 1rem;
+    color: var(--primary);
+}
+
+.marketing-bizkimiz .milestone-1 {
+    top: 10%;
+    left: 0;
+}
+
+.marketing-bizkimiz .milestone-1 i { color: var(--accent); }
+
+.marketing-bizkimiz .milestone-2 {
+    bottom: 10%;
+    right: 0;
+    animation-delay: 2s;
+}
+
+.marketing-bizkimiz .milestone-2 i { color: var(--neon-purple); }
+
+.marketing-bizkimiz .milestone-3 {
+    bottom: 40%;
+    left: -10px;
+    animation-delay: 4s;
+}
+
+.marketing-bizkimiz .milestone-3 i { color: var(--success); }
+
+/* --- VALUES SECTION --- */
+.marketing-bizkimiz .values-section {
+    padding: 100px 0;
+    background: var(--bg-soft);
+}
+
+.marketing-bizkimiz .values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+}
+
+.marketing-bizkimiz .value-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: var(--radius-xl);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    border: 1px solid #E2E8F0;
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-width: 0;
+}
+
+.marketing-bizkimiz .value-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.marketing-bizkimiz .card-innovation { border-top: 4px solid var(--accent); }
+.marketing-bizkimiz .card-innovation .v-icon { background: #FFF7ED; color: var(--accent); }
+
+.marketing-bizkimiz .card-science { border-top: 4px solid var(--primary); }
+.marketing-bizkimiz .card-science .v-icon { background: #EEF2FF; color: var(--primary); }
+
+.marketing-bizkimiz .card-ethics { border-top: 4px solid var(--success); }
+.marketing-bizkimiz .card-ethics .v-icon { background: #ECFDF5; color: var(--success); }
+
+.marketing-bizkimiz .card-user { border-top: 4px solid var(--neon-purple); }
+.marketing-bizkimiz .card-user .v-icon { background: #F5F3FF; color: var(--neon-purple); }
+
+.marketing-bizkimiz .v-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.marketing-bizkimiz .value-card:hover .v-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.marketing-bizkimiz .value-card h3 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: var(--dark);
+}
+
+.marketing-bizkimiz .value-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* --- STATS SECTION --- */
+.marketing-bizkimiz .stats-section {
+    padding: 100px 0;
+    background: #fff;
+}
+
+.marketing-bizkimiz .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+}
+
+.marketing-bizkimiz .stat-card {
+    text-align: center;
+    padding: 40px 24px;
+    background: #fff;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border);
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
+    min-width: 0;
+}
+
+.marketing-bizkimiz .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-main);
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.marketing-bizkimiz .stat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(79, 70, 229, 0.1);
+}
+
+.marketing-bizkimiz .stat-card:hover::before {
+    opacity: 1;
+}
+
+.marketing-bizkimiz .stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--dark);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.marketing-bizkimiz .stat-plus {
+    color: var(--primary);
+}
+
+.marketing-bizkimiz .stat-label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
+}
+
+.marketing-bizkimiz .stat-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* --- CULTURE SECTION --- */
+.marketing-bizkimiz .culture-section {
+    padding: 100px 0;
+    background: var(--bg-soft);
+}
+
+.marketing-bizkimiz .culture-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.marketing-bizkimiz .culture-content h2 {
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+    color: var(--dark);
+}
+
+.marketing-bizkimiz .culture-content p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    overflow-wrap: break-word;
+}
+
+.marketing-bizkimiz .culture-principles {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-width: 0;
+}
+
+.marketing-bizkimiz .principle {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 24px;
+    background: #fff;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    transition: 0.3s;
+}
+
+.marketing-bizkimiz .principle > div {
+    min-width: 0;
+}
+
+.marketing-bizkimiz .principle:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    transform: translateX(6px);
+}
+
+.marketing-bizkimiz .principle-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #EEF2FF;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.marketing-bizkimiz .principle h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 4px;
+}
+
+.marketing-bizkimiz .principle p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* --- CTA SECTION --- */
+.marketing-bizkimiz .cta-section {
+    padding: 100px 0;
+    background: #fff;
+}
+
+.marketing-bizkimiz .cta-box {
+    text-align: center;
+    padding: 80px 40px;
+    background: radial-gradient(circle at 50% 50%, #EEF2FF 0%, #fff 70%);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border);
+}
+
+.marketing-bizkimiz .cta-box h2 {
+    font-size: 2.4rem;
+    margin-bottom: 16px;
+    color: var(--dark);
+}
+
+.marketing-bizkimiz .cta-box p {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 550px;
+    margin: 0 auto 32px;
+}
+
+.marketing-bizkimiz .cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .marketing-bizkimiz .hero h1 { font-size: 2.8rem; }
+
+    .marketing-bizkimiz .story-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        text-align: center;
+    }
+    .marketing-bizkimiz .story-visual {
+        height: auto;
+        min-height: 380px;
+    }
+    .marketing-bizkimiz .story-text { text-align: center; }
+    .marketing-bizkimiz .story-quote { text-align: left; }
+
+    .marketing-bizkimiz .values-grid { grid-template-columns: 1fr 1fr; }
+    .marketing-bizkimiz .stats-grid { grid-template-columns: 1fr 1fr; }
+
+    .marketing-bizkimiz .culture-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    .marketing-bizkimiz .culture-content p { text-align: center; }
+}
+
+@media (max-width: 600px) {
+    .marketing-bizkimiz .hero {
+        padding: 148px 0 72px;
+    }
+
+    .marketing-bizkimiz .floating-shape {
+        display: none;
+    }
+
+    .marketing-bizkimiz .hero-badge,
+    .marketing-bizkimiz .section-label {
+        max-width: 100%;
+        line-height: 1.4;
+        white-space: normal;
+        text-align: center;
+    }
+
+    .marketing-bizkimiz .hero h1 {
+        font-size: clamp(1.9rem, 8.8vw, 2.3rem);
+        line-height: 1.08;
+    }
+
+    .marketing-bizkimiz .hero p,
+    .marketing-bizkimiz .story-text,
+    .marketing-bizkimiz .story-quote,
+    .marketing-bizkimiz .culture-content p,
+    .marketing-bizkimiz .cta-box p {
+        font-size: 0.98rem;
+    }
+
+    .marketing-bizkimiz .story-section,
+    .marketing-bizkimiz .values-section,
+    .marketing-bizkimiz .stats-section,
+    .marketing-bizkimiz .culture-section,
+    .marketing-bizkimiz .cta-section {
+        padding: 72px 0;
+    }
+
+    .marketing-bizkimiz .story-grid,
+    .marketing-bizkimiz .culture-grid {
+        gap: 32px;
+    }
+
+    .marketing-bizkimiz .story-title,
+    .marketing-bizkimiz .culture-content h2,
+    .marketing-bizkimiz .cta-box h2 {
+        font-size: clamp(1.8rem, 7vw, 2.15rem);
+    }
+
+    .marketing-bizkimiz .values-grid { grid-template-columns: 1fr; }
+    .marketing-bizkimiz .stats-grid { grid-template-columns: 1fr; }
+
+    .marketing-bizkimiz .story-visual {
+        min-height: 300px;
+    }
+
+    .marketing-bizkimiz .visual-card {
+        width: min(100%, 290px);
+        max-width: 290px;
+    }
+
+    .marketing-bizkimiz .visual-core {
+        width: 92px;
+        height: 92px;
+    }
+
+    .marketing-bizkimiz .visual-core i {
+        font-size: 1.5rem;
+    }
+
+    .marketing-bizkimiz .visual-core span {
+        font-size: 0.68rem;
+    }
+
+    .marketing-bizkimiz .milestone {
+        padding: 8px 10px;
+        gap: 6px;
+        font-size: 0.68rem;
+        max-width: 120px;
+    }
+
+    .marketing-bizkimiz .milestone-1 {
+        top: 8%;
+        left: -4px;
+    }
+
+    .marketing-bizkimiz .milestone-2 {
+        bottom: 8%;
+        right: -4px;
+    }
+
+    .marketing-bizkimiz .milestone-3 {
+        left: 0;
+    }
+
+    .marketing-bizkimiz .principle {
+        gap: 14px;
+        padding: 18px;
+    }
+
+    .marketing-bizkimiz .principle-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .marketing-bizkimiz .cta-box { padding: 50px 20px; }
+
+    .marketing-bizkimiz .cta-actions {
+        flex-direction: column;
+    }
+
+    .marketing-bizkimiz .cta-actions .btn {
+        width: 100%;
+    }
+}

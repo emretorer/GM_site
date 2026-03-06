@@ -1,0 +1,13 @@
+0000000000000000000000000000000000000000 af7385adcf2d866a80646ba24a00720700f42bf6 emretorer <emre.torer@sabanciuniv.edu> 1772533853 +0300	clone: from https://github.com/emretorer/site_tasarim.git
+af7385adcf2d866a80646ba24a00720700f42bf6 ce461a1b0e9e3043df0926a28ef050615d6890eb emretorer <emre.torer@sabanciuniv.edu> 1772534402 +0300	am: mobile optimization
+ce461a1b0e9e3043df0926a28ef050615d6890eb d265c4669d8bf19dca0a6726dcec31730881abb3 emretorer <emre.torer@sabanciuniv.edu> 1772535871 +0300	commit: register page optimization
+d265c4669d8bf19dca0a6726dcec31730881abb3 7dfca86d41e3f2c8bcefa9a6c47e4da29e4e3a2a emretorer <emre.torer@sabanciuniv.edu> 1772535953 +0300	pull --ff --recurse-submodules --progress origin: Merge made by the 'ort' strategy.
+7dfca86d41e3f2c8bcefa9a6c47e4da29e4e3a2a e70b6116ae87ab58bf939b7bb607c96249ee7a96 emretorer <emre.torer@sabanciuniv.edu> 1772546055 +0300	commit: domain profile acces
+e70b6116ae87ab58bf939b7bb607c96249ee7a96 2a14e6d0e05a6de37ba7c838c212b3c71f6cb65b emretorer <emre.torer@sabanciuniv.edu> 1772548695 +0300	commit: backend API
+2a14e6d0e05a6de37ba7c838c212b3c71f6cb65b 1d7ca2c9f68ebdad22c8783601b65f627322083f emretorer <emre.torer@sabanciuniv.edu> 1772702652 +0300	commit: vps settings
+1d7ca2c9f68ebdad22c8783601b65f627322083f 532492a09caa40acfae29113a42c2861fc390394 emretorer <emre.torer@sabanciuniv.edu> 1772703631 +0300	commit: vps video settings
+532492a09caa40acfae29113a42c2861fc390394 f98213538a6426dcea50da0b5c9e6035909765ab emretorer <emre.torer@sabanciuniv.edu> 1772704642 +0300	commit: mp4 removed from assets
+f98213538a6426dcea50da0b5c9e6035909765ab 9c82bfe6114aadf4e127affec6e3f3b534ac4c14 emretorer <emre.torer@sabanciuniv.edu> 1772714171 +0300	commit: web logo change
+9c82bfe6114aadf4e127affec6e3f3b534ac4c14 49c01b45b38c5ff3daa1d98ee78b10b39d8b22bc emretorer <emre.torer@sabanciuniv.edu> 1772716030 +0300	commit: UI layout problems
+49c01b45b38c5ff3daa1d98ee78b10b39d8b22bc ebff3e89a6a4894f790c9adf6a28b95accdd75aa emretorer <emre.torer@sabanciuniv.edu> 1772718556 +0300	commit: readme update
+ebff3e89a6a4894f790c9adf6a28b95accdd75aa c56e2f981b28527aec403ee6788f4e9afdf82efc emretorer <emre.torer@sabanciuniv.edu> 1772723949 +0300	commit: Add mock auth/data flow and visible demo credentials

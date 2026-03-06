@@ -1,0 +1,21 @@
+/* Okul Panel - Purple accent overrides */
+.okul-panel-root .okul-sidebar .logo-text {
+    color: #8B5CF6;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.okul-panel-root .okul-sidebar .nav-menu li a.active {
+    background-color: #F5F3FF;
+    color: #8B5CF6;
+    font-weight: 600;
+}
+
+.okul-panel-root .okul-sidebar .nav-menu li a:hover {
+    background-color: #F5F3FF;
+    color: #8B5CF6;
+}
+
+.okul-panel-root .topbar-logout-btn:hover {
+    color: #8B5CF6;
+}

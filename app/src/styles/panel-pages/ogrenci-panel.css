@@ -1,0 +1,15 @@
+/* =========================================
+   ÖĞRENCI PANELİ - GENEL STILLER
+========================================= */
+
+.ogrenci-panel-root .ogrenci-sidebar .logo-text {
+    color: #3B82F6;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.ogrenci-panel-root .ogrenci-sidebar .nav-menu li .active {
+    background-color: #EFF6FF;
+    color: #3B82F6;
+    font-weight: 600;
+}

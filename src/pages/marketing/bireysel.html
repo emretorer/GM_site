@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genius ID | Bireysel Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- MODERN & CLEAN TASARIM (ÖNCEKİ STİL) --- */
+        :root {
+            --primary: #4F46E5;       /* Ana İndigo */
+            --secondary: #ec4899;     /* Vurgu Pembe */
+            --bg-body: #F8FAFC;       /* Açık Gri Zemin */
+            --bg-card: #FFFFFF;       /* Beyaz Kartlar */
+            --text-main: #1E293B;     /* Koyu Metin */
+            --text-muted: #64748B;    /* Gri Metin */
+            --border: #E2E8F0;
+            --radius: 16px;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            width: 260px;
+            background: var(--bg-card);
+            border-right: 1px solid var(--border);
+            display: flex; flex-direction: column;
+            position: fixed; height: 100%; top: 0; left: 0;
+            z-index: 100;
+        }
+
+        .logo-area {
+            padding: 24px;
+            display: flex; align-items: center; gap: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .logo-icon {
+            width: 36px; height: 36px; background: var(--primary); color: #fff;
+            border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px;
+        }
+        .logo-text { font-size: 18px; font-weight: 800; color: var(--text-main); }
+
+        .nav-menu { padding: 20px 10px; flex: 1; }
+        .nav-menu ul { list-style: none; }
+        .nav-menu li { margin-bottom: 5px; }
+        
+        .nav-menu a {
+            display: flex; align-items: center; gap: 12px;
+            padding: 12px 16px; color: var(--text-muted);
+            text-decoration: none; border-radius: 12px;
+            font-weight: 600; font-size: 14px;
+            transition: 0.2s;
+        }
+        .nav-menu a:hover, .nav-menu li.active a {
+            background: #EEF2FF; color: var(--primary);
+        }
+        .nav-menu a i { width: 20px; text-align: center; }
+
+        .sidebar-footer {
+            padding: 20px; border-top: 1px solid var(--border);
+        }
+        .user-mini {
+            display: flex; align-items: center; gap: 10px;
+        }
+        .user-mini img { width: 40px; height: 40px; border-radius: 50%; }
+        .user-mini div { display: flex; flex-direction: column; }
+        .user-mini strong { font-size: 14px; }
+        .user-mini span { font-size: 11px; color: var(--text-muted); }
+
+        /* --- MAIN CONTENT --- */
+        .main-content {
+            margin-left: 260px; flex: 1; padding: 30px;
+        }
+
+        /* Header */
+        .header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 30px;
+        }
+        .welcome h1 { font-size: 24px; font-weight: 800; color: var(--text-main); }
+        .welcome p { color: var(--text-muted); font-size: 14px; }
+
+        .header-actions { display: flex; gap: 15px; }
+        .btn-icon {
+            width: 40px; height: 40px; background: #fff; border: 1px solid var(--border);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: var(--text-muted); cursor: pointer; transition: 0.2s;
+        }
+        .btn-icon:hover { color: var(--primary); border-color: var(--primary); }
+
+        /* --- DASHBOARD GRID --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 Sütunlu yapı */
+            grid-template-rows: auto auto;
+            gap: 24px;
+        }
+
+        /* Genel Kart Stili */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            position: relative; overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px -5px rgba(0,0,0,0.08); }
+
+        .card-title { font-size: 16px; font-weight: 700; color: var(--text-main); margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        .card-title i { color: var(--primary); }
+
+        /* 1. ÖZET KARTLAR (Üst Sıra) */
+        .stat-card { display: flex; flex-direction: column; justify-content: space-between; height: 140px; }
+        .stat-icon {
+            width: 40px; height: 40px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 10px;
+        }
+        .stat-val { font-size: 28px; font-weight: 800; color: var(--text-main); }
+        .stat-label { font-size: 13px; color: var(--text-muted); font-weight: 600; }
+
+        .sc-blue .stat-icon { background: #EEF2FF; color: #4F46E5; }
+        .sc-orange .stat-icon { background: #FFF7ED; color: #F97316; }
+        .sc-green .stat-icon { background: #F0FDF4; color: #10B981; }
+        .sc-purple .stat-icon { background: #FAF5FF; color: #8B5CF6; }
+
+        /* 2. BÜYÜK ALANLAR */
+        .col-span-2 { grid-column: span 2; }
+        .col-span-4 { grid-column: span 4; }
+        .row-span-2 { grid-row: span 2; }
+
+        /* RIASEC GRAFİĞİ (Görsel Temsil) */
+        .riasec-bar {
+            display: flex; align-items: center; margin-bottom: 12px;
+        }
+        .rb-label { width: 40px; font-size: 12px; font-weight: 700; color: var(--text-muted); }
+        .rb-track { flex: 1; height: 8px; background: #F1F5F9; border-radius: 4px; overflow: hidden; margin: 0 10px; }
+        .rb-fill { height: 100%; border-radius: 4px; }
+        .rb-val { width: 30px; font-size: 12px; font-weight: 700; text-align: right; }
+
+        /* YETENEK AĞACI ÖZET */
+        .skill-node {
+            display: flex; align-items: center; gap: 15px;
+            padding: 12px; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px;
+        }
+        .sn-icon { width: 32px; height: 32px; background: #F8FAFC; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 14px; }
+        .sn-info h4 { font-size: 14px; margin: 0; }
+        .sn-info p { font-size: 11px; color: var(--text-muted); margin: 0; }
+        .sn-score { margin-left: auto; font-weight: 700; color: #10B981; }
+
+        /* GÖREV KARTI */
+        .mission-card {
+            background: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%);
+            color: #fff; border: none;
+        }
+        .mission-card .card-title { color: #fff; }
+        .mission-card .card-title i { color: #fff; }
+        .mission-btn {
+            margin-top: 15px; width: 100%; padding: 10px;
+            background: #fff; color: var(--primary); border: none;
+            border-radius: 8px; font-weight: 700; cursor: pointer;
+        }
+
+        /* MOBİL UYUM */
+        @media (max-width: 1024px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; }
+            .grid-container { grid-template-columns: 1fr; }
+            .col-span-2, .col-span-4 { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo-area">
+            <div class="logo-icon"><i class="fa-solid fa-shapes"></i></div>
+            <span class="logo-text">Genius ID</span>
+        </div>
+
+        <nav class="nav-menu">
+            <ul>
+                <li class="active"><a href="#"><i class="fa-solid fa-border-all"></i> Genel Bakış</a></li>
+                <li><a href="../panel/yetenek.html"><i class="fa-solid fa-arrow-trend-up"></i> Yetkinlik Haritam</a></li>
+                <li><a href="../panel/basarilar.html"><i class="fa-solid fa-medal"></i> Rozetlerim</a></li>
+                <li><a href="../panel/kariyer-yolu.html"><i class="fa-solid fa-road"></i> Kariyer Yolum</a></li>
+                <li><a href="../panel/simulasyonlar.html"><i class="fa-solid fa-gamepad"></i> Simülasyonlar</a></li>
+                <li style="margin-top: 20px; border-top: 1px solid #E2E8F0; padding-top: 10px;">
+                    <a href="#"><i class="fa-solid fa-gear"></i> Ayarlar</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-mini">
+                <img src="https://ui-avatars.com/api/?name=Elif&background=4F46E5&color=fff" alt="Profil">
+                <div>
+                    <strong>Elif Yılmaz</strong>
+                    <span>Bireysel Üye</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        
+        <header class="header">
+            <div class="welcome">
+                <h1>Hoşgeldin, Elif 👋</h1>
+                <p>Bugünkü simülasyon verilerin işlendi. İşte güncel durumun.</p>
+            </div>
+            <div class="header-actions">
+                <div class="btn-icon"><i class="fa-regular fa-bell"></i></div>
+                <div class="btn-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+        </header>
+
+        <div class="grid-container">
+
+            <div class="card stat-card sc-blue">
+                <div class="stat-icon"><i class="fa-solid fa-bolt"></i></div>
+                <div>
+                    <div class="stat-val">Sv. 14</div>
+                    <div class="stat-label">Stratejist</div>
+                </div>
+            </div>
+
+            <div class="card stat-card sc-orange">
+                <div class="stat-icon"><i class="fa-solid fa-clock"></i></div>
+                <div>
+                    <div class="stat-val">45 dk</div>
+                    <div class="stat-label">Bugünkü Aktivite</div>
+                </div>
+            </div>
+
+            <div class="card stat-card sc-purple">
+                <div class="stat-icon"><i class="fa-solid fa-medal"></i></div>
+                <div>
+                    <div class="stat-val">24</div>
+                    <div class="stat-label">Kazanılan Rozet</div>
+                </div>
+            </div>
+
+            <div class="card stat-card sc-green">
+                <div class="stat-icon"><i class="fa-solid fa-bullseye"></i></div>
+                <div>
+                    <div class="stat-val">%92</div>
+                    <div class="stat-label">Niyet/Davranış Uyumu</div>
+                </div>
+            </div>
+
+            <div class="card col-span-2 row-span-2">
+                <div class="card-title">
+                    <i class="fa-solid fa-chart-pie"></i> RIASEC Profilim
+                </div>
+                <p style="font-size:13px; color:#64748B; margin-bottom:20px;">
+                    Simülasyonlardaki tercihlerine göre baskın kişilik tiplerin.
+                </p>
+
+                <div class="riasec-bar">
+                    <span class="rb-label">(R)</span>
+                    <div class="rb-track"><div class="rb-fill" style="width: 40%; background: #94A3B8;"></div></div>
+                    <span class="rb-val">40</span>
+                </div>
+                <div class="riasec-bar">
+                    <span class="rb-label"> (I) </span>
+                    <div class="rb-track"><div class="rb-fill" style="width: 85%; background: #4F46E5;"></div></div>
+                    <span class="rb-val" style="color:#4F46E5;">85</span>
+                </div>
+                <div class="riasec-bar">
+                    <span class="rb-label"> (A) </span>
+                    <div class="rb-track"><div class="rb-fill" style="width: 60%; background: #EC4899;"></div></div>
+                    <span class="rb-val">60</span>
+                </div>
+                <div class="riasec-bar">
+                    <span class="rb-label"> (S) </span>
+                    <div class="rb-track"><div class="rb-fill" style="width: 30%; background: #94A3B8;"></div></div>
+                    <span class="rb-val">30</span>
+                </div>
+                <div class="riasec-bar">
+                    <span class="rb-label"> (E) </span>
+                    <div class="rb-track"><div class="rb-fill" style="width: 75%; background: #F59E0B;"></div></div>
+                    <span class="rb-val" style="color:#F59E0B;">75</span>
+                </div>
+                <div class="riasec-bar">
+                    <span class="rb-label"> (C) </span>
+                    <div class="rb-track"><div class="rb-fill" style="width: 50%; background: #94A3B8;"></div></div>
+                    <span class="rb-val">50</span>
+                </div>
+                
+                <div style="margin-top:20px; padding:10px; background:#F8FAFC; border-radius:8px; font-size:12px; color:#475569;">
+                    <strong>Analiz:</strong> "Araştırmacı (I)" ve "Girişimci (E)" yönlerin çok güçlü. Problem çözme ve liderlik gerektiren görevlerde çok başarılısın.
+                </div>
+            </div>
+
+            <div class="card mission-card col-span-2">
+                <div class="card-title">
+                    <i class="fa-solid fa-rocket"></i> Sıradaki Görev
+                </div>
+                <h3 style="font-size:20px; margin-bottom:5px;">Mars Kolonisi: Lojistik</h3>
+                <p style="font-size:13px; opacity:0.9; margin-bottom:15px;">
+                    Kaynak yönetimi becerini test etmek için tasarlandı. Niyet ve davranış arasındaki farkı ölçümle.
+                </p>
+                <div style="display:flex; gap:10px; font-size:12px; margin-bottom:15px;">
+                    <span style="background:rgba(255,255,255,0.2); padding:4px 8px; border-radius:4px;">+50 XP</span>
+                    <span style="background:rgba(255,255,255,0.2); padding:4px 8px; border-radius:4px;">Süre: 15dk</span>
+                </div>
+                <button class="mission-btn">Simülasyonu Başlat</button>
+            </div>
+
+            <div class="card col-span-2">
+                <div class="card-title">
+                    <i class="fa-solid fa-fingerprint"></i> En Güçlü Yönlerin
+                </div>
+                
+                <div class="skill-node">
+                    <div class="sn-icon"><i class="fa-solid fa-chess"></i></div>
+                    <div class="sn-info">
+                        <h4>Stratejik Planlama</h4>
+                        <p>Genius Metropol Verisi</p>
+                    </div>
+                    <div class="sn-score">9.2</div>
+                </div>
+
+                <div class="skill-node">
+                    <div class="sn-icon"><i class="fa-solid fa-users"></i></div>
+                    <div class="sn-info">
+                        <h4>Takım Yönetimi</h4>
+                        <p>Liman Lojistik Verisi</p>
+                    </div>
+                    <div class="sn-score">8.8</div>
+                </div>
+
+                <div class="skill-node">
+                    <div class="sn-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <div class="sn-info">
+                        <h4>Analitik Düşünce</h4>
+                        <p>Biyolab Verisi</p>
+                    </div>
+                    <div class="sn-score">8.5</div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>

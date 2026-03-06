@@ -1,0 +1,394 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yetenek & Prestij - Genius Profil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           YETENEK & EKONOMÄ° STÄ°LÄ° (CSS)
+        ========================================= */
+
+        :root {
+            --sidebar-width: 250px;
+            --header-height: 70px;
+            --page-width: 1200px;
+            
+            /* Renkler */
+            --primary-blue: #2563EB;
+            --primary-dark: #0F172A;
+            --bg-body: #F8FAFC;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --border-light: #E2E8F0;
+            
+            /* Finansal Renkler */
+            --income: #10B981;   /* YeÅŸil */
+            --expense: #EF4444;  /* KÄ±rmÄ±zÄ± */
+            --gold: #F59E0B;     /* AltÄ±n */
+            --purple: #8B5CF6;   /* XP/Beceriler */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-body); color: var(--text-main); display: flex; min-height: 100vh; font-size: 14px; }
+
+        /* --- SIDEBAR & LOGO (Standart) --- */
+        .sidebar { 
+            width: var(--sidebar-width); 
+            background: #fff; 
+            border-right: 1px solid var(--border-light); 
+            display: flex; 
+            flex-direction: column; 
+            position: fixed; 
+            height: 100%; 
+            top: 0; left: 0; z-index: 100; 
+            transition: width 0.3s ease; 
+        }
+
+        /* Logo AlanÄ± */
+        .logo-area {
+            display: flex;
+            align-items: center;
+            padding: 24px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: 10px;
+            gap: 12px;
+            min-height: 80px; 
+        }
+
+        .sidebar-logo {
+            height: 40px; width: auto; 
+            display: block; border-radius: 6px; object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 18px; font-weight: 800; color: var(--primary-dark); white-space: nowrap;
+        }
+
+        /* MenÃ¼ */
+        .nav-menu { flex: 1; overflow-y: auto; }
+        .nav-menu ul { list-style: none; padding: 0 12px; }
+        .nav-menu li { margin-bottom: 4px; }
+        .nav-menu a { 
+            display: flex; align-items: center; padding: 12px 14px; color: var(--text-muted); 
+            text-decoration: none; border-radius: 10px; font-size: 14px; font-weight: 500; 
+            transition: all 0.2s; white-space: nowrap; overflow: hidden; 
+        }
+        .nav-menu a i { min-width: 24px; margin-right: 12px; font-size: 18px; text-align: center; }
+        .nav-menu li.active a { background-color: #EFF6FF; color: var(--primary-blue); font-weight: 600; }
+        .nav-menu a:hover:not(.active) { background-color: #F8FAFC; color: var(--text-main); }
+
+        .sidebar-footer { margin-top: auto; padding: 20px; border-top: 1px solid var(--border-light); }
+        .collapse-btn { border: none; background: transparent; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; width: 100%; }
+
+        /* --- MAIN CONTENT --- */
+        .main-content { margin-left: var(--sidebar-width); flex: 1; display: flex; flex-direction: column; width: calc(100% - var(--sidebar-width)); }
+        .top-bar { height: var(--header-height); background: #fff; border-bottom: 1px solid var(--border-light); padding: 0 40px; display: flex; align-items: center; justify-content: flex-end; position: sticky; top: 0; z-index: 90; }
+        .user-profile img { width: 40px; height: 40px; border-radius: 50%; border: 1px solid #E5E7EB; }
+
+        /* --- CONTENT BODY --- */
+        .content-body { padding: 40px; width: 100%; max-width: var(--page-width); margin: 0 auto; }
+        .page-header { margin-bottom: 30px; }
+        .page-title { font-size: 26px; font-weight: 800; color: var(--primary-dark); margin-bottom: 6px; }
+        .page-desc { color: var(--text-muted); font-size: 14px; max-width: 700px; line-height: 1.5; }
+
+        /* --- 1. WALLET HERO (Finansal Ã–zet) --- */
+        .wallet-hero {
+            display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        .balance-card {
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+            border-radius: 16px; padding: 24px; color: #fff;
+            display: flex; flex-direction: column; justify-content: center;
+            box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.4);
+            position: relative; overflow: hidden;
+        }
+        .bc-label { font-size: 12px; font-weight: 600; color: #94A3B8; text-transform: uppercase; margin-bottom: 8px; }
+        .bc-amount { font-size: 36px; font-weight: 800; color: #fff; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .bc-amount i { color: var(--gold); font-size: 28px; }
+        .bc-trend { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #34D399; font-weight: 600; background: rgba(52, 211, 153, 0.1); padding: 4px 8px; border-radius: 6px; }
+
+        .stat-card {
+            background: #fff; border: 1px solid var(--border-light); border-radius: 16px;
+            padding: 24px; display: flex; flex-direction: column; justify-content: center;
+        }
+        .sc-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 12px; }
+        .icon-in { background: #ECFDF5; color: var(--income); }
+        .icon-out { background: #FEF2F2; color: var(--expense); }
+        .sc-val { font-size: 24px; font-weight: 800; display: block; margin-bottom: 4px; }
+        .text-green-600 { color: var(--income); }
+        .text-red-600 { color: var(--expense); }
+        .sc-label { font-size: 13px; color: var(--text-muted); }
+
+        /* --- 2. MAIN GRID --- */
+        .main-grid { display: grid; grid-template-columns: 2fr 1.1fr; gap: 24px; }
+        .section-label { font-size: 16px; font-weight: 700; color: var(--primary-dark); margin-bottom: 16px; }
+
+        /* --- 3. YETENEK KARTLARI --- */
+        .skill-cards-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+        .skill-card {
+            background: #fff; border: 1px solid var(--border-light); border-radius: 16px;
+            padding: 20px; display: flex; flex-direction: column; gap: 12px;
+            transition: transform 0.2s; position: relative;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .skill-card:hover { transform: translateY(-4px); border-color: var(--primary-blue); box-shadow: 0 10px 20px -5px rgba(0,0,0,0.05); }
+
+        .sk-header { display: flex; justify-content: space-between; align-items: flex-start; }
+        .sk-icon-box { 
+            width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px;
+        }
+        .bg-orange { background: #FFF7ED; color: #F59E0B; }
+        .bg-blue { background: #EFF6FF; color: #2563EB; }
+        .bg-purple { background: #F5F3FF; color: #8B5CF6; }
+        .bg-green { background: #ECFDF5; color: #10B981; }
+
+        .sk-title { font-size: 15px; font-weight: 700; color: var(--primary-dark); margin-top: 4px; }
+        .sk-desc { font-size: 12px; color: var(--text-muted); line-height: 1.4; min-height: 34px; }
+
+        .sk-footer {
+            border-top: 1px solid #F8FAFC; padding-top: 10px; margin-top: auto;
+            font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 6px;
+        }
+        .sk-footer strong { color: var(--primary-blue); }
+
+        /* --- 4. SAÄ KOLON (ANALÄ°Z) --- */
+        .right-col { display: flex; flex-direction: column; gap: 20px; }
+
+        .analysis-card { background: #fff; border: 1px solid var(--border-light); border-radius: 16px; padding: 20px; }
+        .ac-head { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: var(--primary-dark); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid #F1F5F9; }
+
+        .insight-row { display: flex; gap: 12px; margin-bottom: 16px; }
+        .insight-row:last-child { margin-bottom: 0; }
+
+        .ir-icon { 
+            width: 32px; height: 32px; background: #F1F5F9; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--text-muted); flex-shrink: 0;
+        }
+        .ir-content h4 { font-size: 13px; font-weight: 700; color: var(--primary-dark); margin-bottom: 2px; }
+        .ir-content p { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
+        .ir-tag { 
+            display: inline-block; font-size: 10px; font-weight: 600; color: var(--primary-blue); 
+            background: #EFF6FF; padding: 2px 6px; border-radius: 4px; margin-top: 4px; border: 1px solid #DBEAFE;
+        }
+
+        .tip-box { background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 12px; padding: 16px; }
+        .tip-title { display: flex; align-items: center; gap: 8px; color: #B45309; font-weight: 700; font-size: 13px; margin-bottom: 6px; }
+        .tip-desc { font-size: 12px; color: #92400E; line-height: 1.4; }
+
+        .footer { padding: 20px 40px; background: #fff; border-top: 1px solid var(--border-light); display: flex; justify-content: center; font-size: 12px; color: var(--text-muted); margin-top: 40px; }
+
+        @media (max-width: 1024px) { 
+            .main-grid { grid-template-columns: 1fr; } 
+            .skill-cards-wrapper { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .skill-cards-wrapper { grid-template-columns: 1fr; }
+            .wallet-hero { grid-template-columns: 1fr; }
+        }
+        
+        /* Body collapse */
+        body.collapsed .sidebar { width: 80px; }
+        body.collapsed .logo-area { justify-content: center; padding: 24px 10px; }
+        body.collapsed .sidebar-logo { height: 32px; margin: 0; }
+        body.collapsed .logo-text { display: none; }
+        body.collapsed .nav-menu a { font-size: 0; justify-content: center; padding: 14px; }
+        body.collapsed .nav-menu a i { margin: 0; font-size: 22px; }
+        body.collapsed .collapse-btn span { display: none; }
+        body.collapsed .collapse-btn { justify-content: center; }
+        body.collapsed .main-content { margin-left: 80px; width: calc(100% - 80px); }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo-area">
+            <img src="assets/logo-2.png" alt="GeniusMethods" class="sidebar-logo">
+            <span class="logo-text">Genius Profil</span>
+        </div>
+        
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="haberler.html"><i class="fa-regular fa-newspaper"></i> Haber AkÄ±ÅŸÄ±</a></li>
+                <li><a href="ana-navigasyon.html"><i class="fa-solid fa-border-all"></i> Ana Navigasyon</a></li>
+                <li><a href="oyun-suresi.html"><i class="fa-solid fa-chart-simple"></i> Oyun SÃ¼resi</a></li>
+                
+                <li class="active"><a href="yetenek.html"><i class="fa-solid fa-arrow-trend-up"></i> Yetenek GeliÅŸimi</a></li>
+                
+                <li><a href="kariyer-yolu.html"><i class="fa-solid fa-road"></i> Kariyer Yolu</a></li>
+                <li><a href="meslek-rehberi.html"><i class="fa-solid fa-book-open-reader"></i> Meslek Rehberi</a></li>
+                <li><a href="basarilar.html"><i class="fa-solid fa-medal"></i> BaÅŸarÄ±lar</a></li>
+                <li><a href="ilgi-alanlari.html"><i class="fa-regular fa-lightbulb"></i> Ä°lgi AlanlarÄ±</a></li>
+                <li><a href="gelisim-agaci.html"><i class="fa-solid fa-tree"></i> GeliÅŸim AÄŸacÄ±</a></li>
+                <li><a href="#"><i class="fa-solid fa-gamepad"></i> Oyun Bilgileri</a></li>
+                <li><a href="#"><i class="fa-regular fa-circle-question"></i> YardÄ±m Paneli</a></li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button class="collapse-btn">
+                <i class="fa-solid fa-chevron-left"></i>
+                <span>MenÃ¼yÃ¼ Daralt</span>
+            </button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=Elif&background=D97706&color=fff" alt="Profil">
+            </div>
+        </header>
+
+        <div class="content-body">
+            
+            <div class="page-header">
+                <h1 class="page-title">Yetenek & Prestij YÃ¶netimi</h1>
+                <p class="page-desc">Oyun performansÄ±nÄ±n "Prestij PuanÄ±"na dÃ¶nÃ¼ÅŸÃ¼mÃ¼ ve yeteneklerin toplam bakiyeye katkÄ± analizi.</p>
+            </div>
+
+            <div class="wallet-hero">
+                <div class="balance-card">
+                    <span class="bc-label">TOPLAM VARLIK (PRESTÄ°J)</span>
+                    <div class="bc-amount">
+                        <i class="fa-solid fa-coins"></i> 840.000
+                    </div>
+                    <div class="bc-trend"><i class="fa-solid fa-arrow-trend-up"></i> Bu hafta +15.000</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="sc-icon icon-in"><i class="fa-solid fa-arrow-down"></i></div>
+                    <span class="sc-val text-green-600">+125.000</span>
+                    <span class="sc-label">Beceri KaynaklÄ± Gelir</span>
+                </div>
+
+                <div class="stat-card">
+                    <div class="sc-icon icon-out"><i class="fa-solid fa-arrow-up"></i></div>
+                    <span class="sc-val text-red-600">-45.000</span>
+                    <span class="sc-label">Harcama</span>
+                </div>
+            </div>
+
+            <div class="main-grid">
+                
+                <div class="left-col">
+                    <div class="section-label">Yetenek KatkÄ± Analizi</div>
+                    
+                    <div class="skill-cards-wrapper">
+                        
+                        <div class="skill-card">
+                            <div class="sk-header">
+                                <div class="sk-icon-box bg-orange"><i class="fa-solid fa-brain"></i></div>
+                            </div>
+                            <h3 class="sk-title">MantÄ±ksal DÃ¼ÅŸÃ¼nme</h3>
+                            <p class="sk-desc">KarmaÅŸÄ±k problemleri Ã§Ã¶zme ve neden-sonuÃ§ iliÅŸkisi kurma.</p>
+                            <div class="sk-footer">
+                                <i class="fa-solid fa-link"></i> Kaynak: <strong>Strateji OyunlarÄ±</strong>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="sk-header">
+                                <div class="sk-icon-box bg-blue"><i class="fa-solid fa-comments"></i></div>
+                            </div>
+                            <h3 class="sk-title">Sosyal Beceriler</h3>
+                            <p class="sk-desc">TakÄ±m yÃ¶netimi, iletiÅŸim ve empati kurma yeteneÄŸi.</p>
+                            <div class="sk-footer">
+                                <i class="fa-solid fa-link"></i> Kaynak: <strong>TakÄ±m GÃ¶revleri</strong>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="sk-header">
+                                <div class="sk-icon-box bg-purple"><i class="fa-solid fa-palette"></i></div>
+                            </div>
+                            <h3 class="sk-title">YaratÄ±cÄ±lÄ±k</h3>
+                            <p class="sk-desc">Ã–zgÃ¼n tasarÄ±m fikirleri Ã¼retme ve uygulama.</p>
+                            <div class="sk-footer">
+                                <i class="fa-solid fa-link"></i> Kaynak: <strong>Serbest Ä°nÅŸa Modu</strong>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="sk-header">
+                                <div class="sk-icon-box bg-green"><i class="fa-solid fa-puzzle-piece"></i></div>
+                            </div>
+                            <h3 class="sk-title">Problem Ã‡Ã¶zme</h3>
+                            <p class="sk-desc">Zorluklar karÅŸÄ±sÄ±nda stratejik ve hÄ±zlÄ± Ã§Ã¶zÃ¼mler bulma.</p>
+                            <div class="sk-footer">
+                                <i class="fa-solid fa-link"></i> Kaynak: <strong>KaÃ§Ä±ÅŸ OyunlarÄ±</strong>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="right-col">
+                    
+                    <div class="analysis-card">
+                        <div class="ac-head"><i class="fa-solid fa-magnifying-glass-chart"></i> DavranÄ±ÅŸ Ã‡Ã¶zÃ¼mlemesi</div>
+                        
+                        <div class="insight-row">
+                            <div class="ir-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                            <div class="ir-content">
+                                <h4>Finansal BilinÃ§</h4>
+                                <p>Oyun iÃ§i kaynaklarÄ± hemen harcamak yerine, %80 oranÄ±nda biriktirme gÃ¶zlemlendi.</p>
+                                <span class="ir-tag">YatÄ±rÄ±mcÄ± Profili</span>
+                            </div>
+                        </div>
+
+                        <div class="insight-row">
+                            <div class="ir-icon"><i class="fa-solid fa-chess-board"></i></div>
+                            <div class="ir-content">
+                                <h4>Risk YÃ¶netimi</h4>
+                                <p>Zorlu gÃ¶revlere girmeden Ã¶nce envanter ve plan hazÄ±rlÄ±ÄŸÄ± uygulanÄ±yor.</p>
+                                <span class="ir-tag">Tedbirli YaklaÅŸÄ±m</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <div class="tip-title"><i class="fa-solid fa-lightbulb"></i> GeliÅŸim Ä°pucu</div>
+                        <p class="tip-desc">
+                        <strong>"Planlama ve Biriktirme"</strong> yeteneÄŸi gÃ¼Ã§lÃ¼. Bu davranÄ±ÅŸÄ± gerÃ§ek hayata taÅŸÄ±mak iÃ§in haftalÄ±k kÃ¼Ã§Ã¼k bir bÃ¼tÃ§e yÃ¶netemi uygulanabilir.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <footer class="footer">
+            Â© 2026 GeniusMethods. TÃ¼m haklarÄ± saklÄ±dÄ±r.
+        </footer>
+    </main>
+
+    <script>
+        const collapseBtn = document.querySelector('.collapse-btn');
+        const body = document.body;
+        
+        if(collapseBtn) {
+            collapseBtn.addEventListener('click', () => {
+                body.classList.toggle('collapsed');
+                const icon = collapseBtn.querySelector('i');
+                if(body.classList.contains('collapsed')) {
+                    icon.classList.remove('fa-chevron-left');
+                    icon.classList.add('fa-chevron-right');
+                } else {
+                    icon.classList.remove('fa-chevron-right');
+                    icon.classList.add('fa-chevron-left');
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

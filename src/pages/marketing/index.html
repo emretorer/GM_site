@@ -1,0 +1,2589 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genius Methods | GeleceÄŸi Oyunla KeÅŸfet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- MODERN TASARIM SÄ°STEMÄ° (GÃœNCELLENDÄ°) --- */
+        :root {
+            --primary: #4F46E5;       
+            --primary-light: #818CF8;
+            --dark: #0F172A;          
+            --accent: #F59E0B;        
+            --success: #10B981;       
+            --neon-blue: #60A5FA;
+            --neon-purple: #A78BFA;
+            --bg-body: #FFFFFF;
+            --bg-soft: #F8FAFC;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            
+            --radius-xl: 20px;
+            --radius-lg: 12px;
+            --shadow-card: 0 10px 30px -10px rgba(0,0,0,0.06);
+            --gradient-primary: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            background: var(--bg-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        img { width: 100%; display: block; object-fit: cover; }
+
+        /* --- YAPISAL AYARLAR --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+        
+        /* Grid OrantÄ±sÄ±: GÃ¶rsele daha fazla alan (1.1fr) */
+        .grid-2 { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 3rem; align-items: center; }
+        
+        .fade-up { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
+        .visible { opacity: 1; transform: translateY(0); }
+
+        /* --- HEADER & MENU (DÃœZELTÄ°LDÄ°) --- */
+        header {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05); padding: 0;
+        }
+        nav { 
+            height: 80px; /* Ä°deal yÃ¼kseklik */
+            display: flex; justify-content: space-between; align-items: center; 
+        }
+        
+        .logo { 
+            font-size: 1.4rem; font-weight: 800; color: var(--dark); 
+            display: flex; align-items: center; gap: 12px; 
+        }
+        .logo img { 
+            height: 45px; width: auto; border-radius: 8px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+        }
+
+        /* MenÃ¼ HizalamasÄ± */
+        .nav-links { 
+            display: flex; gap: 2rem; margin: 0; padding: 0; list-style: none; align-items: center;
+        }
+        .nav-item { position: relative; }
+        .nav-item > a { 
+            display: flex; align-items: center; gap: 5px; 
+            font-weight: 600; color: var(--text-muted); font-size: 0.9rem; 
+        }
+        .nav-item:hover > a { color: var(--primary); }
+        .nav-item i { font-size: 0.7rem; transition: 0.3s; }
+        .nav-item:hover i { transform: rotate(180deg); }
+
+        /* Dropdown MenÃ¼ */
+        .dropdown-menu {
+            position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px);
+            background: white; border: 1px solid #E2E8F0; border-radius: 12px; padding: 0.8rem;
+            min-width: 200px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            opacity: 0; visibility: hidden; transition: 0.2s; z-index: 1100;
+        }
+        .nav-item:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .dropdown-menu li { list-style: none; margin-bottom: 5px; }
+        .dropdown-menu a { display: block; padding: 0.5rem 0.8rem; color: #64748B; font-size: 0.85rem; border-radius: 6px; }
+        .dropdown-menu a:hover { background: #F1F5F9; color: var(--primary); }
+
+        /* --- HERO (GÄ°RÄ°Å) BÃ–LÃœMÃœ --- */
+        .hero { 
+            padding-top: 130px; padding-bottom: 80px; /* BoÅŸluklar azaltÄ±ldÄ± */
+            position: relative; overflow: hidden; 
+        }
+        .bg-shape { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.1; z-index: -1; }
+        .shape-1 { width: 400px; height: 400px; background: var(--primary); top: -100px; right: -50px; }
+        .shape-2 { width: 300px; height: 300px; background: var(--accent); bottom: -50px; left: -50px; }
+
+        /* BaÅŸlÄ±k KÃ¼Ã§Ã¼ltÃ¼ldÃ¼ & OrantÄ±landÄ± */
+        .hero h1 { 
+            font-size: 3.8rem; line-height: 1.15; font-weight: 800; 
+            margin-bottom: 1rem; color: var(--dark); letter-spacing: -0.5px; 
+        }
+        .hero p { 
+            font-size: 1.05rem; color: var(--text-muted); margin-bottom: 1rem; 
+            max-width: 550px; line-height: 1.6; 
+        }
+
+        /* Neon YazÄ± Efekti */
+        .neon-typewriter {
+            color: var(--primary); 
+            text-shadow: 0 0 12px rgba(203, 55, 55, 0.3);
+            font-family: 'Courier New', monospace; margin-left: 8px; font-weight: 700;
+        }
+        .cursor { color: var(--primary); font-weight: 700; animation: blink 1s infinite; margin-left: 2px; }
+        @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+
+        /* --- BUTONLAR (KÄ°BARLAÅTIRILDI) --- */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+            padding: 0.75rem 1.5rem; /* Daha ince */
+            border-radius: 10px; font-weight: 600; cursor: pointer;
+            transition: all 0.3s ease; border: 1px solid transparent; font-size: 0.9rem;
+        }
+        .btn-primary { 
+            background: var(--dark); color: white; 
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15); 
+        }
+        .btn-primary:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3); 
+            background: var(--primary); border-color: var(--primary);
+        }
+        .btn-outline { 
+            background: transparent; border-color: #E2E8F0; color: var(--text-muted); 
+        }
+        .btn-outline:hover { 
+            border-color: var(--primary); color: var(--primary); background: #F8FAFC; 
+            transform: translateY(-2px);
+        }
+
+        /* --- GÃ–RSEL ALANI (BÃœYÃœTÃœLDÃœ & KARTLAR KÃœÃ‡ÃœLTÃœLDÃœ) --- */
+        .ai-visual-container {
+            position: relative; border-radius: var(--radius-xl);
+            perspective: 1000px; margin-top: 20px;
+        }
+        .slideshow-wrapper {
+            position: relative; width: 100%; height: 500px; /* GÃ¶rsel alanÄ± bÃ¼yÃ¼dÃ¼ */
+            border-radius: var(--radius-xl); border: 1px solid rgba(255,255,255,0.8);
+            overflow: hidden; transform: rotateY(-3deg) rotateX(2deg); transition: 0.8s ease-out;
+            box-shadow: 0 20px 50px -10px rgba(0,0,0,0.1);
+        }
+        .ai-visual-container:hover .slideshow-wrapper { transform: rotateY(0) rotateX(0); }
+        
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: 1.5s; }
+        .slide.active { opacity: 1; z-index: 1; }
+
+        /* Popup Kartlar (KÃ¼Ã§Ã¼ltÃ¼ldÃ¼) */
+        .ai-popup {
+            position: absolute; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(10px);
+            padding: 0.8rem 1rem; /* Padding azaldÄ± */
+            border-radius: 12px; color: white; width: 220px; /* GeniÅŸlik azaldÄ± */
+            border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: float-slow 6s ease-in-out infinite; z-index: 10;
+        }
+        .popup-insight { top: 15%; right: -20px; border-left: 3px solid var(--neon-blue); }
+        .popup-suggestion { bottom: auto !important; left: -20px; top: 80px; transform: translateY(0); border-left: 3px solid var(--neon-purple); animation-delay: 1.5s; }
+        .popup-header { font-weight: 700; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 6px; font-size: 0.8rem; }
+        .popup-text { font-size: 0.75rem; opacity: 0.9; line-height: 1.3; }
+        /* Mobilde kartÄ±n konumu */
+@media (max-width: 768px) {
+    .popup-suggestion {
+        top: 60px; /* Mobilde biraz daha yukarÄ±da */
+        left: -10px;
+    }
+}
+
+        @keyframes float-slow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .grid-2 { grid-template-columns: 1fr; gap: 3rem; }
+            .hero { text-align: center; }
+            .hero p { margin: 0 auto 2rem auto; }
+            .nav-links { display: none; } /* Mobilde menÃ¼yÃ¼ gizle */
+            .ai-popup { display: none; } /* Mobilde popuplarÄ± gizle */
+            .slideshow-wrapper { height: 350px; transform: none; }
+        }
+
+/* --- HERO SLOGAN GÃœNCELLEMESÄ° --- */
+#dynamic-slogan {
+    /* AteÅŸli Gradyan Efekti */
+    background: linear-gradient(135deg, #FF6B6B 0%, #A855F7 50%, #4F46E5 100%);
+    background-size: 300% auto;
+    
+    /* YazÄ±nÄ±n iÃ§ini boyama */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    
+    font-weight: 1000;
+    font-size: 2.5rem; /* Mobilde taÅŸmamasÄ± iÃ§in biraz dengeli */
+    line-height: 1.2;
+    animation: text-shine 4s linear infinite;
+}
+
+@media (min-width: 900px) {
+    #dynamic-slogan { font-size: 4.5rem; } /* MasaÃ¼stÃ¼nde devasa */
+}
+
+@keyframes text-shine {
+    0% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+    100% { background-position: 0% center; }
+}
+
+/* Cursor (Ä°mleÃ§) Rengi */
+.cursor { color: #A855F7; font-size: 3rem; font-weight: 300; }
+
+
+/* --- GÃ–RSEL ÃœZERÄ° AKSÄ°YON KUTUSU --- */
+.slideshow-wrapper {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
+
+.slide-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Alttan yukarÄ± karartma */
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, transparent 50%);
+    z-index: 5;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* En alta yasla */
+    padding: 1.5rem;
+}
+
+.game-action-box {
+    pointer-events: auto;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1rem;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    transform: translateY(0);
+    transition: 0.3s;
+}
+
+.game-action-box:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+}
+
+.game-meta h4 { margin: 0; color: white; font-size: 1rem; font-weight: 700; }
+.game-meta span { color: #CBD5E1; font-size: 0.75rem; }
+
+.hero-install-btn {
+    background: #F59E0B;
+    color: white;
+    font-weight: 800;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex; align-items: center; gap: 8px;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+    white-space: nowrap;
+}
+
+.hero-install-btn:hover { background: white; color: #F59E0B; }
+/* --- CHALLENGE (KARÅILAÅTIRMA) GRID TASARIMI --- */
+
+/* --- ETKÄ°LEÅÄ°MLÄ° KARÅILAÅTIRMA BÃ–LÃœMÃœ (SLIDING DOORS) --- */
+
+/* BÃ¶lÃ¼m Genel AyarÄ± */
+.comparison-section {
+    padding: 4rem 0;
+    overflow: hidden;
+}
+
+/* BaÅŸlÄ±k DÃ¼zenlemeleri */
+.comp-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto; 
+    margin-right: auto;
+}
+.comp-header h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 1rem;
+}
+.comp-header p {
+    font-size: 1.2rem; /* YazÄ± bÃ¼yÃ¼tÃ¼ldÃ¼ */
+    color: #64748B;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* --- KAYAR KAPI (ACCORDION) YAPISI --- */
+.split-container {
+    display: flex;
+    width: 100%;
+    height: 500px; /* Panel yÃ¼ksekliÄŸi */
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    background: #000; /* Arka plan */
+}
+
+.split-panel {
+    position: relative;
+    flex: 1; /* BaÅŸlangÄ±Ã§ta ikisi de eÅŸit */
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* YumuÅŸak geÃ§iÅŸ */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    cursor: pointer;
+}
+
+/* Hover (Ãœzerine Gelme) MantÄ±ÄŸÄ± */
+.split-container:hover .split-panel {
+    flex: 0.8; /* Pasif olan kÃ¼Ã§Ã¼lÃ¼r */
+    filter: brightness(0.6); /* Pasif olan kararÄ±r */
+}
+
+.split-container .split-panel:hover {
+    flex: 2.5; /* Aktif olan BÃœYÃœR */
+    filter: brightness(1); /* Aktif olan parlar */
+}
+
+/* --- SADECE YEÅÄ°L ALT Ã‡Ä°ZGÄ° VURGUSU --- */
+.highlight-green-pen {
+    /* YazÄ± rengini deÄŸiÅŸtirmiyoruz (Inherit), kendi renginde kalsÄ±n */
+    color: inherit; 
+    font-weight: 800; /* YazÄ± biraz kalÄ±n olsun ki vurgu belli olsun */
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
+
+/* AltÄ±ndaki KalÄ±n YeÅŸil Ã‡izgi */
+.highlight-green-pen::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px; /* YazÄ±ya biraz daha yakÄ±nlaÅŸtÄ±rdÄ±m */
+    width: 100%;
+    height: 12px; /* Ã‡izgi kalÄ±nlÄ±ÄŸÄ± */
+    z-index: -1;
+    
+    /* SVG: Daha dÃ¼z ama ucu hafif kÄ±vrÄ±mlÄ± doÄŸal Ã§izgi */
+    background-image: url("data:image/svg+xml,%3Csvg width='200' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5,12 Q100,8 195,10' stroke='%2310B981' stroke-width='5' fill='none' stroke-linecap='round' /%3E%3C/svg%3E");
+    
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    
+    /* Ã‡izilme Animasyonu */
+    animation: sketchLine 0.8s ease-out forwards;
+    transform-origin: left center;
+}
+
+@keyframes sketchLine {
+    0% { transform: scaleX(0); opacity: 0; }
+    100% { transform: scaleX(1); opacity: 1; }
+}
+/* --- SOL TARAF: GELENEKSEL (ANKET) --- */
+.panel-traditional {
+    background: #F1F5F9; /* SÄ±kÄ±cÄ± Gri */
+    border-right: 1px solid rgba(0,0,0,0.05);
+}
+
+/* --- HÄ°BRÄ°T ANKET TASARIMI (DUVAR + ODAK) --- */
+
+/* Sahne AyarÄ± */
+/* --- SONSUZ DÃ–NGÃœ: ESKÄ° YÃ–NTEMLER (ANKET, OPTÄ°K, KLASÄ°K) --- */
+
+.survey-animation-wrapper {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    overflow: hidden;
+    background: #E2E8F0; /* Ofis Grisi */
+    perspective: 800px; /* 3D BuruÅŸma efekti iÃ§in */
+}
+
+/* Genel KaÄŸÄ±t Stili */
+.cycle-paper {
+    background: white;
+    width: 200px; height: 280px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-radius: 2px;
+    padding: 20px;
+    position: absolute;
+    top: -300px; left: 50%; margin-left: -100px; /* Ortala */
+    opacity: 0;
+    /* 9 saniyelik dÃ¶ngÃ¼ (3 kaÄŸÄ±t x 3er saniye aralÄ±kla) */
+    animation: paperCycle 9s infinite ease-in-out;
+}
+
+/* --- KAÄIT TÄ°PLERÄ° --- */
+
+/* 1. ANKET (Tikli) */
+.paper-survey .cb-row { display: flex; gap: 10px; margin-bottom: 12px; align-items: center; }
+.paper-survey .box { width: 16px; height: 16px; border: 2px solid #CBD5E1; position: relative; }
+/* Tik Ä°ÅŸareti */
+.paper-survey .box::after {
+    content: ''; position: absolute; top: 1px; left: 4px; width: 4px; height: 8px;
+    border: solid #475569; border-width: 0 2px 2px 0; transform: rotate(45deg); opacity: 0;
+    animation: fillCheck 9s infinite;
+}
+
+/* 2. OPTÄ°K FORM (YuvarlaklÄ±) */
+.paper-optic .opt-row { display: flex; gap: 8px; margin-bottom: 10px; justify-content: center; }
+.paper-optic .bubble { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #94A3B8; background: white; }
+/* Karalama Efekti */
+.paper-optic .bubble.filled {
+    animation: fillBubble 9s infinite;
+}
+
+/* 3. KLASÄ°K SINAV (YazÄ±lÄ±) */
+.paper-essay .essay-line {
+    height: 1px; background: #E2E8F0; margin-bottom: 20px; position: relative; width: 100%;
+}
+/* El YazÄ±sÄ± Efekti */
+.paper-essay .essay-line::after {
+    content: ''; position: absolute; top: -5px; left: 0; height: 8px; width: 0%;
+    background: #94A3B8; border-radius: 2px; opacity: 0.5;
+    background-image: repeating-linear-gradient(90deg, transparent, transparent 2px, #475569 2px, #475569 4px);
+    animation: fillText 9s infinite;
+}
+
+/* --- ZAMANLAMA FARKLILIKLARI --- */
+/* Her kaÄŸÄ±t 3 saniye arayla sahneye girsin */
+.cycle-1 { animation-delay: 0s; }
+.cycle-1 .box::after { animation-delay: 0s; }
+
+.cycle-2 { animation-delay: 3s; }
+.cycle-2 .bubble.filled { animation-delay: 3s; }
+
+.cycle-3 { animation-delay: 6s; }
+.cycle-3 .essay-line::after { animation-delay: 6s; }
+
+
+/* --- ANÄ°MASYON KEYFRAME'LERÄ° --- */
+
+/* Ana KaÄŸÄ±t DÃ¶ngÃ¼sÃ¼ (GiriÅŸ -> Bekle -> BuruÅŸ -> Ã‡Ä±kÄ±ÅŸ) */
+@keyframes paperCycle {
+    0% { top: -300px; transform: rotate(5deg); opacity: 1; } /* GiriÅŸ */
+    15% { top: 50px; transform: rotate(0deg); } /* Sahneye YerleÅŸme */
+    
+    50% { top: 50px; transform: rotate(0deg) scale(1); } /* Dolma SÃ¼resi (Bekleme) */
+    
+    /* BURUÅMA VE Ã‡Ã–P OLMA ANI */
+    55% { 
+        top: 60px;
+        transform: rotate(15deg) scale(0.6) skew(20deg);
+        background: #F1F5F9; /* Rengi biraz koyulaÅŸsÄ±n */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    100% { top: 500px; transform: rotate(45deg) scale(0.5); opacity: 0; } /* Ã‡Ã¶p olarak dÃ¼ÅŸÃ¼ÅŸ */
+}
+
+/* Ä°Ã‡ERÄ°K ANÄ°MASYONLARI (Sadece kaÄŸÄ±t dururken Ã§alÄ±ÅŸÄ±r) */
+
+/* Tik Atma */
+@keyframes fillCheck {
+    0%, 20% { opacity: 0; }
+    25% { opacity: 1; } /* 1. Tik */
+    100% { opacity: 1; }
+}
+
+/* Optik Doldurma */
+@keyframes fillBubble {
+    0%, 20% { background: white; border-color: #94A3B8; }
+    30% { background: #475569; border-color: #475569; } /* Baloncuk dolar */
+    100% { background: #475569; }
+}
+
+/* YazÄ± Yazma */
+@keyframes fillText {
+    0%, 20% { width: 0%; }
+    40% { width: 90%; } /* SatÄ±r dolar */
+    100% { width: 90%; }
+}
+
+/* Ã‡izgi Stilleri */
+.line-dec { height: 6px; background: #E2E8F0; width: 100%; border-radius: 3px; margin-bottom: 10px; }
+.line-dec.short { width: 60%; }
+/* --- SAÄ TARAF: GENIUS (VÄ°DEO) --- */
+.panel-genius {
+    background: #0F172A; /* Koyu Zemin */
+    color: white;
+}
+
+/* Video Arka PlanÄ± */
+.video-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover; /* Videoyu alana yay */
+    opacity: 0.6;
+    transition: 0.5s;
+}
+/* Panel bÃ¼yÃ¼yÃ¼nce video parlasÄ±n */
+.panel-genius:hover .video-bg {
+    opacity: 1;
+}
+
+/* --- Ä°Ã‡ERÄ°K YAZILARI --- */
+.panel-content {
+    position: relative;
+    z-index: 2;
+    transition: 0.5s;
+    background: rgba(255,255,255,0.9); /* Sol taraf iÃ§in */
+    padding: 1.5rem;
+    border-radius: 16px;
+    backdrop-filter: blur(5px);
+}
+.panel-genius .panel-content {
+    background: rgba(15, 23, 42, 0.85); /* SaÄŸ taraf iÃ§in koyu */
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.panel-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem; font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+.badge-old { background: #FEE2E2; color: #EF4444; }
+.badge-new { background: rgba(79, 70, 229, 0.2); color: #818CF8; border: 1px solid #6366F1; }
+
+.panel-content h3 { margin: 0 0 0.5rem 0; font-size: 1.5rem; }
+.panel-content p { font-size: 0.95rem; margin: 0; line-height: 1.5; }
+
+/* Mobilde alt alta olsun */
+@media (max-width: 900px) {
+    .split-container { flex-direction: column; height: auto; }
+    .split-panel { height: 350px; flex: none; width: 100%; }
+    .split-container:hover .split-panel { flex: none; width: 100%; filter: none; }
+    .split-panel:hover { flex: none; }
+}
+/* --- TAM SAYFA KAYDIRMA (SCROLL SNAP) AYARLARI --- */
+
+html {
+    /* KaydÄ±rma tÃ¼rÃ¼nÃ¼ 'zorunlu' (mandatory) yapÄ±yoruz */
+    scroll-snap-type: y mandatory;
+    height: 100vh; /* Ekran yÃ¼ksekliÄŸi kadar */
+    overflow-y: scroll; /* Dikey kaydÄ±rmaya izin ver */
+    scroll-behavior: smooth; /* YumuÅŸak geÃ§iÅŸ */
+}
+
+/* Her bir BÃ¶lÃ¼m (Section) AyarÄ± */
+section {
+    /* Her bÃ¶lÃ¼m tam bir ekran boyu kadar olacak */
+    height: 100vh; 
+    
+    /* KaydÄ±rÄ±nca bÃ¶lÃ¼mÃ¼n 'baÅŸlangÄ±cÄ±' ekranÄ±n tepesine yapÄ±ÅŸacak */
+    scroll-snap-align: start; 
+    
+    /* Ä°Ã§eriÄŸi dikeyde ortalamak iÃ§in (Ä°steÄŸe baÄŸlÄ±, ÅŸÄ±k durur) */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    
+    /* Header'Ä±n altÄ±nda kalmamasÄ± iÃ§in Ã¼stten boÅŸluk (Header yÃ¼ksekliÄŸi kadar) */
+    padding-top: 80px; 
+}
+
+/* --- SCROLLBAR GÄ°ZLEME (Daha temiz gÃ¶rÃ¼nÃ¼m iÃ§in) --- */
+/* Chrome, Safari, Edge */
+html::-webkit-scrollbar {
+    display: none;
+}
+/* Firefox */
+html {
+    scrollbar-width: none;
+}
+
+/* ################################################################################"######### 3.sayfa nasÄ±l Ã§alÄ±ÅŸÄ±r */
+/* --- SÃœREÃ‡ (PROCESS) BÃ–LÃœMÃœ --- */
+.process-section {
+    padding: 6rem 0;
+    background: #FFFFFF;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Flex Container (AdÄ±mlarÄ± yan yana dizer) */
+.process-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 4rem;
+    margin-bottom: 6rem; /* Alt kÄ±sÄ±mla mesafe */
+    padding: 0 2rem;
+    gap: 20px;
+}
+
+/* Aradaki BaÄŸlantÄ± Ã‡izgisi */
+.process-line {
+    position: absolute;
+    top: 50px; /* YuvarlaÄŸÄ±n merkezine denk gelir */
+    left: 60px; /* Kenarlardan boÅŸluk */
+    right: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #E2E8F0, #4F46E5, #E2E8F0);
+    z-index: 0;
+    border-radius: 10px;
+}
+
+/* Her Bir AdÄ±m Kutusu */
+.process-step {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+}
+
+/* Yuvarlak Ä°kon Kutusu */
+.step-icon-box {
+    width: 100px;
+    height: 100px;
+    background: #FFFFFF;
+    border: 2px solid #E2E8F0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #64748B; /* text-muted */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-bottom: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* Hover Neon Efektleri */
+.step-1:hover .step-icon-box { border-color: #F59E0B; color: #F59E0B; box-shadow: 0 0 30px rgba(245, 158, 11, 0.6); transform: scale(1.1); }
+.step-2:hover .step-icon-box { border-color: #3B82F6; color: #3B82F6; box-shadow: 0 0 30px rgba(59, 130, 246, 0.6); transform: scale(1.1); }
+.step-3:hover .step-icon-box { border-color: #A855F7; color: #A855F7; box-shadow: 0 0 30px rgba(168, 85, 247, 0.6); transform: scale(1.1); }
+.step-4:hover .step-icon-box { border-color: #10B981; color: #10B981; box-shadow: 0 0 30px rgba(16, 185, 129, 0.6); transform: scale(1.1); }
+
+.step-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem; color: #0F172A; }
+.step-desc { font-size: 0.9rem; color: #64748B; line-height: 1.5; }
+
+/* --- METÄ°N ALANI (EXPANDABLE) --- */
+.expandable-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #F8FAFC;
+    border-radius: 30px;
+    padding: 40px;
+    border: 1px solid #E2E8F0;
+    position: relative;
+    text-align: center;
+}
+
+.metin-sinirlayici p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #475569;
+    margin-bottom: 1.5rem;
+}
+
+/* Gizleme/GÃ¶sterme MantÄ±ÄŸÄ± */
+.hidden-content {
+    display: none; /* VarsayÄ±lan gizli */
+    animation: fadeIn 0.6s ease;
+}
+.hidden-content.show { display: block; }
+
+/* Metin Ä°Ã§i Stiller */
+.vurgulu-paragraf { font-size: 1.15rem; color: #1E293B; font-weight: 500; }
+.marka-rengi { color: #4F46E5; font-weight: 800; }
+
+/* Buton Stili */
+.read-more-btn {
+    background: transparent;
+    border: 2px solid #E2E8F0;
+    color: #64748B;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    display: inline-flex; align-items: center; gap: 8px;
+}
+.read-more-btn:hover { background: #fff; border-color: #4F46E5; color: #4F46E5; }
+
+/* --- RESPONSIVE (MOBÄ°L AYARLARI) --- */
+@media (max-width: 768px) {
+    .process-container { flex-direction: column; gap: 40px; align-items: center; }
+    .process-line { display: none; /* Mobilde Ã§izgiyi gizle */ }
+    .process-step { width: 100%; }
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* --- SÃœREÃ‡ (PROCESS) BÃ–LÃœMÃœ --- */
+.process-section {
+    width: 100%;
+    height: auto; /* Ã–NEMLÄ°: Ä°Ã§erik arttÄ±kÃ§a sayfa uzasÄ±n */
+    padding: 6rem 0;
+    background: #FFFFFF;
+    position: relative;
+    z-index: 10; /* DiÄŸer katmanlarÄ±n Ã¼stÃ¼nde olsun */
+}
+
+/* BAÅLIK DÃœZENLEMELERÄ° */
+.section-header-wrapper {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 2;
+}
+
+.sub-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+    display: block !important; /* GÃ¶rÃ¼nÃ¼rlÃ¼ÄŸÃ¼ zorla */
+    opacity: 1 !important;
+}
+
+.main-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #4F46E5, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+    display: block !important;
+    opacity: 1 !important;
+}
+
+/* --- SÃœREÃ‡ ADIMLARI --- */
+.process-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5rem;
+    padding: 0 2rem;
+    gap: 20px;
+    flex-wrap: wrap; /* Mobilde taÅŸarsa aÅŸaÄŸÄ± insin */
+}
+
+/* Ã‡izgi */
+.process-line {
+    position: absolute;
+    top: 50px;
+    left: 60px;
+    right: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #E2E8F0, #4F46E5, #E2E8F0);
+    z-index: 0;
+    border-radius: 10px;
+}
+
+/* AdÄ±m KutularÄ± */
+.process-step {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    min-width: 200px; /* Mobilde Ã§ok kÃ¼Ã§Ã¼lmesin */
+}
+
+.step-icon-box {
+    width: 100px;
+    height: 100px;
+    background: #FFFFFF;
+    border: 2px solid #E2E8F0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #64748B;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.process-step:hover .step-icon-box {
+    border-color: #4F46E5;
+    color: #4F46E5;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
+}
+
+.step-title { font-size: 1.2rem; font-weight: 800; color: #0F172A; margin-bottom: 0.5rem; }
+.step-desc { font-size: 0.9rem; color: #64748B; line-height: 1.5; }
+
+/* --- AÃ‡ILIR METÄ°N ALANI (DÃ¼zenlendi) --- */
+.expandable-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #F8FAFC;
+    border-radius: 30px;
+    padding: 40px;
+    border: 1px solid #E2E8F0;
+    position: relative;
+    text-align: center;
+    /* Ã–NEMLÄ°: Bu Ã¶zellikler alttaki elementin itilmesini saÄŸlar */
+    height: auto; 
+    overflow: visible;
+}
+
+.metin-sinirlayici p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #475569;
+    margin-bottom: 1.5rem;
+}
+
+/* GÄ°ZLÄ° Ä°Ã‡ERÄ°K */
+.hidden-content {
+    display: none; /* Yer kaplamaz */
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.hidden-content.show {
+    display: block; /* Yer kaplamaya baÅŸlar ve siteyi aÅŸaÄŸÄ± iter */
+    opacity: 1;
+    animation: fadeIn 0.5s ease;
+}
+
+.read-more-btn {
+    background: transparent;
+    border: 2px solid #E2E8F0;
+    color: #64748B;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    display: inline-flex; align-items: center; gap: 8px;
+}
+.read-more-btn:hover { background: #fff; border-color: #4F46E5; color: #4F46E5; }
+
+/* MOBÄ°L AYARLAR */
+@media (max-width: 768px) {
+    .process-line { display: none; }
+    .process-container { gap: 40px; }
+    .main-title { font-size: 2rem; }
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* --- SADECE METÄ°N BÃ–LÃœMÃœ STÄ°LLERÄ° --- */
+
+/* Bu bÃ¶lÃ¼mÃ¼n arka planÄ± ve dÄ±ÅŸ boÅŸluklarÄ± */
+.ozel-metin-alani {
+    width: 100%; /* EkranÄ± tam kaplar */
+    background-color: #fff; /* Arka plan rengi */
+    padding: 60px 0; /* Ãœstten ve alttan boÅŸluk */
+    display: block; /* Flex vb. kullanmayarak diÄŸer yapÄ±larÄ± bozmuyoruz */
+}
+
+/* Metni ekranÄ±n ortasÄ±nda tutan, saÄŸa sola taÅŸmasÄ±nÄ± engelleyen kutu */
+.metin-sinirlayici {
+    max-width: 900px; /* Metin Ã§ok yayÄ±lmasÄ±n */
+    margin: 0 auto; /* Kutuyu ortalar (SayfayÄ± deÄŸil, sadece bu kutuyu) */
+    padding: 0 20px; /* Mobilde kenarlara yapÄ±ÅŸmasÄ±n */
+    text-align: center; /* Metinleri ortalar */
+}
+
+/* 1. Paragraf Stili */
+.giris-paragrafi {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #475569; /* Gri tonu */
+    margin-bottom: 2rem;
+}
+
+/* 2. Paragraf (Vurgulu Alan) Stili */
+.vurgulu-paragraf {
+    font-size: 1.25rem; /* Biraz daha bÃ¼yÃ¼k */
+    line-height: 1.6;
+    color: #1E293B; /* Koyu renk */
+    font-weight: 500;
+    margin-bottom: 2rem;
+    /* Metin kutusunun iÃ§inde de biraz daraltma yaparak daha ÅŸÄ±k durmasÄ±nÄ± saÄŸlar */
+    max-width: 800px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Marka Ä°smi Rengi */
+.marka-rengi {
+    color: #F59E0B; 
+    font-weight: 800;
+}
+
+/* KalÄ±n YazÄ±lar */
+.vurgulu-paragraf strong {
+    color: #0F172A;
+    font-weight: 700;
+}
+
+/* 3. Paragraf Stili */
+.sonuc-paragrafi {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #64748B; /* Daha aÃ§Ä±k gri */
+}
+
+/* Mobilde yazÄ± boyutlarÄ±nÄ± biraz kÃ¼Ã§Ã¼ltelim */
+@media (max-width: 768px) {
+    .vurgulu-paragraf {
+        font-size: 1.1rem;
+    }
+    .giris-paragrafi {
+        font-size: 1rem;
+    }
+}
+
+.expandable-text {
+    max-height: 102px; /* KapalÄ±yken gÃ¶rÃ¼necek yÃ¼kseklik */
+    overflow: hidden;
+    transition: max-height 0.8s ease;
+    position: relative;
+}
+
+/* KapalÄ±yken alttaki soluklaÅŸma efekti */
+.expandable-text::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; width: 100%; height: 50px;
+    background: linear-gradient(to bottom, transparent, #F8FAFC);
+    transition: opacity 0.3s;
+}
+
+/* AÃ§Ä±ldÄ±ÄŸÄ±nda soluklaÅŸma kalksÄ±n */
+.expandable-text.expanded {
+    max-height: 1000px; /* AÃ§Ä±lÄ±nca yetecek kadar bÃ¼yÃ¼k bir deÄŸer */
+}
+.expandable-text.expanded::after { opacity: 0; pointer-events: none; }
+
+.read-more-btn {
+    display: block; margin: 1.5rem auto 0;
+    background: white; border: 1px solid #E2E8F0;
+    padding: 0.6rem 2rem; border-radius: 50px;
+    color: var(--primary); font-weight: 700; cursor: pointer;
+    transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.read-more-btn:hover { background: var(--primary); color: white; }
+
+/* Mobil Uyumluluk */
+@media (max-width: 900px) {
+    .process-container { flex-direction: column; gap: 3rem; }
+    .process-line {
+        width: 3px; height: 100%; top: 0; left: 50%; right: auto;
+        transform: translateX(-50%);
+        background: linear-gradient(180deg, #E2E8F0, #4F46E5, #E2E8F0);
+    }
+    .process-step { width: 100%; }
+}
+
+/*.    #########################################################################################*/
+
+/* --- SÄ°MÃœLASYON VÄ°TRÄ°NÄ° (BUTONLU & AKILLI) --- */
+.sim-showcase-section {
+    width: 100%;
+    height: 100vh;
+    background: #F8FAFC;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Ãœst YazÄ± */
+.sim-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 0 1.5rem;
+    z-index: 2;
+}
+.sim-header p {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.3rem;
+    color: var(--text-muted);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Kayan Bant AlanÄ± */
+.marquee-wrapper {
+    position: relative;
+    width: 100%;
+    padding: 2rem 0;
+    /* Kenarlarda soluklaÅŸma efekti */
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    display: flex;
+    align-items: center;
+}
+
+/* --- SÄ°MÃœLASYON VÄ°TRÄ°NÄ° (SONSUZ DÃ–NGÃœLÃœ) --- */
+
+/* Ray (Track) */
+.marquee-track {
+    display: flex;
+    gap: 2rem;
+    overflow-x: scroll; /* Scroll yapÄ±labilir */
+    padding: 0 2rem; /* Kenar boÅŸluklarÄ± */
+    
+    /* Scroll bar'Ä± gizle */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    
+    /* Ã–NEMLÄ°: CSS smooth scroll'u iptal ediyoruz, JS ile yapacaÄŸÄ±z */
+    scroll-behavior: auto; 
+    cursor: grab;
+}
+.marquee-track::-webkit-scrollbar { display: none; } /* Chrome */
+.marquee-track:active { cursor: grabbing; }
+
+/* DÄ°ÄER KISIMLAR AYNI KALIYOR (Card, Wrapper, Header vb.) */
+/* EÄŸer silindiÄŸini dÃ¼ÅŸÃ¼nÃ¼yorsan Ã¶nceki cevabÄ±mdaki .sim-card ve .nav-btn kodlarÄ±nÄ± koru. */
+
+/* Kart TasarÄ±mÄ± (AynÄ± kaldÄ±) */
+.sim-card {
+    width: 280px;
+    height: 380px;
+    border-radius: 24px;
+    background: white;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(0,0,0,0.04);
+}
+
+.sim-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(79, 70, 229, 0.2);
+    z-index: 5;
+}
+
+.sim-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+.sim-card:hover img { transform: scale(1.1); }
+
+.sim-info {
+    position: absolute; bottom: 0; left: 0; width: 100%; padding: 1.5rem;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.95), transparent);
+    color: white; transform: translateY(10px); opacity: 0.9; transition: 0.3s;
+}
+.sim-card:hover .sim-info { transform: translateY(0); opacity: 1; }
+.sim-info h4 { font-size: 1.1rem; font-weight: 700; margin: 0; }
+.sim-info span { display: block; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; margin-bottom: 4px; }
+
+/* --- YÃ–N BUTONLARI (YENÄ°) --- */
+.nav-btn {
+    position: absolute;
+    top: 55%; /* KartlarÄ±n ortasÄ±na denk gelsin */
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    color: var(--dark);
+    font-size: 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 15px 40px rgba(79, 70, 229, 0.4);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn { left: 40px; }
+.next-btn { right: 40px; }
+
+/* Mobil Uyumluluk */
+@media (max-width: 768px) {
+    .nav-btn { width: 45px; height: 45px; font-size: 1rem; }
+    .prev-btn { left: 10px; }
+    .next-btn { right: 10px; }
+}
+
+/*. ################################################################################################################  VERÄ° RAPOR REHBER KISMI*/
+
+/* --- REHBERÄ°NÄ°Z BÃ–LÃœMÃœ (DARK & ANIMATED) --- */
+.guide-section {
+    background: #0B0F19; /* Dashboard ile aynÄ± koyu ton */
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(255,255,255,0.05); /* YumuÅŸak ayÄ±rÄ±cÄ± */
+}
+
+/* Sol Taraf: Metin Kutusu */
+.guide-content h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+}
+
+.guide-quote {
+    border-left: 4px solid var(--primary);
+    padding-left: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.guide-quote p {
+    color: #94A3B8;
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.guide-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.guide-step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: rgba(255,255,255,0.03);
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.3s;
+}
+
+.guide-step-item:hover {
+    background: rgba(255,255,255,0.06);
+    transform: translateX(10px);
+    border-color: var(--primary);
+}
+
+.gs-icon {
+    min-width: 40px; height: 40px;
+    background: rgba(79, 70, 229, 0.2);
+    color: #818CF8;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+}
+
+/* SaÄŸ Taraf: Animatik Grafikler */
+.live-reports-wrapper {
+    position: relative;
+    height: 450px;
+    background: rgba(15, 23, 42, 0.4);
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+/* 1. Grafik: Hareketli Barlar */
+.chart-bars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 150px;
+    width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 10px;
+    margin-bottom: 2rem;
+}
+
+.bar {
+    width: 12%;
+    background: linear-gradient(to top, var(--primary), var(--neon-purple));
+    border-radius: 4px 4px 0 0;
+    opacity: 0.8;
+    animation: bar-dance 2s infinite ease-in-out;
+}
+
+/* Her barÄ±n hÄ±zÄ± farklÄ± olsun */
+.bar:nth-child(1) { height: 40%; animation-delay: 0.1s; }
+.bar:nth-child(2) { height: 70%; animation-delay: 0.3s; }
+.bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
+.bar:nth-child(4) { height: 90%; animation-delay: 0.4s; }
+.bar:nth-child(5) { height: 60%; animation-delay: 0.1s; }
+.bar:nth-child(6) { height: 80%; animation-delay: 0.5s; }
+
+@keyframes bar-dance {
+    0%, 100% { transform: scaleY(1); opacity: 0.8; }
+    50% { transform: scaleY(0.6); opacity: 0.5; }
+}
+
+/* 2. Grafik: Akan Veri SatÄ±rlarÄ± */
+.data-stream {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.data-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    animation: slide-in 3s infinite ease-in-out;
+}
+
+.data-row span { color: #94A3B8; font-size: 0.8rem; font-family: monospace; }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); box-shadow: 0 0 10px var(--success); }
+
+/* YÃ¼zen Rozet */
+.floating-badge {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: rgba(16, 185, 129, 0.15);
+    color: #10B981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex; align-items: center; gap: 6px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes slide-in {
+    0% { transform: translateX(-10px); opacity: 0.5; }
+    50% { transform: translateX(0); opacity: 1; }
+    100% { transform: translateX(-10px); opacity: 0.5; }
+}
+
+/* --- CANLI SÄ°STEM PANELÄ° (DASHBOARD) --- */
+
+.dashboard-card {
+    background: #0F172A;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+/* Ãœst BaÅŸlÄ±k ve Durum */
+.dash-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 2rem;
+}
+.dash-title h4 { color: white; margin: 0; font-size: 1.1rem; }
+.dash-title span { color: #64748B; font-size: 0.8rem; }
+
+.status-badge {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10B981;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex; align-items: center; gap: 6px;
+}
+.blink-dot {
+    width: 6px; height: 6px; background: #10B981; border-radius: 50%;
+    animation: blinker 1.5s infinite;
+}
+@keyframes blinker { 50% { opacity: 0; } }
+
+/* --- GRAFÄ°K SLAYT ALANI --- */
+.chart-viewport {
+    position: relative;
+    height: 200px;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.chart-slide {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex; align-items: flex-end; justify-content: space-around;
+}
+
+.chart-slide.active { opacity: 1; }
+
+/* 1. GRAFÄ°K: BARLAR */
+.bar-group { width: 12%; background: rgba(255,255,255,0.05); border-radius: 4px; position: relative; overflow: hidden; height: 100%; display:flex; align-items:flex-end;}
+.bar-fill {
+    width: 100%;
+    background: linear-gradient(to top, #4F46E5, #818CF8);
+    border-radius: 4px;
+    animation: growBar 1s ease-out forwards;
+    height: 0; /* BaÅŸlangÄ±Ã§ */
+}
+/* Her bara gecikme verelim */
+.chart-slide.active .b1 { height: 40%; animation-delay: 0.1s; }
+.chart-slide.active .b2 { height: 70%; animation-delay: 0.2s; }
+.chart-slide.active .b3 { height: 50%; animation-delay: 0.3s; }
+.chart-slide.active .b4 { height: 90%; animation-delay: 0.4s; }
+.chart-slide.active .b5 { height: 60%; animation-delay: 0.5s; }
+
+@keyframes growBar { from { height: 0; } }
+
+/* 2. GRAFÄ°K: Ã‡Ä°ZGÄ° (SVG) */
+.line-chart-svg { width: 100%; height: 100%; overflow: visible; }
+.line-path {
+    fill: none;
+    stroke: #F59E0B;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+}
+.chart-slide.active .line-path {
+    animation: drawLine 2s ease-out forwards;
+}
+.line-area {
+    fill: url(#gradientArea);
+    opacity: 0;
+}
+.chart-slide.active .line-area {
+    animation: fadeInArea 1s ease-out forwards 1s; /* Ã‡izgi bittikten sonra gelsin */
+}
+
+@keyframes drawLine { to { stroke-dashoffset: 0; } }
+@keyframes fadeInArea { to { opacity: 0.4; } }
+
+/* 3. GRAFÄ°K: PASTA (DONUT) */
+.donut-wrapper {
+    position: relative;
+    width: 160px; height: 160px;
+    margin: 0 auto;
+}
+.donut-chart {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(
+        #A855F7 0% 0%, 
+        #3B82F6 0% 0%, 
+        rgba(255,255,255,0.1) 0% 100%
+    );
+    display: flex; align-items: center; justify-content: center;
+    transition: background 1s ease;
+}
+/* JS ile dinamik aÃ§Ä± vereceÄŸiz, burada sadece maske */
+.donut-inner {
+    width: 70%; height: 70%;
+    background: #0F172A;
+    border-radius: 50%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: white;
+}
+
+/* --- CANLI LOG AKIÅI (ALT KISIM) --- */
+.log-console {
+    background: rgba(0,0,0,0.3);
+    border-radius: 12px;
+    padding: 1rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+}
+
+.log-item {
+    color: #94A3B8;
+    margin-bottom: 6px;
+    display: flex; justify-content: space-between;
+    animation: slideUpLog 0.3s ease-out;
+}
+.log-success { color: #10B981; }
+.log-process { color: #F59E0B; }
+
+@keyframes slideUpLog { from { transform: translateY(10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+/* --- 4. GRAFÄ°K: RADAR (Yetenek HaritasÄ±) --- */
+.radar-wrapper {
+    width: 180px; height: 180px;
+    margin: 0 auto;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* AltÄ±gen Ã‡erÃ§eveler */
+.radar-bg {
+    width: 100%; height: 100%;
+    border: 1px solid rgba(255,255,255,0.1);
+    position: absolute;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+.radar-bg.small {
+    width: 60%; height: 60%;
+    border: 1px dashed rgba(255,255,255,0.2);
+}
+
+/* Dolu Alan (Animasyonlu) */
+.radar-shape {
+    width: 100%; height: 100%;
+    background: rgba(79, 70, 229, 0.5); /* Ä°ndigo YarÄ± Saydam */
+    border: 2px solid #818CF8;
+    /* Rastgele bir yetenek ÅŸekli */
+    clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%);
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Aktif olunca ÅŸekil bÃ¼yÃ¼sÃ¼n */
+.chart-slide.active .radar-shape {
+    clip-path: polygon(50% 10%, 90% 25%, 80% 80%, 50% 95%, 20% 65%, 10% 30%);
+}
+
+.r-label { position: absolute; font-size: 0.65rem; color: #94A3B8; }
+.t1 { top: -15px; } .t2 { right: -10px; bottom: 20px; } .t3 { left: -10px; bottom: 20px; }
+
+
+/* --- 5. GRAFÄ°K: SÄ°NÄ°R AÄI (Neural Net) --- */
+.neural-container {
+    width: 100%; height: 100%; position: relative;
+}
+
+.node {
+    width: 12px; height: 12px;
+    background: #10B981;
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0 0 10px #10B981;
+    z-index: 2;
+    transform: scale(0);
+}
+.chart-slide.active .node { animation: popIn 0.5s forwards; }
+
+/* Nokta KonumlarÄ± */
+.n1 { top: 20%; left: 20%; animation-delay: 0.1s !important; }
+.n2 { top: 50%; left: 50%; animation-delay: 0.2s !important; }
+.n3 { top: 80%; left: 20%; animation-delay: 0.3s !important; }
+.n4 { top: 30%; left: 80%; animation-delay: 0.4s !important; }
+.n5 { top: 70%; left: 70%; animation-delay: 0.5s !important; }
+
+/* BaÄŸlantÄ± Ã‡izgileri */
+.link {
+    position: absolute; height: 2px; background: rgba(16, 185, 129, 0.3);
+    transform-origin: left center; width: 0; z-index: 1;
+}
+.chart-slide.active .link { animation: drawLink 1s forwards 0.5s; }
+
+/* Ã‡izgi KoordinatlarÄ± (Manuel AyarlandÄ±) */
+.l1 { top: 23%; left: 23%; width: 100px; transform: rotate(40deg); } /* n1 -> n2 */
+.l2 { top: 53%; left: 53%; width: 80px; transform: rotate(-30deg); } /* n2 -> n4 */
+.l3 { top: 83%; left: 23%; width: 90px; transform: rotate(-45deg); } /* n3 -> n2 */
+.l4 { top: 53%; left: 53%; width: 60px; transform: rotate(45deg); }  /* n2 -> n5 */
+
+@keyframes popIn { from{transform:scale(0);} to{transform:scale(1);} }
+@keyframes drawLink { from{width:0;} to{width:80px;} } /* Basit geniÅŸleme */
+
+
+/* --- 6. GRAFÄ°K: DALGA FORMU (Waveform) --- */
+.wave-container {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    gap: 6px;
+}
+
+.wave-bar {
+    width: 8px;
+    height: 20px;
+    background: #F59E0B;
+    border-radius: 4px;
+    opacity: 0.5;
+}
+
+/* Sadece aktifken oynasÄ±n */
+.chart-slide.active .wave-bar {
+    animation: waveEqualizer 1s infinite ease-in-out;
+}
+
+/* Her Ã§ubuÄŸa farklÄ± gecikme verelim ki dalga gibi dursun */
+.wave-bar:nth-child(1) { animation-delay: 0.0s; }
+.wave-bar:nth-child(2) { animation-delay: 0.1s; }
+.wave-bar:nth-child(3) { animation-delay: 0.2s; }
+.wave-bar:nth-child(4) { animation-delay: 0.3s; }
+.wave-bar:nth-child(5) { animation-delay: 0.4s; }
+.wave-bar:nth-child(6) { animation-delay: 0.5s; }
+.wave-bar:nth-child(7) { animation-delay: 0.4s; }
+.wave-bar:nth-child(8) { animation-delay: 0.3s; }
+.wave-bar:nth-child(9) { animation-delay: 0.2s; }
+.wave-bar:nth-child(10) { animation-delay: 0.1s; }
+
+@keyframes waveEqualizer {
+    0%, 100% { height: 20px; opacity: 0.5; background: #F59E0B; }
+    50% { height: 80px; opacity: 1; background: #fbbf24; box-shadow: 0 0 15px #F59E0B; }
+}
+/* ########################################################################################. BÄ°LÄ°MSEL TEMEL*/
+
+/* --- BÄ°LÄ°M VE GÃœVEN (4'LÃœ GRID TAM EKRAN) --- */
+.science-trust-section {
+    width: 100%;
+    min-height: 100vh; /* Tam ekran yÃ¼ksekliÄŸi */
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Dikey ortalama */
+    padding: 2rem 0;
+    scroll-snap-align: start; /* KaydÄ±rma yapÄ±ÅŸmasÄ± */
+}
+
+/* Ãœst BaÅŸlÄ±k */
+.st-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1rem;
+}
+.st-header h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: dark ;
+    margin-bottom: 0.8rem;
+}
+
+/* --- BÄ°LÄ°M VE GÃœVEN (RENKLENDÄ°RÄ°LMÄ°Å Ä°KONLAR) --- */
+
+/* 4'lÃ¼ Grid YapÄ±sÄ± */
+.science-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    text-align: center;
+    align-items: start;
+}
+
+.science-item {
+    padding: 1.5rem;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    background: #FFFFFF;
+    border: 1px solid transparent;
+}
+
+/* Kart Hover Efekti */
+.science-item:hover {
+    transform: translateY(-8px);
+    background: #F8FAFC;
+    border-color: #F1F5F9;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* --- Ä°KON RENKLENDÄ°RMELERÄ° --- */
+
+/* Genel Ä°kon AyarlarÄ± */
+.science-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.2rem;
+    display: inline-block;
+    height: 60px;
+    display: flex; align-items: center; justify-content: center;
+    transition: 0.3s;
+}
+
+/* 1. Kutu: Holland KodlarÄ± (TURUNCU - Enerji/GiriÅŸim) */
+.science-item:nth-child(1) .science-icon {
+    color: #F59E0B; /* Amber Turuncusu */
+}
+
+/* 2. Kutu: KanÄ±t Temelli TasarÄ±m (YEÅÄ°L - DoÄŸruluk/Bilim) */
+.science-item:nth-child(2) .science-icon {
+    color: #10B981; /* ZÃ¼mrÃ¼t YeÅŸili */
+}
+
+/* 3. Kutu: Etik Yapay Zeka (MOR - Teknoloji/Bilgelik) */
+.science-item:nth-child(3) .science-icon {
+    color: #A855F7; /* Parlak Mor */
+}
+
+/* 4. Kutu: Parmak Ä°zi (MAVÄ° - GÃ¼ven) */
+/* (Bu zaten Ã¶zel class ile tanÄ±mlÄ±ydÄ±, buraya dokunmadÄ±k ama hizasÄ±nÄ± koruyoruz) */
+.fingerprint-icon {
+    color: #3B82F6;
+    animation: fingerprint-pulse 3s infinite ease-in-out;
+}
+
+/* Metin Stilleri */
+.science-item h3 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+    color: var(--dark);
+}
+
+.science-item p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Parmak Ä°zi Animasyonu */
+@keyframes fingerprint-pulse {
+    0% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(59, 130, 246, 0)); }
+    50% { transform: scale(1.1); filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.3)); }
+    100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(59, 130, 246, 0)); }
+}
+
+/* Mobil Uyumluluk */
+@media (max-width: 1024px) {
+    .science-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+@media (max-width: 600px) {
+    .science-grid { grid-template-columns: 1fr; }
+}
+
+/* ##############################################################################################################* SON SAYFA/
+/* --- FINAL BÃ–LÃœMÃœ & FOOTER (BAÄIMSIZ & NET) --- */
+
+footer {
+    background: #0F172A; /* Koyu zemin */
+    color: white;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    /* Ãœst taraftan net bir ayrÄ±m iÃ§in: */
+    border-top: 1px solid rgba(255,255,255,0.05); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- 1. KISIM: Ã‡AÄRI ALANI (CTA) --- */
+.cta-section {
+    width: 100%;
+    padding: 6rem 1.5rem; /* GeniÅŸ boÅŸluk, ferah gÃ¶rÃ¼nÃ¼m */
+    background: radial-gradient(circle at 50% 50%, rgba(30, 41, 59, 1) 0%, rgba(15, 23, 42, 1) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Animatik Soru Listesi */
+.question-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.question-item {
+    font-size: 1.8rem; /* BÃ¼yÃ¼k ve okunaklÄ± */
+    font-weight: 800;
+    opacity: 0.3; /* Pasif hali sÃ¶nÃ¼k */
+    transition: all 0.5s ease;
+    letter-spacing: -0.5px;
+}
+
+/* --- SORU ANÄ°MASYONLARI (RENKLÄ°) --- */
+/* Soru 1: AltÄ±n SarÄ±sÄ± */
+.q1 { animation: glow-yellow 4s infinite 0s; }
+@keyframes glow-yellow {
+    0%, 100% { opacity: 0.3; transform: scale(0.98); text-shadow: none; }
+    50% { opacity: 1; transform: scale(1.05); color: #F59E0B; text-shadow: 0 0 20px rgba(245, 158, 11, 0.6); }
+}
+
+/* Soru 2: Neon Mavisi */
+.q2 { animation: glow-blue 4s infinite 1.3s; }
+@keyframes glow-blue {
+    0%, 100% { opacity: 0.3; transform: scale(0.98); text-shadow: none; }
+    50% { opacity: 1; transform: scale(1.05); color: #3B82F6; text-shadow: 0 0 20px rgba(59, 130, 246, 0.6); }
+}
+
+/* Soru 3: Neon Moru */
+.q3 { animation: glow-purple 4s infinite 2.6s; }
+@keyframes glow-purple {
+    0%, 100% { opacity: 0.3; transform: scale(0.98); text-shadow: none; }
+    50% { opacity: 1; transform: scale(1.05); color: #A855F7; text-shadow: 0 0 20px rgba(168, 85, 247, 0.6); }
+}
+
+/* Slogan */
+.final-slogan {
+    font-size: 1rem;
+    color: #94A3B8;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+/* Ana Buton */
+.play-btn {
+    background: white;
+    color: #0F172A;
+    font-weight: 800;
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: 0.3s;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.play-btn:hover {
+    transform: translateY(-5px);
+    background: #F59E0B;
+    color: white;
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.4);
+}
+
+/* --- 2. KISIM: FOOTER LÄ°NKLERÄ° --- */
+.footer-links-area {
+    width: 200%;
+    max-width: 1200px;
+    padding: 4rem 1.5rem 2rem 1.5rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer-col img { width: 120px; border-radius: 8px; margin-bottom: 1rem; }
+.footer-col p { color: #64748B; font-size: 0.9rem; line-height: 1.6; }
+.footer-col h4 { color: white; margin-bottom: 1.2rem; font-size: 1rem; }
+
+.f-links { list-style: none; padding: 0; }
+.f-links li { margin-bottom: 0.6rem; }
+.f-links a { color: #94A3B8; font-size: 0.9rem; transition: 0.3s; }
+.f-links a:hover { color: white; padding-left: 5px; }
+
+.copyright {
+    display: flex; justify-content: space-between;
+    color: #475569; font-size: 0.85rem;
+}
+
+/* Mobil */
+@media (max-width: 900px) {
+    .question-item { font-size: 1.4rem; }
+    .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+    .copyright { flex-direction: column; gap: 10px; text-align: center; }
+}
+
+/* ###########################################################################################################*/
+
+/*################################################################################*/
+</style>
+</head>
+<body>
+
+   <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="assets/logo-2.png" alt="Logo">
+                    <span>GeniusMethods</span>
+                </div>
+                
+                <ul class="nav-links">
+                    <li class="nav-item">
+                        <a href="#genuis">Neden GM? <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Vizyon & Misyon</a></li>
+                            <li><a href="#">Biz Kimiz?</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#teknoloji">Teknoloji & Bilim <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">TÃ¼bitak OnaylÄ±</a></li>
+                            <li><a href="#">Modeller</a></li>
+                            <a href="davranis-analitik.html" class="nav-item ">DavranÄ±ÅŸ AnalitiÄŸi <i class="fas fa-chevron-down"></i></a>
+                        </ul>
+                    </li>
+                     <li class="nav-item">
+                        <a href="#kesif">KeÅŸif YolculuÄŸu<i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">SÃ¼reÃ§</a></li>
+                            <li><a href="#">Kariyer</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#sss"> SSS <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Destek</a></li>
+                            <li><a href="#">Ä°letiÅŸim</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <a href="#" style="font-weight: 600; color: var(--text-muted); font-size: 0.9rem;">GiriÅŸ Yap</a>
+                    <a href="#" class="btn btn-primary">KayÄ±t Ol</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+  <section class="hero">
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+
+    <div class="container grid-2">
+        
+        <div class="fade-up">
+            <div style="display:inline-block; background:#EFF6FF; color:var(--primary); font-weight:700; padding:6px 12px; border-radius:30px; font-size:0.8rem; margin-bottom:1rem; border: 1px solid rgba(79, 70, 229, 0.1);">
+                ğŸš€ Yeni Nesil Potansiyel
+            </div>
+            
+            <h1 class="hero-headline">
+                GÃ¶rÃ¼nen Oyun,<br>
+                <span class="neon-typewriter" id="dynamic-slogan"></span><span class="cursor">|</span>
+            </h1>
+            
+            <p>
+                YargÄ±lanmadan, test edilmeden, sadece oynayarak... DavranÄ±ÅŸsal algoritmalarÄ±mÄ±z dijital ayak izlerini takip ederek en gÃ¼Ã§lÃ¼ yetenekleri aÃ§Ä±ÄŸa Ã§Ä±karÄ±r.
+            </p>
+            
+            <div style="display:flex; gap:0.8rem; flex-wrap:wrap; margin-bottom: 2rem; justify-content: flex-start;">
+                <a href="#" class="btn btn-primary"><i class="fas fa-rocket"></i> KeÅŸfet</a>
+                <a href="#" class="btn btn-outline"><i class="fas fa-play-circle"></i> TanÄ±tÄ±mÄ± Ä°zle</a>
+            </div>
+
+            <div style="display:flex; gap:15px; color:var(--text-muted); font-size:0.85rem; justify-content: flex-start;">
+                <span><i class="fas fa-check-circle" style="color:var(--success)"></i> GÃ¼venli Veri</span>
+                <span><i class="fas fa-brain" style="color:var(--primary)"></i> NÃ¶ro-Metrik Analiz</span>
+            </div>
+        </div>
+
+        <div class="ai-visual-container fade-up">
+            <div class="slideshow-wrapper">
+                <img src="assets/Image Sequence_002_0000.png" class="slide active" alt="GÃ¶rsel 1">
+                <img src="assets/Image Sequence_003_0000.png" class="slide" alt="GÃ¶rsel 2">
+                <img src="assets/Image Sequence_004_0000.png" class="slide" alt="GÃ¶rsel 3">
+                <img src="assets/Image Sequence_005_0000.png" class="slide" alt="GÃ¶rsel 4">
+                <img src="assets/Image Sequence_006_0000.png" class="slide" alt="GÃ¶rsel 5">
+                <img src="assets/Image Sequence_007_0000.png" class="slide" alt="GÃ¶rsel 6">
+
+                <div class="slide-overlay">
+                    <div class="game-action-box">
+                        <div class="game-meta">
+                            <h4>Genius Methods</h4>
+                            <span><i class="fas fa-star" style="color:#F59E0B"></i> 4.9 â€¢ SimÃ¼lasyon</span>
+                        </div>
+                        <a href="#" class="hero-install-btn">
+                            <i class="fas fa-download"></i> YÃœKLE & OYNA
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ai-popup popup-insight">
+                <div class="popup-header">
+                    <i class="fas fa-lightbulb" style="color: var(--neon-blue);"></i> DavranÄ±ÅŸ
+                </div>
+                <div class="popup-text">
+                    Kriz yÃ¶netimi becerilerinde <strong>yÃ¼ksek potansiyel</strong>.
+                </div>
+            </div>
+
+            <div class="ai-popup popup-suggestion">
+                <div class="popup-header">
+                    <i class="fas fa-robot" style="color: var(--neon-purple);"></i> Kariyer
+                </div>
+                <div class="popup-text">
+                    Veri setleri <strong>Stratejik Planlama</strong> ile uyumlu.
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+   <section class="comparison-section">
+    <div class="container">
+        
+        <div class="comp-header fade-up">
+            <h2>Standart Testlerin Ã–tesi.</h2>
+            <p>
+                Ä°nsan <span class="highlight-green-pen">potansiyeli</span> Ã§oktan seÃ§meli ÅŸÄ±klara sÄ±ÄŸmaz. <br>
+                SÄ±kÄ±cÄ± formlar yerine, yaÅŸayan bir deneyim sunuyoruz.
+            </p>
+        </div>
+
+        <div class="split-container fade-up">
+            
+            <div class="split-panel panel-traditional">
+                
+                <div class="survey-animation-wrapper">
+                    
+                    <div class="cycle-paper paper-survey cycle-1">
+                        <div class="line-dec short"></div>
+                        <div class="line-dec" style="margin-bottom:20px;"></div>
+                        
+                        <div class="cb-row">
+                            <div class="box"></div> <div class="line-dec short" style="margin:0"></div>
+                        </div>
+                        <div class="cb-row">
+                            <div class="box" style="animation-delay: 0.3s"></div> <div class="line-dec short" style="margin:0"></div>
+                        </div>
+                        <div class="cb-row">
+                            <div class="box" style="animation-delay: 0.6s"></div> <div class="line-dec short" style="margin:0"></div>
+                        </div>
+                        <div class="cb-row">
+                            <div class="box" style="animation-delay: 0.9s"></div> <div class="line-dec short" style="margin:0"></div>
+                        </div>
+                    </div>
+
+                    <div class="cycle-paper paper-optic cycle-2">
+                        <div style="text-align:right; margin-bottom:15px;">
+                            <div class="line-dec short" style="display:inline-block; width:40px; height:40px; border:1px solid #ddd;"></div>
+                        </div>
+                        
+                        <div class="opt-row">
+                            <div class="bubble"></div><div class="bubble filled"></div><div class="bubble"></div><div class="bubble"></div>
+                        </div>
+                        <div class="opt-row">
+                            <div class="bubble"></div><div class="bubble"></div><div class="bubble filled" style="animation-delay: 3.3s"></div><div class="bubble"></div>
+                        </div>
+                        <div class="opt-row">
+                            <div class="bubble filled" style="animation-delay: 3.6s"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+                        </div>
+                        <div class="opt-row">
+                            <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble filled" style="animation-delay: 3.9s"></div>
+                        </div>
+                         <div class="opt-row">
+                            <div class="bubble"></div><div class="bubble filled" style="animation-delay: 4.2s"></div><div class="bubble"></div><div class="bubble"></div>
+                        </div>
+                    </div>
+
+                    <div class="cycle-paper paper-essay cycle-3">
+                        <div class="line-dec short" style="margin-bottom:25px;"></div>
+                        
+                        <div class="essay-line"></div>
+                        <div class="essay-line" style="animation-delay: 6.3s"></div> <div class="essay-line" style="animation-delay: 6.6s"></div> <div class="essay-line" style="animation-delay: 6.9s"></div> <div class="essay-line" style="animation-delay: 7.2s"></div> </div>
+
+                </div>
+
+                <div class="panel-content">
+                    <span class="panel-badge badge-old"><i class="fas fa-history"></i> Geleneksel YÃ¶ntem</span>
+                 <h3 style="color:#1E293B; font-size: 1.2rem;">Verimsiz DÃ¶ngÃ¼</h3>
+                    <p style="color:#64748B;">
+                        KaÄŸÄ±t yÄ±ÄŸÄ±nlarÄ±, optik formlar ve ezbere dayalÄ± sÄ±navlar... GerÃ§ek potansiyeliniz bu prosedÃ¼rler arasÄ±nda kaybolup gidiyor.
+                    </p>
+                </div>
+            </div>
+
+            <div class="split-panel panel-genius">
+                
+                <video class="video-bg" autoplay loop muted playsinline poster="assets/Image Sequence_005_0000.png">
+                    <source src="video/OyunTanitim.mp4" type="video/mp4">
+                    TarayÄ±cÄ±nÄ±z video etiketini desteklemiyor.
+                </video>
+                
+                <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>
+
+                <div class="panel-content">
+                    <span class="panel-badge badge-new"><i class="fas fa-check-circle"></i> Genius YaklaÅŸÄ±mÄ±</span>
+                    <h3 style="color:white; font-size: 1.2rem;">OyunlaÅŸtÄ±rma & SimÃ¼lasyon</h3>
+                    <p style="color:#CBD5E1;">
+                        DoÄŸal davranÄ±ÅŸ akÄ±ÅŸÄ±, 3D simÃ¼lasyonlar ve nÃ¶ro-metrik veri analizi. Potansiyel, baskÄ± altÄ±nda deÄŸil, oyunun akÄ±ÅŸÄ±nda keÅŸfedilir.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+  <section class="process-section" id="nasil-calisir">
+    <div class="container">
+        
+        <div class="section-header-wrapper">
+            <h2 class="sub-title">Dijital Ä°zler, GerÃ§ek EÄŸilimler.</h2>
+            <h2 class="main-title">NasÄ±l Ã‡alÄ±ÅŸÄ±r?</h2>
+        </div>
+
+        <div class="process-container fade-up">
+            <div class="process-line"></div>
+
+            <div class="process-step step-1">
+                <div class="step-icon-box"><i class="fas fa-user-astronaut"></i></div>
+                <h3 class="step-title">01. Oyuncu</h3>
+                <p class="step-desc">AÃ§Ä±k dÃ¼nya gÃ¶revlerinde kararlar alÄ±r.</p>
+            </div>
+
+            <div class="process-step step-2">
+                <div class="step-icon-box"><i class="fas fa-fingerprint"></i></div>
+                <h3 class="step-title">02. Veri</h3>
+                <p class="step-desc">DavranÄ±ÅŸsal veriler anlÄ±k toplanÄ±r.</p>
+            </div>
+
+            <div class="process-step step-3">
+                <div class="step-icon-box"><i class="fas fa-network-wired"></i></div>
+                <h3 class="step-title">03. Yapay Zeka</h3>
+                <p class="step-desc">Psikometrik modellerle analiz edilir.</p>
+            </div>
+
+            <div class="process-step step-4">
+                <div class="step-icon-box"><i class="fas fa-stopwatch"></i></div>
+                <h3 class="step-title">04. SonuÃ§</h3>
+                <p class="step-desc">Yetenek haritalarÄ± oluÅŸturulur.</p>
+            </div>
+        </div>
+
+        <div class="expandable-wrapper fade-up">
+            <div class="metin-sinirlayici">
+                
+                <p class="giris-paragrafi">
+                    Oyun temelli gÃ¶revlerle Ã¶ÄŸrencilerin doÄŸal davranÄ±ÅŸlarÄ±nÄ± analiz ederek kariyer eÄŸilimlerini ve yeteneklerini ortaya Ã§Ä±karan; eÄŸitimcilere, velilere ve Ä°K uzmanlarÄ±na "kiÅŸiye Ã¶zel veri" sunan yenilikÃ§i bir potansiyel keÅŸif platformu.
+                </p>
+
+                <div id="hiddenContent" class="hidden-content">
+                    <p class="vurgulu-paragraf">
+                        <span class="marka-rengi">GeniusMethods</span>'ta oyun, sadece bir eÄŸlence unsuru deÄŸil; 
+                        <strong>veri Ã¼reten bir motor</strong> olarak kurgulanÄ±r. Oyuncular, gerÃ§ek hayata benzer aÃ§Ä±k dÃ¼nya gÃ¶revleri iÃ§inde kararlar alÄ±rken; 
+                        bu kararlar dinamik senaryolarla tekrar edilebilir ve Ã¶lÃ§Ã¼lebilir hale gelir.
+                        DavranÄ±ÅŸsal veriler, yapay zekÃ¢ ve psikometrik modellerle analiz edilerek bireyin yetkinlik profiline dÃ¶nÃ¼ÅŸtÃ¼rÃ¼lÃ¼r.
+                    </p>
+
+                    <p class="sonuc-paragrafi">
+                        Bu sayede GeniusMethods, tek seferlik sonuÃ§lar yerine; kariyer ve beceri haritalarÄ±nÄ± zaman iÃ§inde gÃ¼ncelleyebilen, 
+                        geliÅŸimi izleyen ve geleceÄŸe dÃ¶nÃ¼k potansiyeli gÃ¶rÃ¼nÃ¼r kÄ±lan yaÅŸayan bir Ã¼rÃ¼n sunar.
+                    </p>
+                </div>
+
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <button id="toggleBtn" class="read-more-btn">
+                    Daha Fazla Oku <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+   
+
+  <section id="simulasyonlar" class="sim-showcase-section">
+    
+    <div class="sim-header fade-up">
+        <p>Her gÃ¶rev, farklÄ± bir yeteneÄŸi Ã¶lÃ§mek iÃ§in tasarlanmÄ±ÅŸ dijital bir laboratuvardÄ±r.</p>
+    </div>
+
+    <div class="marquee-wrapper fade-up">
+        
+        <button class="nav-btn prev-btn" id="prevBtn">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <div class="marquee-track" id="track">
+            
+            <div class="sim-card"><img src="assets/geniusmethodsdeck-2.png" alt="SimÃ¼lasyon"></div>
+            <div class="sim-card"><img src="assets/GeniusMethodsDeck-3.png" alt="SimÃ¼lasyon"></div>
+            <div class="sim-card"><img src="assets/GeniusMethodsDeck-4.jpg" alt="SimÃ¼lasyon"></div>
+            <div class="sim-card"><img src="assets/GeniusMethodsDeck-5.png" alt="SimÃ¼lasyon"></div>
+            <div class="sim-card"><img src="assets/GeniusMethodsDeck-6.jpg" alt="SimÃ¼lasyon"></div>
+            <div class="sim-card"><img src="assets/GeniusMethodsDeck-7.jpg" alt="SimÃ¼lasyon"></div>
+            <div class="sim-card"><img src="assets/GeniusMethodsDeck.jpg" alt="SimÃ¼lasyon"></div>
+            <div class="sim-card"><img src="assets/GeniusMethodsDeck-3.jpg" alt="SimÃ¼lasyon"></div>
+
+            <div class="sim-card"><img src="assets/geniusmethodsdeck-2.png" alt="SimÃ¼lasyon"></div>
+            <div class="sim-card"><img src="assets/GeniusMethodsDeck-3.png" alt="SimÃ¼lasyon"></div>
+            <div class="sim-card"><img src="assets/GeniusMethodsDeck-4.jpg" alt="SimÃ¼lasyon"></div>
+            <div class="sim-card"><img src="assets/GeniusMethodsDeck-5.png" alt="SimÃ¼lasyon"></div>
+            <div class="sim-card"><img src="assets/GeniusMethodsDeck-6.jpg" alt="SimÃ¼lasyon"></div>
+            <div class="sim-card"><img src="assets/GeniusMethodsDeck-7.jpg" alt="SimÃ¼lasyon"></div>
+            <div class="sim-card"><img src="assets/GeniusMethodsDeck.jpg" alt="SimÃ¼lasyon"></div>
+            <div class="sim-card"><img src="assets/GeniusMethodsDeck-3.jpg" alt="SimÃ¼lasyon"></div>
+
+            <div class="sim-card"><img src="assets/geniusmethodsdeck-2.png" alt="SimÃ¼lasyon"></div>
+            <div class="sim-card"><img src="assets/GeniusMethodsDeck-3.png" alt="SimÃ¼lasyon"></div>
+            <div class="sim-card"><img src="assets/GeniusMethodsDeck-4.jpg" alt="SimÃ¼lasyon"></div>
+            <div class="sim-card"><img src="assets/GeniusMethodsDeck-5.png" alt="SimÃ¼lasyon"></div>
+            <div class="sim-card"><img src="assets/GeniusMethodsDeck-6.jpg" alt="SimÃ¼lasyon"></div>
+            <div class="sim-card"><img src="assets/GeniusMethodsDeck-7.jpg" alt="SimÃ¼lasyon"></div>
+            <div class="sim-card"><img src="assets/GeniusMethodsDeck.jpg" alt="SimÃ¼lasyon"></div>
+            <div class="sim-card"><img src="assets/GeniusMethodsDeck-3.jpg" alt="SimÃ¼lasyon"></div>
+
+        </div>
+
+        <button class="nav-btn next-btn" id="nextBtn">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+
+    </div>
+</section>
+
+
+<section class="guide-section">
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(circle at 90% 10%, rgba(79, 70, 229, 0.08) 0%, transparent 40%); pointer-events: none;"></div>
+
+    <div class="container grid-2">
+        
+        <div class="guide-content fade-up">
+            <div style="display:inline-block; margin-bottom:1rem; color:var(--neon-purple); font-weight:700; font-size:0.9rem; letter-spacing:1px;">
+                <i class="fas fa-compass"></i> SÄ°STEM MÄ°MARÄ°SÄ°
+            </div>
+            
+            <h2> Gelecek Rehberiniz.</h2>
+            
+            <div class="guide-quote">
+                <p>"Yapay zekÃ¢ Ã¶nce dijital verileri analiz etti, bugÃ¼n ise karar altyapÄ±sÄ± olarak Ã§alÄ±ÅŸÄ±yor."</p>
+                <div style="color:white; font-weight:600; margin-top:0.5rem; font-size:0.9rem;">â€” Genius Methods</div>
+            </div>
+
+            <p style="color:#94A3B8; margin-bottom:2rem;">
+                AynÄ± dÃ¶nÃ¼ÅŸÃ¼mÃ¼ insan davranÄ±ÅŸÄ± iÃ§in gerÃ§ekleÅŸtiriyoruz:
+            </p>
+
+            <div class="guide-steps">
+                <div class="guide-step-item">
+                    <div class="gs-icon"><i class="fas fa-search"></i></div>
+                    <div>
+                        <strong style="color:white; display:block; margin-bottom:4px;">DavranÄ±ÅŸÄ± Analiz Ediyor</strong>
+                        <span style="color:#64748B; font-size:0.9rem;">Her tÄ±klama ve reaksiyon bir veri noktasÄ±dÄ±r.</span>
+                    </div>
+                </div>
+
+                <div class="guide-step-item">
+                    <div class="gs-icon" style="background:rgba(236, 72, 153, 0.2); color:#F472B6;"><i class="fas fa-brain"></i></div>
+                    <div>
+                        <strong style="color:white; display:block; margin-bottom:4px;">Yetenek ZekasÄ±na DÃ¶nÃ¼ÅŸtÃ¼rÃ¼yor</strong>
+                        <span style="color:#64748B; font-size:0.9rem;">Ham veriler anlamlÄ± yetenek profillerine evrilir.</span>
+                    </div>
+                </div>
+
+                <div class="guide-step-item">
+                    <div class="gs-icon" style="background:rgba(16, 185, 129, 0.2); color:#34D399;"><i class="fas fa-project-diagram"></i></div>
+                    <div>
+                        <strong style="color:white; display:block; margin-bottom:4px;">Karar AltyapÄ±sÄ± Haline Getiriyor</strong>
+                        <span style="color:#64748B; font-size:0.9rem;">Gelecek iÃ§in en doÄŸru kariyer rotasÄ±nÄ± Ã§izer.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fade-up" style="position: relative;">
+            
+            <div class="dashboard-card">
+                
+                <div class="dash-header">
+                    <div class="dash-title">
+                        <h4>DavranÄ±ÅŸsal Ä°ÅŸlemci</h4>
+                        <span>Veri AkÄ±ÅŸÄ±: 4.2MB/s</span>
+                    </div>
+                    <div class="status-badge">
+                        <div class="blink-dot"></div> SÄ°STEM AKTÄ°F
+                    </div>
+                </div>
+
+                <div class="chart-viewport">
+                    
+                    <div class="chart-slide active" id="slide-bar">
+                        <div class="bar-group"><div class="bar-fill b1"></div></div>
+                        <div class="bar-group"><div class="bar-fill b2"></div></div>
+                        <div class="bar-group"><div class="bar-fill b3"></div></div>
+                        <div class="bar-group"><div class="bar-fill b4"></div></div>
+                        <div class="bar-group"><div class="bar-fill b5"></div></div>
+                    </div>
+
+                    <div class="chart-slide" id="slide-line">
+                        <svg class="line-chart-svg" viewBox="0 0 100 50" preserveAspectRatio="none">
+                            <defs>
+                                <linearGradient id="gradientArea" x1="0" x2="0" y1="0" y2="1">
+                                    <stop offset="0%" stop-color="#F59E0B" />
+                                    <stop offset="100%" stop-color="transparent" />
+                                </linearGradient>
+                            </defs>
+                            <path class="line-area" d="M0,50 L0,30 L20,35 L40,10 L60,25 L80,5 L100,20 L100,50 Z" />
+                            <path class="line-path" d="M0,30 L20,35 L40,10 L60,25 L80,5 L100,20" />
+                        </svg>
+                    </div>
+
+                    <div class="chart-slide" id="slide-pie">
+                        <div class="donut-wrapper">
+                            <div class="donut-chart" id="dynamicDonut">
+                                <div class="donut-inner">
+                                    <span style="font-size:1.5rem; font-weight:800;">%94</span>
+                                    <span style="font-size:0.7rem; color:#94A3B8;">EÅLEÅME</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-slide" id="slide-radar">
+                        <div class="radar-wrapper">
+                            <div class="radar-bg"></div>
+                            <div class="radar-bg small"></div>
+                            <div class="radar-shape"></div>
+                            <span class="r-label t1">Liderlik</span>
+                            <span class="r-label t2">Analitik</span>
+                            <span class="r-label t3">Sosyal</span>
+                        </div>
+                    </div>
+
+                    <div class="chart-slide" id="slide-neural">
+                        <div class="neural-container">
+                            <div class="node n1"></div> <div class="link l1"></div>
+                            <div class="node n2"></div> <div class="link l2"></div>
+                            <div class="node n3"></div> <div class="link l3"></div>
+                            <div class="node n4"></div> <div class="link l4"></div>
+                            <div class="node n5"></div>
+                        </div>
+                    </div>
+
+                    <div class="chart-slide" id="slide-wave">
+                        <div class="wave-container">
+                            <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+                        </div>
+                        <div style="position:absolute; bottom:10px; width:100%; text-align:center; font-size:0.8rem; color:#F59E0B;">
+                            TEPKÄ° SÃœRESÄ°: 0.12ms
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="log-console" id="logContainer">
+                    <div class="log-item"><span>> System_Init...</span><span class="log-success">OK</span></div>
+                    <div class="log-item"><span>> Data_Packet_A12</span><span class="log-process">Analiz...</span></div>
+                </div>
+
+            </div>
+            
+            <div style="position: absolute; bottom: -50px; right: -50px; width: 250px; height: 250px; background: var(--primary); filter: blur(100px); opacity: 0.2; z-index: -1;"></div>
+
+        </div>
+
+    </div>
+</section>
+
+   <section class="science-trust-section">
+    <div class="container">
+        
+        <div class="st-header fade-up">
+            <h2>ArkasÄ±nda Bilim Var. Åans Yok.</h2>
+            <p style="color: var(--text-muted);">
+                Global kabul gÃ¶rmÃ¼ÅŸ psikometrik modellerin, modern teknoloji ve etik deÄŸerlerle birleÅŸimi.
+            </p>
+        </div>
+
+        <div class="science-grid fade-up">
+            
+            <div class="science-item">
+                <div class="science-icon"><i class="fas fa-shapes"></i></div>
+                <h3>Holland KodlarÄ± (RIASEC)</h3>
+                <p>Kariyer yÃ¶neliminde dÃ¼nyada altÄ±n standart kabul edilen envanter.</p>
+            </div>
+
+            <div class="science-item">
+                <div class="science-icon"><i class="fas fa-search"></i></div>
+                <h3>KanÄ±t Temelli TasarÄ±m</h3>
+                <p>Oyun mekanikleri rastgele deÄŸil, spesifik becerileri Ã¶lÃ§mek iÃ§in kurgulandÄ±.</p>
+            </div>
+
+            <div class="science-item">
+                <div class="science-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Etik Yapay Zeka</h3>
+                <p>Etiketleme veya Ã¶nyargÄ± yok. Sadece saf performans analizi var.</p>
+            </div>
+
+            <div class="science-item">
+                <div class="science-icon fingerprint-icon"><i class="fas fa-fingerprint"></i></div>
+                <h3>Veri KontrolÃ¼ Sizde</h3>
+                <p>Verileriniz 3. taraflarla asla paylaÅŸÄ±lmaz. Silme hakkÄ± tamamen size aittir.</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+  <footer>
+    
+    <div class="cta-section fade-up">
+        
+        <div class="question-wrapper">
+            <div class="question-item q1">"Hangi gÃ¶revlerde parlÄ±yor?"</div>
+            <div class="question-item q2">"NasÄ±l kararlar alÄ±yor?"</div>
+            <div class="question-item q3">"NasÄ±l tepkiler veriyorsunuz?"</div>
+        </div>
+
+        <p class="final-slogan">
+            DÃ¼nya'nÄ±n ilk ve tek oyunlaÅŸtÄ±rma tabanlÄ± yetenek analiz platformunu deneyimleyin.
+        </p>
+
+        <a href="#" class="play-btn">
+            <i class="fas fa-play"></i> Ãœcretsiz Hemen Oyna
+        </a>
+
+    </div>
+
+    <div class="footer-links-area">
+        <div class="footer-grid">
+            
+            <div class="footer-col">
+                <img src="assets/logo-1.png" alt="Genius Methods">
+                <p>
+                    Oyunun gÃ¼cÃ¼nÃ¼ bilimin Ä±ÅŸÄ±ÄŸÄ±yla birleÅŸtirerek, gerÃ§ek potansiyeli keÅŸfediyoruz.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4>KeÅŸfet</h4>
+                <ul class="f-links">
+                    <li><a href="#">Genius Nedir?</a></li>
+                    <li><a href="#">Teknoloji</a></li>
+                    <li><a href="#">ÃœrÃ¼nler</a></li>
+                    <li><a href="#">Raporlar</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Kurumsal</h4>
+                <ul class="f-links">
+                    <li><a href="#">HakkÄ±mÄ±zda</a></li>
+                    <li><a href="#">Gizlilik (KVKK)</a></li>
+                    <li><a href="#">KullanÄ±m ÅartlarÄ±</a></li>
+                    <li><a href="#">Ä°letiÅŸim</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Sosyal Medya</h4>
+                <ul class="f-links">
+                    <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> E-Posta</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            <span>&copy; 2026 Genius Methods. TÃ¼m haklarÄ± saklÄ±dÄ±r.</span>
+            <span><i class="fas fa-map-marker-alt"></i> Antalya Teknokent / AR-GE</span>
+        </div>
+    </div>
+</footer>
+
+   <script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    // ---------------------------------------------------------
+    // 1. DAKTÄ°LO EFEKTÄ° ("GÃ¶rÃ¼nmeyen Sen" yazÄ±sÄ± iÃ§in)
+    // ---------------------------------------------------------
+    const textElement = document.getElementById('dynamic-slogan');
+    
+    if (textElement) { // Hata almamak iÃ§in kontrol
+        const text = "GÃ¶rÃ¼nmeyen Sen"; 
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+            const currentText = text.substring(0, charIndex);
+            textElement.textContent = currentText;
+            
+            let typeSpeed = isDeleting ? 100 : 150;
+
+            if (!isDeleting && charIndex < text.length) {
+                charIndex++;
+            } else if (isDeleting && charIndex > 0) {
+                charIndex--;
+            } else {
+                isDeleting = !isDeleting;
+                typeSpeed = isDeleting ? 2000 : 500;
+            }
+            setTimeout(typeEffect, typeSpeed);
+        }
+        typeEffect(); 
+    }
+
+    // ---------------------------------------------------------
+    // 2. HERO SLAYT GÃ–STERÄ°SÄ°
+    // ---------------------------------------------------------
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+    
+    if(slides.length > 0){
+        slides[0].classList.add('active');
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 3500);
+    }
+
+    // ---------------------------------------------------------
+    // 3. SCROLL ANÄ°MASYONU (Fade-up)
+    // ---------------------------------------------------------
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // ---------------------------------------------------------
+    // 4. SÄ°MÃœLASYONLAR: SONSUZ DÃ–NGÃœ & AKILLI KAYDIRMA
+    // ---------------------------------------------------------
+    const track = document.getElementById('track');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    if (track && prevBtn && nextBtn) {
+        
+        const cardWidth = 320; 
+        const totalCards = 8; 
+        const singleSetWidth = cardWidth * totalCards; 
+        
+        track.scrollLeft = singleSetWidth;
+
+        let isHovered = false;
+        let autoScrollSpeed = 1; 
+
+        track.addEventListener('scroll', () => {
+            if (track.scrollLeft >= singleSetWidth * 2) {
+                track.scrollLeft -= singleSetWidth;
+            }
+            else if (track.scrollLeft <= 0) {
+                track.scrollLeft += singleSetWidth;
+            }
+        });
+
+        nextBtn.onclick = () => {
+            track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        };
+        
+        prevBtn.onclick = () => {
+            track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        };
+
+        function autoScroll() {
+            if (!isHovered) {
+                track.scrollLeft += autoScrollSpeed;
+            }
+            requestAnimationFrame(autoScroll);
+        }
+
+        track.addEventListener('mouseenter', () => isHovered = true);
+        track.addEventListener('mouseleave', () => isHovered = false);
+        
+        prevBtn.addEventListener('mouseenter', () => isHovered = true);
+        nextBtn.addEventListener('mouseenter', () => isHovered = true);
+        prevBtn.addEventListener('mouseleave', () => isHovered = false);
+        nextBtn.addEventListener('mouseleave', () => isHovered = false);
+
+        autoScroll();
+    }
+
+    // ---------------------------------------------------------
+    // 5. DAHA FAZLA OKU FONKSÄ°YONU
+    // ---------------------------------------------------------
+    const toggleBtn = document.getElementById("toggleBtn");
+    const hiddenContent = document.getElementById("hiddenContent");
+
+    if (toggleBtn && hiddenContent) {
+        toggleBtn.addEventListener("click", function() {
+            // .show sÄ±nÄ±fÄ±nÄ± ekle/Ã§Ä±kar
+            hiddenContent.classList.toggle("show");
+
+            // Buton yazÄ±sÄ±nÄ± deÄŸiÅŸtir
+            if (hiddenContent.classList.contains("show")) {
+                toggleBtn.innerHTML = 'Daha Az GÃ¶ster <i class="fas fa-chevron-up"></i>';
+            } else {
+                toggleBtn.innerHTML = 'Daha Fazla Oku <i class="fas fa-chevron-down"></i>';
+            }
+        });
+    }
+
+    // ---------------------------------------------------------
+    // 6. GRAFÄ°K ANÄ°MASYONLARI (SÄ°STEM AKIÅI)
+    // ---------------------------------------------------------
+    const charts = document.querySelectorAll('.chart-slide');
+    if (charts.length > 0) {
+        let chartIndex = 0;
+        
+        setInterval(() => {
+            charts[chartIndex].classList.remove('active');
+            chartIndex = (chartIndex + 1) % charts.length;
+            charts[chartIndex].classList.add('active');
+            
+            // Pasta GrafiÄŸi (Pie) geldiÄŸinde animasyonunu yenile
+            if(chartIndex === 2) { 
+                const donut = document.getElementById('dynamicDonut');
+                if (donut) {
+                    donut.style.background = `conic-gradient(#A855F7 0% 0%, #3B82F6 0% 0%, rgba(255,255,255,0.1) 0% 100%)`;
+                    setTimeout(() => {
+                        donut.style.background = `conic-gradient(#A855F7 0% 65%, #3B82F6 65% 94%, rgba(255,255,255,0.1) 94% 100%)`;
+                    }, 100);
+                }
+            }
+        }, 2000); 
+    }
+
+    // ---------------------------------------------------------
+    // 7. CANLI LOG SÄ°STEMÄ°
+    // ---------------------------------------------------------
+    const logContainer = document.getElementById('logContainer');
+    
+    if (logContainer) {
+        const logMessages = [
+            { text: "NÃ¶ral aÄŸ katmanlarÄ± taranÄ±yor...", status: "OK", type: "success" },
+            { text: "KullanÄ±cÄ± verisi ÅŸifrelendi", status: "SECURE", type: "success" },
+            { text: "Karar aÄŸacÄ± oluÅŸturuluyor...", status: "%45", type: "process" },
+            { text: "RIASEC skoru hesaplanÄ±yor...", status: "WAIT", type: "process" },
+            { text: "Anomali tespiti", status: "CLEAN", type: "success" },
+            { text: "BiliÅŸsel harita gÃ¼ncellendi", status: "DONE", type: "success" }
+        ];
+
+        setInterval(() => {
+            const randomMsg = logMessages[Math.floor(Math.random() * logMessages.length)];
+            const logLine = document.createElement('div');
+            logLine.className = 'log-item';
+            
+            const statusColor = randomMsg.type === 'success' ? '#10B981' : '#F59E0B';
+            
+            logLine.innerHTML = `
+                <span>> ${randomMsg.text}</span>
+                <span style="color:${statusColor}">${randomMsg.status}</span>
+            `;
+            
+            logContainer.prepend(logLine);
+            
+            if(logContainer.children.length > 5) {
+                logContainer.lastElementChild.remove();
+            }
+        }, 1500);
+    }
+
+}); 
+</script>

@@ -1,0 +1,184 @@
+/* Okul Sınıf Yönetimi */
+.okul-sinif-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.okul-sinif-input {
+    flex: 1;
+    height: 44px;
+    padding: 0 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    color: #1e293b;
+    background: #fff;
+    max-width: 300px;
+}
+
+.okul-sinif-input:focus {
+    outline: none;
+    border-color: #8B5CF6;
+}
+
+.okul-sinif-add-btn {
+    height: 44px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 12px;
+    background: #8B5CF6;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.15s;
+}
+
+.okul-sinif-add-btn:hover:not(:disabled) {
+    background: #7C3AED;
+}
+
+.okul-sinif-add-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.okul-sinif-error {
+    background: #FEF2F2;
+    color: #DC2626;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+}
+
+.okul-sinif-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.okul-sinif-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+}
+
+.okul-sinif-card:hover {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.okul-sinif-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.okul-sinif-card-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.okul-sinif-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: #EFF6FF;
+    color: #3B82F6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.okul-sinif-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+}
+
+.okul-sinif-meta {
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.okul-sinif-card-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.okul-sinif-delete-btn {
+    border: none;
+    background: none;
+    color: #94a3b8;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    transition: all 0.15s;
+}
+
+.okul-sinif-delete-btn:hover {
+    color: #EF4444;
+    background: #FEF2F2;
+}
+
+.okul-sinif-chevron {
+    color: #94a3b8;
+    font-size: 0.8rem;
+}
+
+.okul-sinif-students {
+    border-top: 1px solid #f1f5f9;
+    padding: 12px 20px 16px;
+}
+
+.okul-sinif-empty {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 12px;
+}
+
+.okul-sinif-student-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.okul-sinif-student-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+    font-size: 0.9rem;
+    color: #1e293b;
+}
+
+.okul-sinif-student-list li:hover {
+    background: #f8f7ff;
+}
+
+@media (max-width: 768px) {
+    .okul-sinif-form {
+        flex-direction: column;
+    }
+
+    .okul-sinif-input {
+        max-width: unset;
+    }
+}

@@ -1,0 +1,844 @@
+/* =====================================================
+   HAKKIMIZDA (ABOUT US) PAGE STYLES
+   ===================================================== */
+
+/* --- INTRO / HERO SECTION --- */
+.marketing-hakkimizda .about-intro {
+    padding: 180px 0 100px;
+    background: radial-gradient(ellipse at 30% 0%, #EEF2FF 0%, #fff 60%);
+    position: relative;
+    overflow: hidden;
+}
+
+.marketing-hakkimizda .about-intro::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    right: -80px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(167, 139, 250, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.marketing-hakkimizda .about-intro::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -60px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.06) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.marketing-hakkimizda .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.marketing-hakkimizda .intro-content {
+    position: relative;
+    z-index: 2;
+}
+
+.marketing-hakkimizda .intro-badge {
+    display: inline-block;
+    padding: 8px 18px;
+    background: #EEF2FF;
+    color: var(--primary);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+}
+
+.marketing-hakkimizda .intro-content h1 {
+    font-size: 3.2rem;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+}
+
+.marketing-hakkimizda .intro-content .subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    line-height: 1.7;
+    max-width: 540px;
+}
+
+.marketing-hakkimizda .intro-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.marketing-hakkimizda .intro-body p {
+    font-size: 1.05rem;
+    color: var(--text-main);
+    line-height: 1.8;
+}
+
+.marketing-hakkimizda .intro-accent-quote {
+    position: relative;
+    padding-left: 24px;
+    margin-top: 12px;
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.marketing-hakkimizda .intro-accent-quote::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    border-radius: 4px;
+    background: var(--gradient-main);
+}
+
+/* Intro Visual */
+.marketing-hakkimizda .intro-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 420px;
+}
+
+.marketing-hakkimizda .intro-visual-card {
+    width: 380px;
+    height: 380px;
+    background: linear-gradient(135deg, #EEF2FF 0%, #F5F3FF 50%, #FFF7ED 100%);
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border: 1px solid rgba(79, 70, 229, 0.08);
+    box-shadow: 0 20px 60px rgba(79, 70, 229, 0.08);
+}
+
+.marketing-hakkimizda .intro-visual-icon {
+    width: 120px;
+    height: 120px;
+    background: white;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 2;
+}
+
+.marketing-hakkimizda .intro-visual-icon i {
+    font-size: 3rem;
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.marketing-hakkimizda .intro-float-tag {
+    position: absolute;
+    padding: 10px 18px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 3;
+    animation: floatCard 6s ease-in-out infinite;
+}
+
+.marketing-hakkimizda .intro-float-tag i {
+    font-size: 1rem;
+}
+
+.marketing-hakkimizda .float-tag-1 {
+    top: 10%;
+    left: 0;
+}
+
+.marketing-hakkimizda .float-tag-1 i { color: var(--accent); }
+
+.marketing-hakkimizda .float-tag-2 {
+    bottom: 15%;
+    right: 0;
+    animation-delay: 2s;
+}
+
+.marketing-hakkimizda .float-tag-2 i { color: var(--neon-purple); }
+
+.marketing-hakkimizda .float-tag-3 {
+    top: 55%;
+    left: -10px;
+    animation-delay: 4s;
+}
+
+.marketing-hakkimizda .float-tag-3 i { color: var(--success); }
+
+/* Decorative ring around visual card */
+.marketing-hakkimizda .intro-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px dashed rgba(79, 70, 229, 0.12);
+    animation: spin 40s linear infinite;
+    pointer-events: none;
+}
+
+.marketing-hakkimizda .intro-ring-1 {
+    width: 450px;
+    height: 450px;
+}
+
+.marketing-hakkimizda .intro-ring-2 {
+    width: 500px;
+    height: 500px;
+    border-style: dotted;
+    border-color: rgba(167, 139, 250, 0.1);
+    animation-direction: reverse;
+    animation-duration: 60s;
+}
+
+/* --- PURPOSE SECTION (AMACIMIZ) --- */
+.marketing-hakkimizda .purpose-section {
+    padding: 100px 0;
+    background: var(--bg-soft);
+    position: relative;
+    overflow: hidden;
+}
+
+.marketing-hakkimizda .purpose-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-main);
+    opacity: 0.3;
+}
+
+.marketing-hakkimizda .purpose-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.marketing-hakkimizda .purpose-content {
+    position: relative;
+    z-index: 2;
+}
+
+.marketing-hakkimizda .section-label {
+    display: inline-block;
+    padding: 6px 14px;
+    background: #EEF2FF;
+    color: var(--primary);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.marketing-hakkimizda .purpose-content h2 {
+    font-size: 2.6rem;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+}
+
+.marketing-hakkimizda .purpose-content .purpose-text {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 32px;
+}
+
+.marketing-hakkimizda .purpose-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.marketing-hakkimizda .purpose-pillar {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px;
+    background: white;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.marketing-hakkimizda .purpose-pillar:hover {
+    transform: translateX(6px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.marketing-hakkimizda .pillar-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+
+.marketing-hakkimizda .purpose-pillar:hover .pillar-icon {
+    transform: scale(1.1);
+}
+
+.marketing-hakkimizda .pillar-icon.icon-indigo  { background: #EEF2FF; color: var(--primary); }
+.marketing-hakkimizda .pillar-icon.icon-purple  { background: #F5F3FF; color: var(--neon-purple); }
+.marketing-hakkimizda .pillar-icon.icon-green   { background: #ECFDF5; color: var(--success); }
+
+.marketing-hakkimizda .pillar-text h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 4px;
+}
+
+.marketing-hakkimizda .pillar-text p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* Purpose Visual */
+.marketing-hakkimizda .purpose-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 400px;
+}
+
+.marketing-hakkimizda .purpose-illustration {
+    width: 340px;
+    height: 340px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.marketing-hakkimizda .purpose-glow {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.12) 0%, transparent 70%);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+.marketing-hakkimizda .purpose-center-icon {
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 16px 48px rgba(79, 70, 229, 0.12);
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(79, 70, 229, 0.08);
+}
+
+.marketing-hakkimizda .purpose-center-icon i {
+    font-size: 2.4rem;
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.marketing-hakkimizda .purpose-orbit-item {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    background: white;
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--border);
+    animation: floatCard 5s ease-in-out infinite;
+    z-index: 3;
+}
+
+.marketing-hakkimizda .purpose-orbit-item i {
+    font-size: 1.3rem;
+}
+
+.marketing-hakkimizda .orbit-1 {
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.marketing-hakkimizda .orbit-1 i { color: var(--accent); }
+
+.marketing-hakkimizda .orbit-2 {
+    bottom: 10%;
+    left: 10%;
+    animation-delay: 1.5s;
+}
+
+.marketing-hakkimizda .orbit-2 i { color: var(--primary); }
+
+.marketing-hakkimizda .orbit-3 {
+    bottom: 10%;
+    right: 10%;
+    animation-delay: 3s;
+}
+
+.marketing-hakkimizda .orbit-3 i { color: var(--neon-purple); }
+
+.marketing-hakkimizda .orbit-4 {
+    top: 40%;
+    left: 0;
+    animation-delay: 2s;
+}
+
+.marketing-hakkimizda .orbit-4 i { color: var(--success); }
+
+.marketing-hakkimizda .purpose-orbit-ring {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    border: 1px dashed rgba(79, 70, 229, 0.1);
+    animation: spin 35s linear infinite;
+    pointer-events: none;
+}
+
+/* --- STATS SECTION --- */
+.marketing-hakkimizda .stats-section {
+    padding: 100px 0;
+    background: #fff;
+    position: relative;
+}
+
+.marketing-hakkimizda .stats-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.marketing-hakkimizda .stats-header h2 {
+    font-size: 2.4rem;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.marketing-hakkimizda .stats-header p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.marketing-hakkimizda .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.marketing-hakkimizda .stat-card {
+    text-align: center;
+    padding: 40px 24px;
+    background: #fff;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.marketing-hakkimizda .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-main);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+}
+
+.marketing-hakkimizda .stat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(79, 70, 229, 0.1);
+}
+
+.marketing-hakkimizda .stat-card:hover::before {
+    transform: scaleX(1);
+}
+
+.marketing-hakkimizda .stat-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin: 0 auto 20px;
+    transition: transform 0.2s ease;
+}
+
+.marketing-hakkimizda .stat-card:hover .stat-icon {
+    transform: scale(1.1);
+}
+
+.marketing-hakkimizda .stat-icon.icon-indigo  { background: #EEF2FF; color: var(--primary); }
+.marketing-hakkimizda .stat-icon.icon-amber   { background: #FFF7ED; color: var(--accent); }
+.marketing-hakkimizda .stat-icon.icon-purple  { background: #F5F3FF; color: var(--neon-purple); }
+.marketing-hakkimizda .stat-icon.icon-green   { background: #ECFDF5; color: var(--success); }
+
+.marketing-hakkimizda .stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 8px;
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.marketing-hakkimizda .stat-suffix {
+    font-size: 2rem;
+}
+
+.marketing-hakkimizda .stat-label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
+}
+
+.marketing-hakkimizda .stat-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* --- TEAM SECTION --- */
+.marketing-hakkimizda .team-section {
+    padding: 100px 0;
+    background: var(--bg-soft);
+    position: relative;
+    overflow: hidden;
+}
+
+.marketing-hakkimizda .team-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.marketing-hakkimizda .team-header h2 {
+    font-size: 2.4rem;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.marketing-hakkimizda .team-header p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.marketing-hakkimizda .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.marketing-hakkimizda .team-card {
+    background: #fff;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border);
+    padding: 36px 24px 28px;
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.marketing-hakkimizda .team-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-main);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.marketing-hakkimizda .team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.marketing-hakkimizda .team-card:hover::before {
+    opacity: 1;
+}
+
+.marketing-hakkimizda .team-avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #EEF2FF 0%, #F5F3FF 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    border: 3px solid white;
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.1);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.marketing-hakkimizda .team-card:hover .team-avatar {
+    transform: scale(1.05);
+    box-shadow: 0 8px 28px rgba(79, 70, 229, 0.16);
+}
+
+.marketing-hakkimizda .team-avatar i {
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+.marketing-hakkimizda .team-name {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 4px;
+}
+
+.marketing-hakkimizda .team-role {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 14px;
+    letter-spacing: 0.3px;
+}
+
+.marketing-hakkimizda .team-bio {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.marketing-hakkimizda .team-socials {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.marketing-hakkimizda .team-social-link {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--bg-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    text-decoration: none;
+}
+
+.marketing-hakkimizda .team-social-link:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* --- SECTION DIVIDER --- */
+.marketing-hakkimizda .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--border) 50%, transparent 100%);
+    margin: 0;
+    border: none;
+}
+
+/* =====================================================
+   RESPONSIVE BREAKPOINTS
+   ===================================================== */
+
+@media (max-width: 1024px) {
+    .marketing-hakkimizda .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        text-align: center;
+    }
+
+    .marketing-hakkimizda .intro-content .subtitle {
+        max-width: 100%;
+    }
+
+    .marketing-hakkimizda .intro-content h1 {
+        font-size: 2.6rem;
+    }
+
+    .marketing-hakkimizda .intro-accent-quote {
+        text-align: left;
+    }
+
+    .marketing-hakkimizda .purpose-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        text-align: center;
+    }
+
+    .marketing-hakkimizda .purpose-pillar {
+        text-align: left;
+    }
+
+    .marketing-hakkimizda .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .marketing-hakkimizda .team-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .marketing-hakkimizda .stats-header h2,
+    .marketing-hakkimizda .team-header h2,
+    .marketing-hakkimizda .purpose-content h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .marketing-hakkimizda .about-intro {
+        padding: 150px 0 80px;
+    }
+
+    .marketing-hakkimizda .intro-content h1 {
+        font-size: 2rem;
+    }
+
+    .marketing-hakkimizda .intro-visual-card {
+        width: 280px;
+        height: 280px;
+    }
+
+    .marketing-hakkimizda .intro-ring-1 {
+        width: 320px;
+        height: 320px;
+    }
+
+    .marketing-hakkimizda .intro-ring-2 {
+        width: 360px;
+        height: 360px;
+    }
+
+    .marketing-hakkimizda .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .marketing-hakkimizda .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .marketing-hakkimizda .purpose-illustration {
+        width: 260px;
+        height: 260px;
+    }
+
+    .marketing-hakkimizda .purpose-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .marketing-hakkimizda .stats-header h2,
+    .marketing-hakkimizda .team-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .marketing-hakkimizda .purpose-section,
+    .marketing-hakkimizda .stats-section,
+    .marketing-hakkimizda .team-section {
+        padding: 70px 0;
+    }
+}
+
+/* =====================================================
+   ACCESSIBILITY: Reduced Motion
+   ===================================================== */
+@media (prefers-reduced-motion: reduce) {
+    .marketing-hakkimizda .intro-float-tag,
+    .marketing-hakkimizda .purpose-orbit-item {
+        animation: none;
+    }
+
+    .marketing-hakkimizda .intro-ring,
+    .marketing-hakkimizda .purpose-orbit-ring {
+        animation: none;
+    }
+
+    .marketing-hakkimizda .purpose-glow {
+        animation: none;
+    }
+
+    .marketing-hakkimizda .stat-card,
+    .marketing-hakkimizda .team-card,
+    .marketing-hakkimizda .purpose-pillar {
+        transition: none;
+    }
+
+    .marketing-hakkimizda .stat-card::before,
+    .marketing-hakkimizda .team-card::before {
+        transition: none;
+    }
+
+    .marketing-hakkimizda .stat-icon,
+    .marketing-hakkimizda .pillar-icon,
+    .marketing-hakkimizda .team-avatar {
+        transition: none;
+    }
+
+    .marketing-hakkimizda .team-social-link {
+        transition: none;
+    }
+
+    .marketing-page .fade-up {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}

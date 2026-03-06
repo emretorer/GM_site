@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
+
+/* =========================================
+   ANA NAVİGASYON SAYFASI (SIDEBARSIZ)
+========================================= */
+
+:root {
+    --bg-color: #F8FAFC;
+    --text-dark: #1E293B;
+    --text-gray: #64748B;
+    --white: #FFFFFF;
+    --border-color: #E2E8F0;
+    
+    /* Pastel İkon Renkleri */
+    --blue: #3B82F6;
+    --orange: #F97316;
+    --green: #10B981;
+    --yellow: #F59E0B;
+    
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Sayfayı Ortala */
+}
+
+/* --- ÜST BAR (SIDEBAR OLMADIĞI İÇİN GENİŞ) --- */
+.top-header {
+    width: 100%;
+    height: 80px;
+    background: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.logo-area {
+    display: flex; align-items: center; gap: 12px;
+    font-weight: 800; font-size: 20px; color: var(--text-dark);
+}
+.logo-icon {
+    font-size: 24px; color: #fff; background: var(--blue);
+    padding: 8px; border-radius: 8px; display: flex;
+}
+
+.user-profile img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+
+/* --- ANA İÇERİK --- */
+.container {
+    width: 100%;
+    max-width: 1200px; /* İçerik genişliği */
+    padding: 60px 20px;
+    flex: 1;
+}
+
+.page-header { margin-bottom: 50px; text-align: left; }
+.page-header h1 { font-size: 36px; font-weight: 800; margin-bottom: 16px; color: var(--text-dark); }
+.page-header p { color: var(--text-gray); font-size: 18px; line-height: 1.6; max-width: 800px; }
+
+/* --- NAVİGASYON KARTLARI (GRID) --- */
+.nav-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 Sütun (Görseldeki gibi) */
+    gap: 30px;
+}
+
+/* Kart Tasarımı */
+.nav-card {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 40px 20px;
+    text-decoration: none; /* Link alt çizgisini kaldır */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    top: 0;
+}
+
+.nav-card:hover {
+    top: -8px;
+    box-shadow: var(--hover-shadow);
+    border-color: #BFDBFE; /* Hoverda hafif mavi kenarlık */
+}
+
+/* İkon Kutusu */
+.icon-box {
+    font-size: 40px;
+    margin-bottom: 24px;
+    transition: transform 0.3s ease;
+}
+
+.nav-card:hover .icon-box {
+    transform: scale(1.1); /* Hoverda ikon büyüsün */
+}
+
+/* Renk Sınıfları */
+.c-blue { color: var(--blue); }
+.c-green { color: var(--green); }
+.c-orange { color: var(--orange); }
+.c-yellow { color: var(--yellow); }
+
+/* Kart Başlığı */
+.nav-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+/* Footer */
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 30px;
+    color: #94A3B8;
+    font-size: 13px;
+    border-top: 1px solid var(--border-color);
+    background: #fff;
+    margin-top: auto;
+}
+
+/* Responsive */
+@media (max-width: 1024px) { .nav-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) { .nav-grid { grid-template-columns: repeat(2, 1fr); } .top-header { padding: 0 20px; } }
+@media (max-width: 480px) { .nav-grid { grid-template-columns: 1fr; } }
+/* =========================================
+   SIDEBAR DARALTMA (COLLAPSE) AYARLARI
+   Bu kodları CSS dosyanın en altına ekle
+========================================= */
+
+/* Body'de 'collapsed' sınıfı varsa Sidebar daralır */
+body.collapsed .sidebar {
+    width: 80px; /* Genişlik düşer */
+}
+
+/* Ana içerik sola kayar */
+body.collapsed .main-content {
+    margin-left: 80px;
+}
+
+/* Menüdeki yazıları gizle, sadece ikonları göster */
+body.collapsed .nav-menu a {
+    font-size: 0; /* Yazıyı yok et */
+    justify-content: center; /* İkonu ortala */
+    padding: 12px;
+}
+
+body.collapsed .nav-menu a i {
+    margin-right: 0; /* İkon yanındaki boşluğu sıfırla */
+    font-size: 20px; /* İkonu biraz büyüt */
+}
+
+/* Logo alanını küçült */
+body.collapsed .logo-area {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+/* Daralt butonunu sadece ikon yap */
+body.collapsed .collapse-btn {
+    font-size: 0;
+    justify-content: center;
+}
+
+body.collapsed .collapse-btn i {
+    margin-right: 0;
+    font-size: 16px;
+    transform: rotate(180deg); /* Oku ters çevir */
+}
+
+/* Hover durumunda tooltip gibi ipucu göster (Opsiyonel Şıklık) */
+body.collapsed .nav-menu a:hover::after {
+    content: attr(href); /* Basit bir örnek, istenirse text de yazdırılabilir */
+    position: absolute;
+    left: 70px;
+    background: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0; /* Şimdilik kapalı, istenirse açılabilir */
+}

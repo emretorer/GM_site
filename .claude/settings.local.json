@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir:*)",
+      "mcp__stitch__generate_screen_from_text",
+      "Bash(npx vite build:*)",
+      "mcp__stitch__list_screens",
+      "mcp__stitch__get_project",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nadd Hakkımızda about page with intro, purpose, stats, and team sections\n\nNew creative About page at /hakkimizda with 4 template blocks: hero intro with gradient accents and floating tags, Amacımız mission section with orbital illustration, stats section with animated count-up numbers, and team member cards with social links. Includes responsive layout, subtle hover/scroll animations, and prefers-reduced-motion accessibility support.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(ls:*)",
+      "Bash(npm run:*)",
+      "Bash(cp:*)"
+    ]
+  }
+}

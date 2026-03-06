@@ -1,0 +1,567 @@
+/* =====================================================
+   VIZYON-MISYON PAGE STYLES
+   ===================================================== */
+
+/* --- HERO SECTION --- */
+.marketing-vizyon .hero {
+    padding: 180px 0 100px;
+    background: radial-gradient(circle at 50% 0%, #EEF2FF 0%, #fff 70%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.marketing-vizyon .floating-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.15;
+    z-index: 0;
+    animation: float 6s ease-in-out infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 2rem;
+}
+
+.marketing-vizyon .shape-1 {
+    width: 120px;
+    height: 120px;
+    background: var(--primary);
+    top: 15%;
+    left: 10%;
+    opacity: 0.1;
+}
+
+.marketing-vizyon .shape-2 {
+    width: 80px;
+    height: 80px;
+    background: var(--accent);
+    top: 50%;
+    right: 10%;
+    animation-delay: 2s;
+    opacity: 0.1;
+}
+
+.marketing-vizyon .shape-game-1 {
+    width: 100px;
+    height: 100px;
+    background: var(--neon-purple);
+    bottom: 20%;
+    left: 15%;
+    animation-delay: 3s;
+    opacity: 0.2;
+    color: white;
+    font-size: 2.5rem;
+}
+
+.marketing-vizyon .shape-game-2 {
+    width: 90px;
+    height: 90px;
+    background: var(--neon-blue);
+    top: 20%;
+    right: 20%;
+    animation-delay: 1s;
+    opacity: 0.2;
+    color: white;
+    font-size: 2rem;
+}
+
+.marketing-vizyon .hero-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #EEF2FF;
+    color: var(--primary);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+}
+
+.marketing-vizyon .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 24px;
+    line-height: 1.1;
+    position: relative;
+    z-index: 1;
+}
+
+.marketing-vizyon .hero p {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    position: relative;
+    z-index: 1;
+    color: var(--text-muted);
+}
+
+/* --- MISSION SECTION --- */
+.marketing-vizyon .mission-section {
+    padding: 100px 0;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.marketing-vizyon .mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.marketing-vizyon .mission-content {
+    position: relative;
+    z-index: 2;
+}
+
+.marketing-vizyon .mission-title {
+    font-size: 2.8rem;
+    line-height: 1.1;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 30px;
+}
+
+.marketing-vizyon .mission-text {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+.marketing-vizyon .mission-quote {
+    border-left: 4px solid var(--accent);
+    padding-left: 24px;
+    margin-top: 30px;
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* Orbit System */
+.marketing-vizyon .mission-visual-wrapper {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.marketing-vizyon .orbit-system {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.marketing-vizyon .ring-outer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px dashed rgba(79, 70, 229, 0.2);
+    animation: spin 30s linear infinite;
+}
+
+.marketing-vizyon .ring-middle {
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: var(--primary);
+    border-bottom-color: var(--accent);
+    animation: spinReverse 15s linear infinite;
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.1);
+}
+
+.marketing-vizyon .core-gap {
+    width: 120px;
+    height: 120px;
+    background: white;
+    border-radius: 50%;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: float 4s ease-in-out infinite;
+    border: 1px solid #E2E8F0;
+}
+
+.marketing-vizyon .core-icon {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.marketing-vizyon .core-text {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: 1px;
+}
+
+.marketing-vizyon .floating-card {
+    position: absolute;
+    padding: 10px 18px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: floatCard 6s ease-in-out infinite;
+}
+
+.marketing-vizyon .card-intent {
+    top: 10%;
+    left: 0;
+}
+
+.marketing-vizyon .card-behavior {
+    bottom: 15%;
+    right: 0;
+    animation-delay: 2s;
+}
+
+.marketing-vizyon .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.marketing-vizyon .dot-blue { background: var(--primary); }
+.marketing-vizyon .dot-orange { background: var(--accent); }
+
+/* --- TRANSFORMATION SECTION --- */
+.marketing-vizyon .transformation-section {
+    padding: 100px 0;
+    background: var(--bg-soft);
+    position: relative;
+    overflow: hidden;
+}
+
+.marketing-vizyon .transformation-container {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 40px;
+    min-height: 500px;
+    position: relative;
+}
+
+.marketing-vizyon .game-orbit-container {
+    position: relative;
+    width: 380px;
+    height: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.marketing-vizyon .central-core {
+    width: 80px;
+    height: 80px;
+    background: var(--primary);
+    border-radius: 50%;
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 30px rgba(79, 70, 229, 0.3);
+    z-index: 10;
+    animation: corePulse 2s infinite;
+}
+
+.marketing-vizyon .orbit-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px dashed rgba(79, 70, 229, 0.2);
+}
+
+.marketing-vizyon .ring-orbit-inner {
+    width: 200px;
+    height: 200px;
+    animation: spin 15s linear infinite;
+}
+
+.marketing-vizyon .ring-orbit-outer {
+    width: 320px;
+    height: 320px;
+    animation: spinReverse 25s linear infinite;
+}
+
+.marketing-vizyon .orbit-item {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-size: 1.2rem;
+}
+
+.marketing-vizyon .item-1 { top: 0; left: 50%; transform: translate(-50%, -50%); color: var(--accent); }
+.marketing-vizyon .item-2 { bottom: 0; left: 50%; transform: translate(-50%, 50%); color: var(--success); }
+.marketing-vizyon .item-3 { top: 50%; left: 0; transform: translate(-50%, -50%); color: var(--neon-purple); }
+.marketing-vizyon .item-4 { top: 15%; left: 15%; color: var(--neon-blue); }
+.marketing-vizyon .item-5 { bottom: 15%; right: 15%; }
+.marketing-vizyon .item-6 { top: 50%; right: -20px; color: var(--accent); }
+
+.marketing-vizyon .trans-text-block {
+    position: relative;
+    z-index: 1;
+    padding: 40px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+    width: 100%;
+    flex: 1;
+}
+
+.marketing-vizyon .block-old { border-left: 5px solid #94A3B8; }
+.marketing-vizyon .block-new { border-right: 5px solid var(--primary); }
+
+.marketing-vizyon .trans-list {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.marketing-vizyon .trans-list li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.marketing-vizyon .trans-list li::before {
+    position: absolute;
+    left: 0;
+    top: 4px;
+}
+
+.marketing-vizyon .old-list li::before {
+    content: "✕";
+    color: #EF4444;
+}
+
+.marketing-vizyon .new-list li::before {
+    content: "✓";
+    color: var(--success);
+}
+
+/* Flip Card */
+.marketing-vizyon .flip-card {
+    flex: 1;
+    max-width: 340px;
+    perspective: 1200px;
+}
+
+.marketing-vizyon .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 380px;
+    transform-style: preserve-3d;
+    transform: translateY(30px) rotateY(180deg);
+    transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.9s ease;
+}
+
+.marketing-vizyon .flip-card.flipped .flip-card-inner {
+    transform: translateY(0) rotateY(0deg);
+}
+
+.marketing-vizyon .flip-card-delay .flip-card-inner {
+    transition-delay: 0.25s;
+}
+
+.marketing-vizyon .flip-card-front,
+.marketing-vizyon .flip-card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+}
+
+.marketing-vizyon .flip-card-front {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.marketing-vizyon .flip-card-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(145deg, #0F172A 0%, #1E293B 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.marketing-vizyon .flip-logo {
+    width: 100px;
+    height: auto;
+    filter: brightness(1.1);
+    opacity: 0.9;
+}
+
+.marketing-vizyon .flip-label {
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.marketing-vizyon .flow-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: #F1F5F9;
+}
+
+.marketing-vizyon .flow-label-in { color: var(--text-muted); }
+.marketing-vizyon .flow-label-out { color: var(--primary); background: #EEF2FF; }
+
+
+/* --- VALUE SECTION --- */
+.marketing-vizyon .value-section {
+    padding: 100px 0;
+    background: #fff;
+}
+
+.marketing-vizyon .value-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+}
+
+.marketing-vizyon .value-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: var(--radius-xl);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    border: 1px solid #E2E8F0;
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.marketing-vizyon .value-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.marketing-vizyon .card-student { border-top: 4px solid var(--accent); }
+.marketing-vizyon .card-student .v-icon { background: #FFF7ED; color: var(--accent); }
+
+.marketing-vizyon .card-school { border-top: 4px solid var(--neon-blue); }
+.marketing-vizyon .card-school .v-icon { background: #EFF6FF; color: var(--neon-blue); }
+
+.marketing-vizyon .card-parent { border-top: 4px solid var(--neon-purple); }
+.marketing-vizyon .card-parent .v-icon { background: #F5F3FF; color: var(--neon-purple); }
+
+.marketing-vizyon .card-psych { border-top: 4px solid var(--success); }
+.marketing-vizyon .card-psych .v-icon { background: #ECFDF5; color: var(--success); }
+
+.marketing-vizyon .v-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.marketing-vizyon .value-card:hover .v-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.marketing-vizyon .value-card h3 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: var(--dark);
+}
+
+.marketing-vizyon .value-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .marketing-vizyon .hero h1 { font-size: 2.8rem; }
+    .marketing-vizyon .mission-grid { grid-template-columns: 1fr; gap: 60px; text-align: center; }
+    .marketing-vizyon .mission-text { text-align: center; }
+    .marketing-vizyon .transformation-container { flex-direction: column; align-items: center; gap: 40px; padding: 60px 0; }
+    .marketing-vizyon .flip-card { max-width: 100%; width: 100%; }
+    .marketing-vizyon .game-orbit-container { transform: scale(0.8); }
+    .marketing-vizyon .value-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+    .marketing-vizyon .hero { padding: 120px 0 60px; }
+    .marketing-vizyon .hero h1 { font-size: 2.2rem; }
+    .marketing-vizyon .hero p { font-size: 1rem; }
+    .marketing-vizyon .mission-section { padding: 60px 0; }
+    .marketing-vizyon .mission-grid { gap: 40px; }
+    .marketing-vizyon .mission-title { font-size: 2rem; margin-bottom: 20px; }
+    .marketing-vizyon .mission-text { font-size: 0.95rem; margin-bottom: 20px; }
+    .marketing-vizyon .mission-quote { font-size: 0.95rem; margin-top: 20px; }
+    .marketing-vizyon .mission-visual-wrapper { height: 320px; }
+    .marketing-vizyon .orbit-system { width: 280px; height: 280px; }
+    .marketing-vizyon .floating-card { font-size: 0.7rem; padding: 8px 14px; }
+    .marketing-vizyon .card-intent { top: 5%; left: 50%; transform: translateX(-50%); }
+    .marketing-vizyon .card-behavior { bottom: 5%; right: 50%; transform: translateX(50%); }
+}
+
+@media (max-width: 600px) {
+    .marketing-vizyon .value-grid { grid-template-columns: 1fr; }
+    .marketing-vizyon .game-orbit-container { transform: scale(0.6); }
+    .marketing-vizyon .mission-title { font-size: 1.8rem; }
+    .marketing-vizyon .mission-text { font-size: 0.9rem; }
+    .marketing-vizyon .mission-quote { font-size: 0.9rem; padding-left: 16px; }
+}

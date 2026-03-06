@@ -1,0 +1,404 @@
+.register-container {
+  max-width: 640px;
+}
+
+.register-page {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
+  padding: 104px 24px 36px;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.45) transparent;
+}
+
+.register-page .login-bg {
+  position: fixed;
+  inset: 0;
+}
+
+.register-page .auth-home-link {
+  position: fixed;
+}
+
+.register-page::-webkit-scrollbar {
+  width: 10px;
+}
+
+.register-page::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.register-page::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.45);
+  border-radius: 999px;
+}
+
+.register-page::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.65);
+}
+
+.register-page .login-container {
+  width: min(100%, 640px);
+  max-width: 640px;
+  padding-top: 52px;
+  padding-bottom: 52px;
+  margin: 0 auto;
+  flex-shrink: 0;
+}
+
+.register-page .login-type-selection,
+.register-page .login-form-section,
+.register-page .login-form,
+.register-page .register-summary,
+.register-page .register-actions {
+  width: 100%;
+  min-width: 0;
+}
+
+.register-page .login-input-wrap input {
+  min-width: 0;
+}
+
+.register-page .login-subheading,
+.register-page .ltc-desc,
+.register-page .lfh-desc,
+.register-page .register-note,
+.register-page .login-status span,
+.register-page .register-summary-row strong {
+  overflow-wrap: anywhere;
+}
+
+.register-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.register-note {
+  margin: -4px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.register-result {
+  text-align: left;
+}
+
+.register-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding: 18px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.register-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.register-summary-row strong {
+  color: #fff;
+  font-weight: 700;
+  text-align: right;
+}
+
+.register-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.register-secondary-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #93c5fd;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.register-secondary-link:hover {
+  color: #bfdbfe;
+  text-decoration: underline;
+}
+
+.register-secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: none;
+  color: #93c5fd;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+
+.register-secondary-button:hover {
+  color: #bfdbfe;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .register-page {
+    padding: 92px 16px 24px;
+  }
+
+  .register-page .login-container {
+    max-width: 100%;
+    width: 100%;
+    padding: 32px 20px;
+    border-radius: 22px;
+  }
+
+  .register-page .login-logo-section {
+    margin-bottom: 28px;
+  }
+
+  .register-page .login-logo-img {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    margin-bottom: 10px;
+  }
+
+  .register-page .login-brand {
+    font-size: 26px;
+  }
+
+  .register-page .login-brand-sub,
+  .register-page .login-subheading {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .register-page .login-heading {
+    font-size: 22px;
+  }
+
+  .register-page .login-subheading {
+    margin-bottom: 24px;
+  }
+
+  .register-page .login-type-cards {
+    gap: 10px;
+  }
+
+  .register-page .login-type-card {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .register-page .ltc-icon-wrap {
+    width: 46px;
+    height: 46px;
+    font-size: 18px;
+  }
+
+  .register-page .ltc-label {
+    font-size: 15px;
+  }
+
+  .register-page .ltc-desc {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .register-page .login-form-header {
+    margin-bottom: 22px;
+  }
+
+  .register-page .lfh-title {
+    font-size: 22px;
+    line-height: 1.15;
+  }
+
+  .register-page .lfh-desc {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .register-page .login-form {
+    gap: 18px;
+  }
+
+  .register-page .login-input-wrap {
+    padding: 0 14px;
+  }
+
+  .register-page .login-input-wrap input {
+    padding: 14px 0;
+    font-size: 14px;
+  }
+
+  .register-page .login-submit-btn {
+    padding: 16px;
+    font-size: 16px;
+  }
+
+  .register-page .register-summary {
+    padding: 16px;
+  }
+
+  .register-page .register-summary-row {
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .register-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .register-summary-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .register-summary-row strong {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-page {
+    padding: 82px 12px 20px;
+  }
+
+  .register-page .auth-home-link {
+    top: 12px;
+    left: 12px;
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+
+  .register-page .login-container {
+    padding: 24px 16px;
+    border-radius: 18px;
+  }
+
+  .register-page .login-logo-section {
+    margin-bottom: 22px;
+  }
+
+  .register-page .login-logo-img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .register-page .login-brand {
+    font-size: 22px;
+  }
+
+  .register-page .login-brand-sub {
+    font-size: 13px;
+  }
+
+  .register-page .login-heading {
+    font-size: 20px;
+  }
+
+  .register-page .login-type-card {
+    padding: 14px 12px;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .register-page .ltc-icon-wrap {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .register-page .ltc-label {
+    font-size: 14px;
+  }
+
+  .register-page .ltc-desc {
+    font-size: 11px;
+  }
+
+  .register-page .ltc-arrow {
+    display: none;
+  }
+
+  .register-page .login-back-btn {
+    margin-bottom: 16px;
+    font-size: 12px;
+  }
+
+  .register-page .lfh-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .register-page .lfh-title {
+    font-size: 20px;
+  }
+
+  .register-page .login-field label {
+    font-size: 13px;
+  }
+
+  .register-page .login-input-wrap {
+    gap: 10px;
+    border-radius: 10px;
+  }
+
+  .register-page .login-input-wrap input {
+    font-size: 13px;
+  }
+
+  .register-page .register-note {
+    font-size: 12px;
+  }
+
+  .register-page .login-status {
+    align-items: flex-start;
+    padding: 12px 14px;
+    font-size: 12px;
+  }
+
+  .register-page .login-status i {
+    margin-top: 2px;
+  }
+
+  .register-page .login-status span {
+    line-height: 1.45;
+  }
+
+  .register-page .register-actions {
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .register-page .register-secondary-button {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+}

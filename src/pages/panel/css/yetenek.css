@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* =========================================
+   YETENEK & EKONOMİ - HİBRİT TASARIM
+========================================= */
+
+:root {
+    --sidebar-width: 250px;
+    --collapsed-width: 80px;
+    --header-height: 70px;
+    --page-width: 1200px;
+    
+    /* Renkler */
+    --primary-blue: #2563EB;
+    --primary-dark: #0F172A;
+    --bg-body: #F8FAFC;
+    --text-main: #1E293B;
+    --text-muted: #64748B;
+    --border-light: #E2E8F0;
+    
+    /* Finansal Renkler */
+    --income: #10B981;   /* Yeşil */
+    --expense: #EF4444;  /* Kırmızı */
+    --gold: #F59E0B;     /* Altın */
+    --purple: #8B5CF6;   /* XP/Beceriler */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+body { background-color: var(--bg-body); color: var(--text-main); display: flex; min-height: 100vh; font-size: 14px; }
+
+/* --- SIDEBAR (Standart - Collapse Destekli) --- */
+.sidebar { width: var(--collapsed-width); background: #fff; border-right: 1px solid var(--border-light); display: flex; flex-direction: column; padding: 20px 0; position: fixed; height: 100%; top: 0; left: 0; z-index: 100; transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); overflow: hidden; }
+.logo-area { display: flex; justify-content: center; padding: 0 0 20px 0; margin-bottom: 10px; }
+.logo-icon { min-width: 40px; height: 40px; background: var(--primary-blue); color: #fff; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+.logo-text { display: none; font-size: 18px; font-weight: 800; color: var(--primary-dark); margin-left: 12px; white-space: nowrap; }
+.nav-menu ul { list-style: none; padding: 0 10px; }
+.nav-menu li { margin-bottom: 6px; }
+.nav-menu a { display: flex; align-items: center; justify-content: center; padding: 12px; height: 48px; color: var(--text-muted); text-decoration: none; border-radius: 12px; font-size: 0; transition: all 0.2s; }
+.nav-menu a i { font-size: 20px; min-width: 24px; text-align: center; }
+.nav-menu li.active a { background-color: #EFF6FF; color: var(--primary-blue); }
+.nav-menu a:hover:not(.active) { background-color: #F9FAFB; color: var(--text-main); }
+.sidebar-footer { margin-top: auto; padding: 20px; border-top: 1px solid var(--border-light); display: flex; justify-content: center; }
+.collapse-btn { border: none; background: transparent; color: var(--text-muted); cursor: pointer; font-size: 20px; }
+
+/* Sidebar Açık Hali */
+body.expanded .sidebar { width: 250px; }
+body.expanded .logo-area { justify-content: flex-start; padding: 0 24px 20px; }
+body.expanded .logo-text { display: block; }
+body.expanded .nav-menu a { justify-content: flex-start; font-size: 14px; padding: 12px 16px; }
+body.expanded .nav-menu a i { margin-right: 12px; font-size: 18px; }
+body.expanded .sidebar-footer { justify-content: flex-start; padding: 20px 24px; }
+body.expanded .main-content { margin-left: 250px; width: calc(100% - 250px); }
+
+
+/* --- MAIN CONTENT --- */
+.main-content { margin-left: var(--collapsed-width); flex: 1; display: flex; flex-direction: column; width: calc(100% - var(--collapsed-width)); transition: margin-left 0.3s, width 0.3s; }
+.top-bar { height: var(--header-height); background: #fff; border-bottom: 1px solid var(--border-light); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 90; }
+.user-profile img { width: 40px; height: 40px; border-radius: 50%; border: 1px solid #E5E7EB; }
+
+/* --- CONTENT BODY --- */
+.content-body { padding: 40px; width: 100%; max-width: var(--page-width); margin: 0 auto; }
+.page-header { margin-bottom: 30px; }
+.page-title { font-size: 26px; font-weight: 800; color: var(--primary-dark); margin-bottom: 6px; }
+.page-desc { color: var(--text-muted); font-size: 14px; max-width: 700px; line-height: 1.5; }
+
+
+/* --- 1. WALLET HERO (Finansal Özet) --- */
+.wallet-hero {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 24px;
+    margin-bottom: 30px;
+}
+
+/* Ana Bakiye Kartı (Premium Look) */
+.balance-card {
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border-radius: 16px; padding: 24px; color: #fff;
+    display: flex; flex-direction: column; justify-content: center;
+    box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.4);
+    position: relative; overflow: hidden;
+}
+.balance-card::after {
+    content: ''; position: absolute; right: -20px; top: -20px; width: 150px; height: 150px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%); border-radius: 50%;
+}
+.bc-label { font-size: 12px; font-weight: 600; color: #94A3B8; text-transform: uppercase; margin-bottom: 8px; }
+.bc-amount { font-size: 36px; font-weight: 800; color: #fff; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+.bc-amount i { color: var(--gold); font-size: 28px; }
+.bc-trend { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #34D399; font-weight: 600; background: rgba(52, 211, 153, 0.1); padding: 4px 8px; border-radius: 6px; }
+
+/* İstatistik Kartları */
+.stat-card {
+    background: #fff; border: 1px solid var(--border-light); border-radius: 16px;
+    padding: 24px; display: flex; flex-direction: column; justify-content: center;
+}
+.sc-icon {
+    width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 18px; margin-bottom: 12px;
+}
+.icon-in { background: #ECFDF5; color: var(--income); }
+.icon-out { background: #FEF2F2; color: var(--expense); }
+.sc-val { font-size: 24px; font-weight: 800; color: var(--primary-dark); }
+.sc-label { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+
+
+/* --- 2. MAIN GRID --- */
+.main-grid { display: grid; grid-template-columns: 2fr 1.1fr; gap: 24px; }
+.section-label { font-size: 16px; font-weight: 700; color: var(--primary-dark); margin-bottom: 16px; }
+
+
+/* --- 3. YETENEK KARTLARI (VARLIK ODAKLI) --- */
+.skill-cards-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+.skill-card {
+    background: #fff; border: 1px solid var(--border-light); border-radius: 16px;
+    padding: 20px; display: flex; flex-direction: column; gap: 12px;
+    transition: transform 0.2s; position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+.skill-card:hover { transform: translateY(-4px); border-color: var(--primary-blue); box-shadow: 0 10px 20px -5px rgba(0,0,0,0.05); }
+
+.sk-header { display: flex; justify-content: space-between; align-items: flex-start; }
+.sk-icon-box { 
+    width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px;
+}
+/* Renkler */
+.bg-orange { background: #FFF7ED; color: #F59E0B; }
+.bg-blue { background: #EFF6FF; color: #2563EB; }
+.bg-purple { background: #F5F3FF; color: #8B5CF6; }
+.bg-green { background: #ECFDF5; color: #10B981; }
+
+.sk-val-badge { 
+    text-align: right; 
+}
+.sk-val-amount { display: block; font-size: 13px; font-weight: 800; color: var(--primary-dark); }
+.sk-val-label { font-size: 10px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+
+.sk-title { font-size: 15px; font-weight: 700; color: var(--primary-dark); margin-top: 4px; }
+.sk-desc { font-size: 12px; color: var(--text-muted); line-height: 1.4; min-height: 34px; }
+
+/* Kaynak */
+.sk-footer {
+    border-top: 1px solid #F8FAFC; padding-top: 10px; margin-top: auto;
+    font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 6px;
+}
+.sk-footer strong { color: var(--primary-blue); }
+
+
+/* --- 4. SAĞ KOLON (ANALİZ) --- */
+.analysis-col { display: flex; flex-direction: column; gap: 20px; }
+
+.analysis-card {
+    background: #fff; border: 1px solid var(--border-light); border-radius: 16px; padding: 20px;
+}
+.ac-head { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: var(--primary-dark); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid #F1F5F9; }
+
+/* İçgörü Listesi */
+.insight-row { display: flex; gap: 12px; margin-bottom: 16px; }
+.insight-row:last-child { margin-bottom: 0; }
+
+.ir-icon { 
+    width: 32px; height: 32px; background: #F1F5F9; border-radius: 50%; 
+    display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--text-muted); flex-shrink: 0;
+}
+.ir-content h4 { font-size: 13px; font-weight: 700; color: var(--primary-dark); margin-bottom: 2px; }
+.ir-content p { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
+.ir-tag { 
+    display: inline-block; font-size: 10px; font-weight: 600; color: var(--primary-blue); 
+    background: #EFF6FF; padding: 2px 6px; border-radius: 4px; margin-top: 4px; border: 1px solid #DBEAFE;
+}
+
+/* Veli İpucu */
+.tip-box {
+    background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 12px; padding: 16px;
+}
+.tip-title { display: flex; align-items: center; gap: 8px; color: #B45309; font-weight: 700; font-size: 13px; margin-bottom: 6px; }
+.tip-desc { font-size: 12px; color: #92400E; line-height: 1.4; }
+
+
+/* Footer & Responsive */
+.footer { padding: 20px 40px; background: #fff; border-top: 1px solid var(--border-light); display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); margin-top: 40px; }
+@media (max-width: 1024px) { 
+    .main-grid { grid-template-columns: 1fr; } 
+    .skill-cards-wrapper { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+    .skill-cards-wrapper { grid-template-columns: 1fr; }
+    .sidebar { display: none; } 
+    .main-content { margin-left: 0; width: 100%; } 
+}
+/* Body collapse */
+body.collapsed .sidebar { width: 80px; }
+body.collapsed .logo-area { justify-content: center; padding: 20px 0; }
+body.collapsed .logo-text { display: none; }
+body.collapsed .nav-menu a { font-size: 0; justify-content: center; padding: 14px; }
+body.collapsed .nav-menu a i { margin: 0; font-size: 20px; }
+body.collapsed .collapse-btn span { display: none; }
+body.collapsed .collapse-btn { justify-content: center; }
+body.collapsed .collapse-btn i { transform: rotate(180deg); }
+body.collapsed .main-content { margin-left: 80px; width: calc(100% - 80px); }

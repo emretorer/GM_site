@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dijital Aktivite ve Performans Merkezi</title>
+    <link rel="stylesheet" href="css/oyun-suresi.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo-area">
+            <span class="logo-icon"><i class="fa-solid fa-shapes"></i></span>
+            <span class="logo-text">Veli Paneli</span>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="haberler.html"><i class="fa-regular fa-newspaper"></i> <span>Haber Akışı</span></a></li>
+                <li><a href="ana-navigasyon.html"><i class="fa-solid fa-border-all"></i> <span>Ana Panel</span></a></li>
+                
+                <li class="active"><a href="oyun-suresi.html"><i class="fa-solid fa-chart-simple"></i> <span>Oyun Süresi</span></a></li>
+                
+                <li><a href="yetenek.html"><i class="fa-solid fa-arrow-trend-up"></i> <span>Yetenek Gelişimi</span></a></li>
+                <li><a href="kariyer-yolu.html"><i class="fa-solid fa-road"></i> <span>Kariyer Yolu</span></a></li>
+                <li><a href="meslek-rehberi.html"><i class="fa-solid fa-book-open-reader"></i> <span>Meslek Rehberi</span></a></li>
+                <li><a href="basarilar.html"><i class="fa-solid fa-medal"></i> <span>Başarılar</span></a></li>
+                <li><a href="ilgi-alanlari.html"><i class="fa-regular fa-lightbulb"></i> <span>İlgi Alanları</span></a></li>
+                <li><a href="gelisim-agaci.html"><i class="fa-solid fa-tree"></i> <span>Gelişim Ağacı</span></a></li>
+                <li><a href="#"><i class="fa-solid fa-gamepad"></i> <span>Oyun Bilgileri</span></a></li>
+                <li><a href="#"><i class="fa-regular fa-circle-question"></i> <span>Yardım Paneli</span></a></li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button class="collapse-btn">
+                <i class="fa-solid fa-chevron-left"></i>
+                <span>Menüyü Daralt</span>
+            </button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="search-box"></div>
+            <div class="user-profile"><img src="https://ui-avatars.com/api/?name=Elif&background=3B82F6&color=fff" alt="Profil"></div>
+        </header>
+
+        <div class="content-body">
+            
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Dijital Aktivite ve Performans</h1>
+                    <p class="page-desc">Tüm platform aktiviteleri, oyun süreleri, görev performansları ve alışkanlıklarının detaylı analizi.</p>
+                </div>
+                <div class="date-filter">
+                    <select>
+                        <option value="week">Bu Hafta (21-27 Eki)</option>
+                        <option value="month">Bu Ay (Ekim)</option>
+                        <option value="year">Bu Yıl (2025)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="mc-icon mc-blue"><i class="fa-solid fa-calendar-check"></i></div>
+                    <div class="mc-info">
+                        <h3>Son Etkileşim</h3>
+                        <div class="mc-value">24/10/2025 <span>(Bugün)</span></div>
+                        <div class="mc-sub">Haftada <strong>5/7 Gün</strong> aktif</div>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="mc-icon mc-orange"><i class="fa-solid fa-coins"></i></div>
+                    <div class="mc-info">
+                        <h3>Haftalık Kazanç</h3>
+                        <div class="mc-value">4.250 <span>Prestij</span></div>
+                        <div class="mc-sub text-success"><i class="fa-solid fa-arrow-up"></i> %12 Artış</div>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="mc-icon mc-purple"><i class="fa-solid fa-star"></i></div>
+                    <div class="mc-info">
+                        <h3>En Sevilen Tür</h3>
+                        <div class="mc-value">Strateji</div>
+                        <div class="mc-sub">Analitik zeka gelişimi</div>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="mc-icon mc-green"><i class="fa-solid fa-bullseye"></i></div>
+                    <div class="mc-info">
+                        <h3>Görev Odaklı (Verimli)</h3>
+                        <div class="mc-value">%65 <span>Süre</span></div>
+                        <div class="mc-sub">Aktif öğrenme süresi</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="analysis-grid">
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fa-solid fa-chart-column"></i> Haftalık Kullanım ve Toplam Süreler</h3>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-bar-group">
+                            <div class="chart-bar" style="height: 40%;" data-val="45dk"></div>
+                            <span class="chart-label">Pzt</span>
+                        </div>
+                        <div class="chart-bar-group">
+                            <div class="chart-bar" style="height: 65%;" data-val="1s 10dk"></div>
+                            <span class="chart-label">Sal</span>
+                        </div>
+                        <div class="chart-bar-group">
+                            <div class="chart-bar" style="height: 30%;" data-val="30dk"></div>
+                            <span class="chart-label">Çar</span>
+                        </div>
+                        <div class="chart-bar-group">
+                            <div class="chart-bar current-day" style="height: 85%;" data-val="1s 45dk"></div>
+                            <span class="chart-label current-day-label">Per</span>
+                        </div>
+                        <div class="chart-bar-group">
+                            <div class="chart-bar" style="height: 50%;" data-val="55dk"></div>
+                            <span class="chart-label">Cum</span>
+                        </div>
+                        <div class="chart-bar-group">
+                            <div class="chart-bar" style="height: 90%;" data-val="2s 10dk"></div>
+                            <span class="chart-label">Cmt</span>
+                        </div>
+                        <div class="chart-bar-group">
+                            <div class="chart-bar" style="height: 70%;" data-val="1s 30dk"></div>
+                            <span class="chart-label">Paz</span>
+                        </div>
+                    </div>
+                    
+                    <h4 style="font-size:14px; font-weight:700; margin: 24px 0 12px;">Toplam Oyun Süresi Kırılımı</h4>
+                    <div class="time-breakdown-grid">
+                        <div class="tb-box"><span class="tb-label">BUGÜN</span><span class="tb-val">1s 45dk</span></div>
+                        <div class="tb-box"><span class="tb-label">BU AY</span><span class="tb-val">42s 10dk</span></div>
+                        <div class="tb-box"><span class="tb-label">BU YIL</span><span class="tb-val">310s</span></div>
+                        <div class="tb-box" style="background:#EFF6FF; border-color:#DBEAFE;"><span class="tb-label" style="color:#2563EB;">BAŞLANGIÇTAN BERİ</span><span class="tb-val" style="color:#2563EB;">450s 20dk</span></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fa-solid fa-list-ul"></i> Bugünkü Oturumlar (Detaylı)</h3>
+                    </div>
+                    <div class="session-timeline">
+                        <div class="session-item">
+                            <div class="st-time">16:30 - 17:15 (45dk)</div>
+                            <div class="st-game">
+                                Minecraft <span class="st-tag tag-free">Serbest Mod</span>
+                            </div>
+                        </div>
+                        <div class="session-item">
+                            <div class="st-time">19:00 - 19:40 (40dk)</div>
+                            <div class="st-game">
+                                Civilization VI <span class="st-tag tag-mission">Görev Odaklı</span>
+                            </div>
+                        </div>
+                        <div class="session-item" style="opacity:0.6;">
+                            <div class="st-time">20:15 - 20:35 (20dk)</div>
+                            <div class="st-game">
+                                Roblox <span class="st-tag tag-free">Sosyal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+
+            <div class="tabs-container">
+                <div class="tabs-header">
+                    <button class="tab-btn active" onclick="openTab(event, 'tab-performans')"><i class="fa-solid fa-trophy"></i> Görev ve Performans</button>
+                    <button class="tab-btn" onclick="openTab(event, 'tab-loglar')"><i class="fa-solid fa-clock-rotate-left"></i> Tüm Giriş/Çıkış Logları</button>
+                </div>
+
+                <div id="tab-performans" class="tab-content active">
+                    <div class="split-grid">
+                        <div class="card">
+                            <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-percent"></i> Görev Odaklanma Analizi</h3></div>
+                            <p style="font-size:13px; color:#64748B;">Platformda geçirilen sürenin ne kadarı verilen görevlerde, ne kadarı serbest dolaşımda geçtiğini gösterir.</p>
+                            <div class="focus-bar-container">
+                                <div class="fb-labels">
+                                    <span style="color:var(--secondary)">%65 Görev (Verimli)</span>
+                                    <span style="color:#10B981">%35 Serbest</span>
+                                </div>
+                                <div class="fb-track">
+                                    <div class="fb-mission" style="width: 65%">1s 08dk</div>
+                                    <div class="fb-free" style="width: 35%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-list-check"></i> Ön Görev Performansı (Bugün)</h3></div>
+                            <div class="pretask-list">
+                                <div class="pretask-item">
+                                    <div class="pt-info">
+                                        <span class="pt-order">1</span>
+                                        <span class="pt-name">Günlük Kelime Bulmacası</span>
+                                    </div>
+                                    <div class="pt-stats">
+                                        <span class="pt-duration">3dk 20sn</span>
+                                        <span class="pt-rq">0 RQ (Hatasız)</span>
+                                    </div>
+                                </div>
+                                <div class="pretask-item">
+                                    <div class="pt-info">
+                                        <span class="pt-order">2</span>
+                                        <span class="pt-name">Mantık Eşleştirme</span>
+                                    </div>
+                                    <div class="pt-stats">
+                                        <span class="pt-duration">5dk 10sn</span>
+                                        <span class="pt-rq">2 RQ (Tekrar)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-loglar" class="tab-content">
+                    <div class="card" style="padding:0; overflow:hidden;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Tarih (G/A/Y)</th>
+                                    <th>Saat</th>
+                                    <th>İşlem Türü</th>
+                                    <th>Cihaz / Platform</th>
+                                    <th>Süre</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>24/10/2025</td>
+                                    <td>20:35</td>
+                                    <td><span class="log-type log-out">Çıkış</span></td>
+                                    <td>Tablet (iPad)</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>24/10/2025</td>
+                                    <td>16:30</td>
+                                    <td><span class="log-type log-in">Giriş</span></td>
+                                    <td>Tablet (iPad)</td>
+                                    <td>1s 45dk aktif</td>
+                                </tr>
+                                <tr>
+                                    <td>23/10/2025</td>
+                                    <td>19:10</td>
+                                    <td><span class="log-type log-out">Çıkış</span></td>
+                                    <td>Masaüstü PC</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>23/10/2025</td>
+                                    <td>18:40</td>
+                                    <td><span class="log-type log-in">Giriş</span></td>
+                                    <td>Masaüstü PC</td>
+                                    <td>30dk aktif</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div> 
+        </div>
+
+        <footer class="footer">© 2025 Çocuk Gelişim Platformu. Tüm hakları saklıdır.</footer>
+    </main>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove('active');
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.className += " active";
+        }
+    </script>
+    
+    <script src="js/panel.js"></script>
+    
+</body>
+</html>

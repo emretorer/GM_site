@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İlgi Alanları - Veli Paneli</title>
+    <link rel="stylesheet" href="css/ilgi-alanlari.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo-area">
+            <span class="logo-icon"><i class="fa-solid fa-shapes"></i></span>
+            <span class="logo-text">Veli Paneli</span>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="haberler.html"><i class="fa-regular fa-newspaper"></i> <span>Haber Akışı</span></a></li>
+                <li><a href="ana-navigasyon.html"><i class="fa-solid fa-border-all"></i> <span>Ana Panel</span></a></li>
+                <li><a href="oyun-suresi.html"><i class="fa-solid fa-chart-simple"></i> <span>Oyun Süresi</span></a></li>
+                <li><a href="yetenek.html"><i class="fa-solid fa-arrow-trend-up"></i> <span>Yetenek Gelişimi</span></a></li>
+                <li><a href="kariyer-yolu.html"><i class="fa-solid fa-road"></i> <span>Kariyer Yolu</span></a></li>
+                <li><a href="meslek-rehberi.html"><i class="fa-solid fa-book-open-reader"></i> <span>Meslek Rehberi</span></a></li>
+                <li><a href="basarilar.html"><i class="fa-solid fa-medal"></i> <span>Başarılar</span></a></li>
+                <li class="active"><a href="ilgi-alanlari.html"><i class="fa-regular fa-lightbulb"></i> <span>İlgi Alanları</span></a></li>
+                <li><a href="gelisim-agaci.html"><i class="fa-solid fa-tree"></i> <span>Gelişim Ağacı</span></a></li>
+                <li><a href="#"><i class="fa-solid fa-gamepad"></i> <span>Oyun Bilgileri</span></a></li>
+                <li><a href="#"><i class="fa-regular fa-circle-question"></i> <span>Yardım Paneli</span></a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="collapse-btn">
+                <i class="fa-solid fa-chevron-left"></i>
+                <span>Menüyü Daralt</span>
+            </button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="search-box"></div>
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=Elif&background=4F46E5&color=fff" alt="Profil">
+            </div>
+        </header>
+
+        <div class="content-body">
+            
+            <div class="page-header">
+                <h1 class="page-title">İlgi Alanları & Tutku Haritası</h1>
+                <p class="page-desc">Oyun dünyasındaki tercihlerinin derinlemesine analizi.</p>
+            </div>
+
+            <div class="identity-section">
+                <div class="avatar-area">
+                    <div class="big-avatar"><i class="fa-solid fa-user-astronaut"></i></div>
+                    <h2 class="player-name">Profil</h2>
+                    <span class="player-tag">Kaşif & Yaratıcı</span>
+                </div>
+                
+                <div class="stats-area">
+                    <div class="stat-box">
+                        <i class="fa-solid fa-rocket stat-icon" style="color:#4F46E5;"></i>
+                        <span class="stat-val">Bilim</span>
+                        <span class="stat-label">Baskın Tema</span>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fa-solid fa-puzzle-piece stat-icon" style="color:#06B6D4;"></i>
+                        <span class="stat-val">Analitik</span>
+                        <span class="stat-label">Düşünce Yapısı</span>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fa-solid fa-fingerprint stat-icon" style="color:#F43F5E;"></i>
+                        <span class="stat-val">I - A</span>
+                        <span class="stat-label">RIASEC Kodu</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-wrapper">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="acc-title">
+                        <i class="fa-solid fa-heart-circle-bolt" style="color:#F43F5E;"></i>
+                        Beğeniler & Zorluk Analizi
+                    </div>
+                    <i class="fa-solid fa-chevron-down acc-icon"></i>
+                </button>
+
+                <div class="accordion-content">
+                    <div class="acc-inner-padding">
+                        <div class="pref-grid">
+                            
+                            <div class="pref-col">
+                                <h4 class="text-love"><i class="fa-solid fa-thumbs-up"></i> Sevilen & İlgi Duyulan Şeyler</h4>
+                                <div class="pref-tags">
+                                    <span class="pref-tag tag-love"><i class="fa-solid fa-chess-rook"></i> Strateji Kurma</span>
+                                    <span class="pref-tag tag-love"><i class="fa-solid fa-hammer"></i> İnşa Etme / Yaratma</span>
+                                    <span class="pref-tag tag-love"><i class="fa-solid fa-puzzle-piece"></i> Zorlu Bulmacalar</span>
+                                    <span class="pref-tag tag-love"><i class="fa-solid fa-users"></i> Takım Görevleri</span>
+                                </div>
+                            </div>
+
+                            <div class="pref-divider"></div>
+
+                            <div class="pref-col">
+                                <h4 class="text-hate"><i class="fa-solid fa-thumbs-down"></i> Zorlanılan & Sevilmeyen Şeyler </h4>
+                                <div class="pref-tags">
+                                    <span class="pref-tag tag-hate"><i class="fa-solid fa-hourglass-end"></i> Süreli Baskı</span>
+                                    <span class="pref-tag tag-hate"><i class="fa-solid fa-book-open"></i> Uzun Okuma Metinleri</span>
+                                    <span class="pref-tag tag-hate"><i class="fa-solid fa-rotate"></i> Tekrarlayan (Monoton) Görevler</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="interest-grid">
+                
+                <div class="topics-col">
+                    <div class="riasec-left-widget" aria-label="RIASEC detay widget">
+                        <div class="riasec-left-head">
+                            <h3 class="sec-title"><i class="fa-solid fa-circle-info"></i> RIASEC Detayları</h3>
+                            <p class="riasec-left-subtitle">Holland modelindeki her boyutun ne anlama geldiğine dair kısa rehber.</p>
+                        </div>
+                        <div class="riasec-left-list">
+                            <article class="riasec-left-item">
+                                <span class="riasec-tag r-tag">R</span>
+                                <div>
+                                    <h4>Gerçekçi (Realistic)</h4>
+                                    <p>Pratik ve uygulamalı görevlere yönelir. Araçlar, makineler ve somut üretim işleriyle güçlüdür. Örnek alanlar: teknisyenlik, tamirat, zanaat.</p>
+                                </div>
+                            </article>
+                            <article class="riasec-left-item">
+                                <span class="riasec-tag i-tag">I</span>
+                                <div>
+                                    <h4>Araştırmacı (Investigative)</h4>
+                                    <p>Analitik düşünme, teori kurma ve bilimsel merak odaklıdır. Problem çözme, veri ve fikirlerle çalışmayı sever. Örnek alanlar: bilim, analiz, araştırma.</p>
+                                </div>
+                            </article>
+                            <article class="riasec-left-item">
+                                <span class="riasec-tag a-tag">A</span>
+                                <div>
+                                    <h4>Yaratıcı (Artistic)</h4>
+                                    <p>İfade, hayal gücü ve özgünlük ön plandadır. Yeni fikirler üretmeyi, tasarımı ve sanatsal çalışmaları sever. Örnek alanlar: tasarım, yazarlık, performans.</p>
+                                </div>
+                            </article>
+                            <article class="riasec-left-item">
+                                <span class="riasec-tag s-tag">S</span>
+                                <div>
+                                    <h4>Sosyal (Social)</h4>
+                                    <p>İnsanlara destek olma ve etkili iletişim odaklıdır. Öğretme, rehberlik etme ve birlikte çalışmada motive olur. Örnek alanlar: eğitim, psikoloji, sağlık.</p>
+                                </div>
+                            </article>
+                            <article class="riasec-left-item">
+                                <span class="riasec-tag e-tag">E</span>
+                                <div>
+                                    <h4>Girişimci (Enterprising)</h4>
+                                    <p>İnisiyatif alma, ikna ve liderlik becerileri baskındır. Fikir, ürün veya hizmetleri öne çıkarmayı sever. Örnek alanlar: satış, pazarlama, yönetim.</p>
+                                </div>
+                            </article>
+                            <article class="riasec-left-item">
+                                <span class="riasec-tag c-tag">C</span>
+                                <div>
+                                    <h4>Sistematik (Conventional)</h4>
+                                    <p>Düzen, plan ve detay takibi güçlüdür. Standartlara uygun, yapısal ve idari görevlerde rahat eder. Örnek alanlar: muhasebe, raporlama, operasyon.</p>
+                                </div>
+                            </article>
+                        </div>
+                        <p class="riasec-left-source">
+                            Kaynak: <a href="https://personalityjunkie.com/holland-code-riasec-career-interests-myers-briggs-types/" target="_blank" rel="noopener noreferrer">Personality Junkie - Holland Code (RIASEC)</a>
+                        </p>
+                    </div>
+                    <h3 class="sec-title"><i class="fa-solid fa-layer-group"></i> En Çok İlgilenilen Konular</h3>
+                    
+                    <div class="topics-container">
+                        
+                        <div class="topic-row">
+                            <div class="topic-visual tv-space"><i class="fa-solid fa-rocket"></i></div>
+                            <div class="topic-details">
+                                <div class="td-head">
+                                    <span class="td-name">Uzay ve Astronomi</span>
+                                    <span class="td-perc">Yoğunluk: %45</span>
+                                </div>
+                                <div class="td-bar-bg"><div class="td-bar-fill" style="width: 45%; background: #4F46E5;"></div></div>
+                                <div class="td-games">
+                                    <span class="game-pill">Galaxy Explorer</span>
+                                    <span class="game-pill">Star Base Builder</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="topic-row">
+                            <div class="topic-visual tv-tech"><i class="fa-solid fa-robot"></i></div>
+                            <div class="topic-details">
+                                <div class="td-head">
+                                    <span class="td-name">Mekanik ve Robotik</span>
+                                    <span class="td-perc">Yoğunluk: %30</span>
+                                </div>
+                                <div class="td-bar-bg"><div class="td-bar-fill" style="width: 30%; background: #06B6D4;"></div></div>
+                                <div class="td-games">
+                                    <span class="game-pill">Redstone Logic</span>
+                                    <span class="game-pill">Robot Wars</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="topic-row">
+                            <div class="topic-visual tv-art"><i class="fa-solid fa-palette"></i></div>
+                            <div class="topic-details">
+                                <div class="td-head">
+                                    <span class="td-name">Sanat ve Tasarım</span>
+                                    <span class="td-perc">Yoğunluk: %25</span>
+                                </div>
+                                <div class="td-bar-bg"><div class="td-bar-fill" style="width: 25%; background: #F43F5E;"></div></div>
+                                <div class="td-games">
+                                    <span class="game-pill">Pixel Art Maker</span>
+                                    <span class="game-pill">House Flipper</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="right-col">
+                    <div class="radar-card">
+                        <h3 class="sec-title" style="justify-content:center; margin-bottom:5px;">Holland (RIASEC) Analizi</h3>
+                        <p style="font-size:12px; color:#64748B; text-align:center; margin-bottom:15px;">Oyun tercihlerine göre kişilik eğilimi.</p>
+                        
+                        <div class="radar-wrapper">
+                            <svg viewBox="0 0 300 300" style="width:100%; height:100%;">
+                                <polygon points="150,30 254,90 254,210 150,270 46,210 46,90" class="grid-stroke" />
+                                <polygon points="150,70 219,110 219,190 150,230 81,190 81,110" class="grid-stroke" opacity="0.5" />
+                                <polygon points="150,110 185,130 185,170 150,190 115,170 115,130" class="grid-stroke" opacity="0.3" />
+
+                                <line x1="150" y1="150" x2="150" y2="30" class="axis-stroke" /> <line x1="150" y1="150" x2="254" y2="90" class="axis-stroke" /> <line x1="150" y1="150" x2="254" y2="210" class="axis-stroke" /> <line x1="150" y1="150" x2="150" y2="270" class="axis-stroke" /> <line x1="150" y1="150" x2="46" y2="210" class="axis-stroke" /> <line x1="150" y1="150" x2="46" y2="90" class="axis-stroke" />   
+                                <text x="150" y="20" class="radar-label">R</text> <text x="270" y="90" class="radar-label active">I</text> <text x="270" y="220" class="radar-label active">A</text> <text x="150" y="290" class="radar-label">S</text> <text x="30" y="220" class="radar-label">E</text> <text x="30" y="90" class="radar-label">C</text> 
+                                <polygon points="150,110 240,100 230,200 150,220 90,180 90,120" class="data-polygon" />
+                                <circle cx="240" cy="100" r="4" fill="#3B82F6" /> <circle cx="230" cy="200" r="4" fill="#3B82F6" />
+                            </svg>
+                        </div>
+
+                        <div class="radar-legend-grid">
+                            <div class="legend-item"><span class="legend-dot">R</span> Gerçekçi </div>
+                            <div class="legend-item highlight"><span class="legend-dot">I</span> Araştırmacı </div>
+                            <div class="legend-item highlight"><span class="legend-dot">A</span> Yaratıcı</div>
+                            <div class="legend-item"><span class="legend-dot">S</span> Sosyal </div>
+                            <div class="legend-item"><span class="legend-dot">E</span> Girişimci </div>
+                            <div class="legend-item"><span class="legend-dot">C</span> Sistematik </div>
+                        </div>
+                    </div>
+
+                    <div class="action-card">
+                        <i class="fa-solid fa-gift ac-icon"></i>
+                        <h4 class="ac-title">Öneri: Kodlama Seti</h4>
+                        <p class="ac-text"> "Mekanik" ve "Araştırmacı" ilgisyi desteklemek için başlangıç seviyesi bir robotik seti alabilirsiniz.</p>
+                        <a href="#" class="ac-btn">İncele</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer class="footer">© 2025 Çocuk Gelişim Platformu. Tüm hakları saklıdır.</footer>
+    </main>
+
+    <script src="js/panel.js"></script>
+    
+    <script>
+        function toggleAccordion(btn) {
+            // Butona 'active' sınıfı ekle/çıkar (ikon dönmesi için)
+            btn.classList.toggle('active');
+            
+            // İçerik div'ini bul
+            var content = btn.nextElementSibling;
+            
+            // Yükseklik ayarı ile animasyon
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                content.classList.remove('open');
+            } else {
+                content.classList.add('open');
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        }
+    </script>
+
+</body>
+</html>

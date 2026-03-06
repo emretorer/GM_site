@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap');
+
+:root {
+    --primary: #3B82F6;       /* Ana Mavi */
+    --primary-dark: #1E40AF;
+    --text-dark: #1E293B;     /* Koyu Metin */
+    --text-light: #64748B;    /* Açık Metin */
+    --bg-light: #F8FAFC;      /* Arka Plan */
+    --accent: #F59E0B;        /* Vurgu (Turuncu) */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+body { background-color: #fff; color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+
+/* --- NAVBAR --- */
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 5%; position: fixed; top: 0; left: 0; width: 100%;
+    background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+    z-index: 1000; border-bottom: 1px solid #E2E8F0;
+}
+
+.logo { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 800; color: var(--text-dark); }
+.logo-icon { 
+    width: 36px; height: 36px; background: var(--primary); color: #fff; 
+    border-radius: 8px; display: flex; align-items: center; justify-content: center; 
+}
+
+.nav-links { display: flex; gap: 30px; }
+.nav-links a { text-decoration: none; color: var(--text-light); font-weight: 600; font-size: 14px; transition: 0.3s; }
+.nav-links a:hover { color: var(--primary); }
+
+.login-btn {
+    background: var(--primary); color: #fff; padding: 10px 24px; 
+    border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 14px;
+    transition: 0.3s; box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+}
+.login-btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+/* --- HERO SECTION --- */
+.hero {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 140px 5% 80px; background: linear-gradient(180deg, #EFF6FF 0%, #fff 100%);
+}
+.hero-content { max-width: 50%; }
+.hero-tag { 
+    background: #DBEAFE; color: var(--primary); padding: 5px 12px; 
+    border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+}
+.hero h1 { font-size: 48px; line-height: 1.2; margin: 20px 0; color: #0F172A; }
+.hero p { font-size: 18px; color: var(--text-light); margin-bottom: 30px; max-width: 90%; }
+
+.hero-buttons { display: flex; gap: 15px; }
+.primary-btn {
+    background: var(--primary); color: #fff; padding: 15px 35px; border-radius: 12px;
+    text-decoration: none; font-weight: 700; transition: 0.3s;
+}
+.secondary-btn {
+    background: #fff; color: var(--text-dark); padding: 15px 35px; border-radius: 12px;
+    text-decoration: none; font-weight: 700; border: 1px solid #E2E8F0; transition: 0.3s;
+}
+.primary-btn:hover { background: var(--primary-dark); }
+.secondary-btn:hover { border-color: var(--text-dark); }
+
+.hero-image img { width: 100%; max-width: 550px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+
+/* --- PROCESS SECTION (STORY) --- */
+.process { padding: 100px 5%; text-align: center; }
+.section-title { font-size: 32px; font-weight: 800; margin-bottom: 15px; }
+.section-desc { color: var(--text-light); max-width: 600px; margin: 0 auto 60px; }
+
+.timeline {
+    display: flex; justify-content: space-between; gap: 30px; max-width: 1000px; margin: 0 auto;
+    position: relative;
+}
+/* Çizgi */
+.timeline::before {
+    content: ''; position: absolute; top: 40px; left: 0; width: 100%; height: 2px;
+    background: #E2E8F0; z-index: -1;
+}
+
+.step-card { background: #fff; padding: 30px; border-radius: 16px; border: 1px solid #F1F5F9; flex: 1; transition: 0.3s; }
+.step-card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+.step-icon {
+    width: 80px; height: 80px; background: #fff; border: 2px solid #E2E8F0;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 32px; color: var(--primary); margin: 0 auto 20px;
+}
+.step-card h3 { font-size: 20px; margin-bottom: 10px; }
+.step-card p { font-size: 14px; color: var(--text-light); }
+
+/* --- FEATURES SECTION --- */
+.features { background: #F8FAFC; padding: 100px 5%; }
+.feature-row { 
+    display: flex; align-items: center; gap: 60px; margin-bottom: 80px; 
+}
+.feature-row.reverse { flex-direction: row-reverse; } /* Görsel sağda/solda değişimi */
+
+.feat-text { flex: 1; }
+.feat-text h2 { font-size: 30px; margin-bottom: 20px; }
+.feat-text p { font-size: 16px; color: var(--text-light); margin-bottom: 20px; line-height: 1.7; }
+.feat-list { list-style: none; }
+.feat-list li { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-weight: 600; color: #334155; }
+.feat-list li i { color: #22C55E; }
+
+.feat-img { flex: 1; }
+.feat-img img { width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+
+/* --- CTA SECTION --- */
+.cta-section {
+    padding: 80px 5%; text-align: center;
+    background: var(--primary); color: #fff;
+    border-radius: 30px; margin: 0 5% 50px;
+}
+.cta-section h2 { font-size: 36px; margin-bottom: 20px; }
+.cta-btn {
+    background: #fff; color: var(--primary); padding: 15px 40px; 
+    border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 16px;
+    display: inline-block; transition: 0.3s;
+}
+.cta-btn:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+/* --- FOOTER --- */
+.footer {
+    background: #0F172A; color: #94A3B8; padding: 50px 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .hero, .feature-row { flex-direction: column; text-align: center; }
+    .hero-content, .feat-text { max-width: 100%; }
+    .timeline { flex-direction: column; }
+    .timeline::before { width: 2px; height: 100%; left: 50%; top: 0; }
+    .nav-links { display: none; }
+}

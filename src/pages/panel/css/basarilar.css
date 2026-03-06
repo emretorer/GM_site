@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    /* Color Theory Based 6-Color Palette (Tetradic + Analogous) */
+    --primary: #D32F2F;       /* Deep Red - Anchor */
+    --primary-dark: #B71C1C;  
+    --text-main: #0F172A;     
+    --text-muted: #64748B;    
+    --bg-body: #FBFBFF;       
+    --border: #E6E9F6;        
+
+    /* 6 Harmonious Colors (Tetradic + Analogous) */
+    --theme1: #D32F2F;        /* Deep Red (Grup 1) - Enerji, Başlangıç */
+    --theme1-dark: #B71C1C;
+    
+    --theme2: #F57C00;        /* Vibrant Orange (Grup 2) - Sıcaklık, Gelişim */
+    --theme2-dark: #E65100;
+    
+    --theme3: #1976D2;        /* Electric Blue (Grup 3) - Teknoloji, Güç */
+    --theme3-dark: #1565C0;
+    
+    --theme4: #0097A7;        /* Cyan (Grup 4) - Yenilik, Taze */
+    --theme4-dark: #00838F;
+    
+    --theme5: #7B1FA2;        /* Deep Purple (Grup 5) - Gizemli, Premium */
+    --theme5-dark: #6A1B9A;
+    
+    --theme6: #388E3C;        /* Forest Green (Grup 6) - Başarı, Zafer */
+    --theme6-dark: #2E7D32;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+body { background-color: var(--bg-body); color: var(--text-main); display: flex; min-height: 100vh; font-size: 14px; }
+
+/* SIDEBAR (Standart) */
+.sidebar { width: 250px; background: #fff; border-right: 1px solid var(--border); display: flex; flex-direction: column; position: fixed; height: 100%; top: 0; left: 0; z-index: 100; transition: width 0.3s ease; }
+.logo-area { padding: 24px; display: flex; align-items: center; gap: 12px; white-space: nowrap; overflow: hidden; }
+.logo-icon { min-width: 32px; height: 32px; background: var(--primary); color: #fff; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.logo-text { font-size: 18px; font-weight: 800; color: #1F2937; }
+.nav-menu ul { list-style: none; padding: 0 12px; }
+.nav-menu li { margin-bottom: 4px; }
+.nav-menu a { display: flex; align-items: center; padding: 12px 14px; color: var(--text-muted); text-decoration: none; border-radius: 10px; font-size: 14px; font-weight: 500; transition: 0.2s; white-space: nowrap; overflow: hidden; }
+.nav-menu a i { min-width: 24px; margin-right: 12px; font-size: 18px; text-align: center; }
+.nav-menu li.active a { background-color: #EFF6FF; color: var(--primary); font-weight: 600; }
+.nav-menu a:hover:not(.active) { background-color: #F3F4F6; color: var(--text-main); }
+.sidebar-footer { margin-top: auto; padding: 20px; border-top: 1px solid var(--border); }
+.collapse-btn { width: 100%; background: none; border: none; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; gap: 10px; padding: 10px; font-weight: 600; }
+
+/* MAIN CONTENT */
+.main-content { margin-left: 250px; flex: 1; padding: 40px; transition: margin-left 0.3s ease; }
+.top-bar { height: 60px; background: #fff; border-bottom: 1px solid var(--border); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 90; margin: -40px -40px 40px -40px; }
+.user-profile img { width: 36px; height: 36px; border-radius: 50%; }
+
+/* --- HEADER & ENVANTER BARI --- */
+.page-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 30px; }
+.ph-left h1 { font-size: 26px; font-weight: 800; color: #111827; margin-bottom: 5px; }
+.ph-left p { color: var(--text-muted); font-size: 13px; }
+
+/* Envanter Ä°lerleme Ã‡ubuÄŸu */
+.inventory-stat { width: 280px; text-align: right; }
+.inv-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 12px; font-weight: 700; color: #374151; }
+.inv-track { width: 100%; height: 10px; background: #E5E7EB; border-radius: 5px; overflow: hidden; }
+.inv-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-dark)); border-radius: 5px; width: 26%; }
+
+/* --- HERO (Son KazanÄ±lan) --- */
+.hero-card {
+    background: linear-gradient(135deg, #F8FAFF 0%, #F7F3FF 100%); /* hafif, nötr arka plan */
+    border-radius: 20px; padding: 32px; color: var(--text-main);
+    display: flex; align-items: center; gap: 24px; margin-bottom: 36px;
+    position: relative; overflow: hidden;
+    box-shadow: 0 12px 30px -8px rgba(15, 23, 42, 0.06);
+}
+.hero-card::after {
+    content: ''; position: absolute; right: 0; top: 0; width: 400px; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05));
+}
+
+/* Hero Ä°konu (BÃ¼yÃ¼k Parlak) */
+.hero-icon-box {
+    width: 84px; height: 84px; border-radius: 18px;
+    background: #fff; /* beyaz kutu, iç ikon tema ile renklenir */
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px; color: var(--primary);
+    border: 2px solid rgba(79,70,229,0.06);
+    box-shadow: 0 8px 24px rgba(16, 24, 40, 0.06);
+}/* Tema renkleri hero-icon-box için */
+.hero-icon-box.theme1 { color: #D32F2F; }
+.hero-icon-box.theme2 { color: #F57C00; }
+.hero-icon-box.theme3 { color: #1976D2; }
+.hero-icon-box.theme4 { color: #0097A7; }
+.hero-icon-box.theme5 { color: #7B1FA2; }
+.hero-icon-box.theme6 { color: #388E3C; }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+.hc-content h2 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+.hc-content p { font-size: 14px; opacity: 0.8; max-width: 600px; line-height: 1.6; }
+.hc-tag { 
+    background: linear-gradient(90deg, var(--primary), var(--primary-dark)); color: #fff; padding: 6px 12px; border-radius: 8px; 
+    font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: inline-block;
+}
+
+/* --- GRID & ROZETLER --- */
+.section-title { font-size: 16px; font-weight: 700; color: #1F2937; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+.badges-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 25px; margin-bottom: 40px;
+}
+
+/* Kart YapÄ±sÄ± */
+.badge-card {
+    background: linear-gradient(135deg, #FFFFFF 0%, #F9FAFB 100%);
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 12px 15px;
+    text-align: center;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+.badge-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    border-color: #D1D5DB;
+}
+
+/* --- ÅERÄ°TLÄ° MADALYON TASARIMI --- */
+/* Åerit (Ribbon) */
+.badge-ribbon {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 70px;
+    background: linear-gradient(135deg, #E5E7EB, #D1D5DB);
+    border-radius: 6px;
+    z-index: 1;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15), inset -2px -2px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+}
+/* Madalyon GÃ¶vdesi */
+.badge-medal {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FAFBFF, #F5F3FF);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: #6B7280;
+    position: relative;
+    z-index: 2;
+    margin-top: 20px;
+    margin-bottom: 18px;
+    box-shadow: 0 12px 28px rgba(16, 24, 40, 0.12), inset -2px -2px 8px rgba(0, 0, 0, 0.05);
+    border: 5px solid #fff;
+    transition: all 0.4s ease;
+}
+
+.badge-card:hover .badge-medal {
+    transform: scale(1.1) rotateY(10deg);
+    box-shadow: 0 16px 32px rgba(16, 24, 40, 0.16), inset -2px -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Renk Varyasyonları (Color Theory Based) */
+.theme1 .badge-ribbon { background: linear-gradient(135deg, #EF4444, #DC2626); }
+.theme1 .badge-medal { background: linear-gradient(135deg, #FEE2E2, #EF4444); color: #7F1D1D; box-shadow: 0 12px 28px rgba(239, 68, 68, 0.25), inset -2px -2px 8px rgba(0, 0, 0, 0.08); }
+
+.theme2 .badge-ribbon { background: linear-gradient(135deg, #FB923C, #F97316); }
+.theme2 .badge-medal { background: linear-gradient(135deg, #FFEDD5, #FB923C); color: #7C2D12; box-shadow: 0 12px 28px rgba(251, 146, 60, 0.25), inset -2px -2px 8px rgba(0, 0, 0, 0.08); }
+
+.theme3 .badge-ribbon { background: linear-gradient(135deg, #3B82F6, #2563EB); }
+.theme3 .badge-medal { background: linear-gradient(135deg, #DBEAFE, #3B82F6); color: #1E40AF; box-shadow: 0 12px 28px rgba(59, 130, 246, 0.25), inset -2px -2px 8px rgba(0, 0, 0, 0.08); }
+
+.theme4 .badge-ribbon { background: linear-gradient(135deg, #06B6D4, #0891B2); }
+.theme4 .badge-medal { background: linear-gradient(135deg, #CFFAFE, #06B6D4); color: #164E63; box-shadow: 0 12px 28px rgba(6, 182, 212, 0.25), inset -2px -2px 8px rgba(0, 0, 0, 0.08); }
+
+.theme5 .badge-ribbon { background: linear-gradient(135deg, #A855F7, #9333EA); }
+.theme5 .badge-medal { background: linear-gradient(135deg, #F3E8FF, #A855F7); color: #6B21A8; box-shadow: 0 12px 28px rgba(168, 85, 247, 0.25), inset -2px -2px 8px rgba(0, 0, 0, 0.08); }
+
+.theme6 .badge-ribbon { background: linear-gradient(135deg, #22C55E, #16A34A); }
+.theme6 .badge-medal { background: linear-gradient(135deg, #DCFCE7, #22C55E); color: #166534; box-shadow: 0 12px 28px rgba(34, 197, 94, 0.25), inset -2px -2px 8px rgba(0, 0, 0, 0.08); }
+
+/* Eski tema sınıfları (geriye uyumluluk için) */
+.gold .badge-ribbon { background: linear-gradient(135deg, #FBBF24, #F59E0B); }
+.gold .badge-medal { background: linear-gradient(135deg, #FEF3C7, #FBBF24); color: #92400E; box-shadow: 0 12px 28px rgba(251, 191, 36, 0.25), inset -2px -2px 8px rgba(0, 0, 0, 0.08); }
+
+.blue .badge-ribbon { background: linear-gradient(135deg, #60A5FA, #3B82F6); }
+.blue .badge-medal { background: linear-gradient(135deg, #DBEAFE, #60A5FA); color: #1E3A8A; box-shadow: 0 12px 28px rgba(96, 165, 250, 0.25), inset -2px -2px 8px rgba(0, 0, 0, 0.08); }
+
+.purple .badge-ribbon { background: linear-gradient(135deg, #C084FC, #A855F7); }
+.purple .badge-medal { background: linear-gradient(135deg, #F3E8FF, #C084FC); color: #581C87; box-shadow: 0 12px 28px rgba(192, 132, 252, 0.25), inset -2px -2px 8px rgba(0, 0, 0, 0.08); }
+
+.green .badge-ribbon { background: linear-gradient(135deg, #4ADE80, #22C55E); }
+.green .badge-medal { background: linear-gradient(135deg, #DCFCE7, #4ADE80); color: #15803D; box-shadow: 0 12px 28px rgba(74, 222, 128, 0.25), inset -2px -2px 8px rgba(0, 0, 0, 0.08); }
+
+/* Metinler */
+.bc-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+.bc-desc {
+    font-size: 12px;
+    color: #64748B;
+    line-height: 1.6;
+    padding: 0 8px;
+    font-weight: 500;
+}
+
+/* Gizleme */
+.hidden { display: none; }
+
+/* Buton */
+.load-more-btn {
+    display: block;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto 50px;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #fff 0%, #F9FAFB 100%);
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    font-weight: 700;
+    border-radius: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(211, 47, 47, 0.1);
+}
+.load-more-btn:hover {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(211, 47, 47, 0.25);
+}
+
+/* Sidebar Collapsed */
+body.sidebar-collapsed .sidebar { width: 80px; }
+body.sidebar-collapsed .main-content { margin-left: 80px; }
+body.sidebar-collapsed .logo-text, body.sidebar-collapsed .nav-menu a span, body.sidebar-collapsed .collapse-btn span { display: none; }
+body.sidebar-collapsed .logo-area { justify-content: center; }
+body.sidebar-collapsed .nav-menu a { justify-content: center; }
+body.sidebar-collapsed .nav-menu a i { margin: 0; }
+body.sidebar-collapsed .collapse-btn i { transform: rotate(180deg); }

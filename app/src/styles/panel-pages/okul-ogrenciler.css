@@ -1,0 +1,303 @@
+/* Okul Öğrenciler & Detay */
+.okul-filters {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.okul-search-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 0 16px;
+    height: 44px;
+    transition: border-color 0.2s;
+}
+
+.okul-search-box:focus-within {
+    border-color: #8B5CF6;
+}
+
+.okul-search-box i {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.okul-search-box input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    font-size: 0.9rem;
+    color: #1e293b;
+}
+
+.okul-class-filter {
+    height: 44px;
+    padding: 0 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: #fff;
+    color: #1e293b;
+    font-size: 0.9rem;
+    cursor: pointer;
+    min-width: 150px;
+}
+
+.okul-class-filter:focus {
+    outline: none;
+    border-color: #8B5CF6;
+}
+
+.okul-student-count {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 12px;
+}
+
+.okul-student-table-wrapper {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.okul-student-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.okul-student-table thead th {
+    text-align: left;
+    padding: 14px 16px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #e2e8f0;
+    background: #f8fafc;
+}
+
+.okul-student-table tbody td {
+    padding: 14px 16px;
+    font-size: 0.9rem;
+    color: #1e293b;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.okul-student-row {
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.okul-student-row:hover {
+    background: #f8f7ff;
+}
+
+.okul-student-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.okul-student-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8B5CF6, #6366F1);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.okul-muted {
+    color: #64748b;
+}
+
+.okul-class-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    background: #F5F3FF;
+    color: #8B5CF6;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.okul-minutes {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.okul-detail-btn {
+    border: none;
+    background: none;
+    color: #8B5CF6;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: background 0.15s;
+}
+
+.okul-detail-btn:hover {
+    background: #F5F3FF;
+}
+
+/* Back button */
+.okul-back-btn {
+    border: none;
+    background: none;
+    color: #64748b;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 0;
+    margin-bottom: 16px;
+    transition: color 0.15s;
+}
+
+.okul-back-btn:hover {
+    color: #8B5CF6;
+}
+
+/* Detail header */
+.okul-detay-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.okul-detay-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8B5CF6, #6366F1);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.okul-detay-info h1 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 4px 0;
+}
+
+.okul-detay-info p {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin: 0 0 8px 0;
+}
+
+.okul-detay-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Detail stat cards */
+.okul-detay-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.okul-detay-stat-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.okul-detay-stat-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.okul-detay-stat-value {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #1e293b;
+    display: block;
+    line-height: 1;
+}
+
+.okul-detay-stat-label {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-top: 2px;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .okul-filters {
+        flex-direction: column;
+    }
+
+    .okul-class-filter {
+        min-width: unset;
+    }
+
+    .okul-student-table thead {
+        display: none;
+    }
+
+    .okul-student-table tbody tr {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 12px 16px;
+        gap: 8px;
+        border-bottom: 1px solid #f1f5f9;
+    }
+
+    .okul-student-table tbody td {
+        border: none;
+        padding: 0;
+    }
+
+    .okul-detay-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .okul-detay-header {
+        flex-direction: column;
+        text-align: center;
+    }
+}

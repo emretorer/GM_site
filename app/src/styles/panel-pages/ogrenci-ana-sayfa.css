@@ -1,0 +1,144 @@
+/* =========================================
+   ÖĞRENCI ANA SAYFA
+========================================= */
+
+/* Page Header – sola hizala */
+.page-header {
+    text-align: left;
+}
+
+/* Hoş Geldin Banner */
+.ogrenci-welcome-banner {
+    background: linear-gradient(135deg, #3B82F6, #6366F1);
+    border-radius: 24px;
+    padding: 40px 35px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 16px 40px -10px rgba(59, 130, 246, 0.35);
+}
+
+.ogrenci-welcome-banner::after {
+    content: '';
+    position: absolute;
+    right: -30px;
+    bottom: -40px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.owb-left h2 {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.owb-left p {
+    font-size: 15px;
+    opacity: 0.85;
+}
+
+.owb-right {
+    position: relative;
+    z-index: 2;
+}
+
+.owb-right i {
+    font-size: 64px;
+    opacity: 0.25;
+    animation: owbFloat 4s ease-in-out infinite;
+}
+
+@keyframes owbFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Menü Kartları */
+.ogrenci-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.ogrenci-menu-card {
+    background: #fff;
+    border: 1px solid #E2E8F0;
+    border-radius: 20px;
+    padding: 28px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: left;
+    font-family: inherit;
+    width: 100%;
+}
+
+.ogrenci-menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.1);
+    border-color: #CBD5E1;
+}
+
+.omc-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.omc-info h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1E293B;
+    margin-bottom: 4px;
+}
+
+.omc-info p {
+    font-size: 13px;
+    color: #64748B;
+    line-height: 1.4;
+}
+
+.omc-arrow {
+    margin-left: auto;
+    color: #CBD5E1;
+    font-size: 14px;
+    transition: transform 0.2s;
+}
+
+.ogrenci-menu-card:hover .omc-arrow {
+    transform: translateX(4px);
+    color: #3B82F6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .ogrenci-welcome-banner {
+        padding: 28px 22px;
+    }
+
+    .owb-left h2 {
+        font-size: 22px;
+    }
+
+    .owb-right i {
+        font-size: 48px;
+    }
+
+    .ogrenci-menu-grid {
+        grid-template-columns: 1fr;
+    }
+}

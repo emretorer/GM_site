@@ -1,0 +1,175 @@
+/* Okul Ayarlar */
+.okul-ayar-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.okul-ayar-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 16px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.okul-ayar-card h3 i {
+    color: #8B5CF6;
+}
+
+.okul-ayar-desc {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin: 0 0 20px 0;
+}
+
+.okul-ayar-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.okul-ayar-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.okul-ayar-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.okul-ayar-value {
+    font-size: 1rem;
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.okul-ayar-mono {
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.okul-ayar-error {
+    background: #FEF2F2;
+    color: #DC2626;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+}
+
+.okul-ayar-code-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.okul-ayar-code-block {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.okul-ayar-code-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: #1e293b;
+    font-size: 0.9rem;
+    margin-bottom: 14px;
+}
+
+.okul-ayar-code-display {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 12px 16px;
+}
+
+.okul-ayar-code-display code {
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e293b;
+    letter-spacing: 1px;
+    flex: 1;
+}
+
+.okul-ayar-copy-btn {
+    border: none;
+    background: #F5F3FF;
+    color: #8B5CF6;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: background 0.15s;
+    white-space: nowrap;
+}
+
+.okul-ayar-copy-btn:hover {
+    background: #EDE9FE;
+}
+
+.okul-ayar-generate-btn {
+    width: 100%;
+    height: 44px;
+    border: none;
+    border-radius: 10px;
+    background: #8B5CF6;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: background 0.15s;
+}
+
+.okul-ayar-generate-btn:hover:not(:disabled) {
+    background: #7C3AED;
+}
+
+.okul-ayar-generate-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.okul-ayar-generate-green {
+    background: #10B981;
+}
+
+.okul-ayar-generate-green:hover:not(:disabled) {
+    background: #059669;
+}
+
+@media (max-width: 768px) {
+    .okul-ayar-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .okul-ayar-code-section {
+        grid-template-columns: 1fr;
+    }
+}

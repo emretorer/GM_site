@@ -1,0 +1,417 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gelişim Ağacı | Genius Profil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           TEMEL AYARLAR & DEĞİŞKENLER
+        ========================================= */
+        :root {
+            --sidebar-width: 250px;
+            --header-height: 70px;
+            --primary-blue: #4F46E5;
+            --primary-dark: #0F172A;
+            --bg-body: #F8FAFC;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
+            
+            /* Durum Renkleri */
+            --success: #10B981;   /* Tamamlanan */
+            --inactive: #E2E8F0;  /* Tamamlanmayan Gri */
+            --locked: #94A3B8;
+            
+            /* Kariyer Renkleri */
+            --color-realistic: #8B5CF6;    /* Mor */
+            --color-creative: #EC4899;    /* Pembe */
+            --color-social: #06B6D4;      /* Cyan */
+            --color-organized: #F59E0B;   /* Sarı */
+            --color-entrepreneur: #EF4444; /* Kırmızı */
+            --color-researcher: #14B8A6;  /* Turkuaz */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-body); color: var(--text-main); display: flex; min-height: 100vh; font-size: 14px; }
+
+        /* --- SIDEBAR & LAYOUT (Standart) --- */
+        .sidebar { 
+            width: var(--sidebar-width); background: #fff; border-right: 1px solid var(--border); 
+            display: flex; flex-direction: column; position: fixed; height: 100%; top: 0; left: 0; z-index: 100; 
+            transition: width 0.3s ease; 
+        }
+        .logo-area { padding: 24px; border-bottom: 1px solid rgba(0,0,0,0.05); display: flex; align-items: center; gap: 12px; }
+        .sidebar-logo { height: 40px; width: auto; }
+        .logo-text { font-size: 18px; font-weight: 800; color: var(--primary-dark); }
+        
+        .nav-menu { flex: 1; padding: 10px 12px; overflow-y: auto; }
+        .nav-menu ul { list-style: none; }
+        .nav-menu li { margin-bottom: 4px; }
+        .nav-menu a { 
+            display: flex; align-items: center; padding: 12px 14px; color: var(--text-muted); 
+            text-decoration: none; border-radius: 10px; font-weight: 600; transition: 0.2s; 
+        }
+        .nav-menu a i { min-width: 24px; margin-right: 12px; font-size: 18px; text-align: center; }
+        .nav-menu li.active a { background-color: #EFF6FF; color: var(--primary-blue); }
+        .nav-menu a:hover:not(.active) { background-color: #F8FAFC; color: var(--primary-dark); }
+        
+        .sidebar-footer { padding: 20px; border-top: 1px solid var(--border); }
+        .collapse-btn { border: none; background: transparent; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; gap: 10px; font-weight: 600; }
+
+        /* --- ANA İÇERİK --- */
+        .main-content { margin-left: var(--sidebar-width); flex: 1; width: calc(100% - var(--sidebar-width)); transition: margin-left 0.3s; }
+        .top-bar { 
+            height: var(--header-height); background: #fff; border-bottom: 1px solid var(--border); 
+            padding: 0 40px; display: flex; align-items: center; justify-content: flex-end; position: sticky; top: 0; z-index: 90; 
+        }
+        .user-profile img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #F1F5F9; }
+        
+        .content-body { padding: 40px; max-width: 1200px; margin: 0 auto; }
+        .page-header { margin-bottom: 30px; }
+        .page-title { font-size: 26px; font-weight: 800; color: var(--primary-dark); margin-bottom: 6px; }
+
+        /* --- İLERLEME MATRİSİ (CHART) --- */
+        .matrix-container {
+            background: #fff; border-radius: 20px; border: 1px solid var(--border);
+            padding: 30px; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05);
+            overflow-x: auto; /* Mobil uyum için */
+        }
+
+        .matrix-header {
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;
+            padding-bottom: 20px; border-bottom: 1px solid var(--border);
+        }
+        .legend { display: flex; gap: 20px; }
+        .legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-muted); font-weight: 600; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .dot.green { background: var(--success); box-shadow: 0 0 10px rgba(16, 185, 129, 0.4); }
+        .dot.gray { background: var(--inactive); }
+
+        /* Grid Yapısı */
+        .progress-grid {
+            display: grid;
+            grid-template-columns: 140px repeat(5, 1fr) 1.2fr; /* Etiket + 5 Görev + Sertifika */
+            gap: 15px; row-gap: 25px; align-items: center;
+            min-width: 800px; /* Tablo sıkışmasın */
+        }
+
+        /* Başlık Satırı */
+        .col-header {
+            text-align: center; font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;
+            padding-bottom: 10px;
+        }
+
+        /* Sol Etiketler (Kariyer Tipleri) */
+        .row-label {
+            font-weight: 700; font-size: 13px; color: var(--text-main); display: flex; align-items: center; gap: 10px;
+            padding: 8px 12px; border-radius: 8px; background: rgba(255,255,255,0.5);
+        }
+        .row-label i { 
+            width: 28px; height: 28px; text-align: center; border-radius: 6px;
+            display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px;
+        }
+        
+        /* Her kariyer için ikon rengi */
+        .row-label[data-career="realistic"] i { background: linear-gradient(135deg, #8B5CF6, #A78BFA); }
+        .row-label[data-career="creative"] i { background: linear-gradient(135deg, #EC4899, #F472B6); }
+        .row-label[data-career="social"] i { background: linear-gradient(135deg, #06B6D4, #22D3EE); }
+        .row-label[data-career="organized"] i { background: linear-gradient(135deg, #F59E0B, #FBBF24); }
+        .row-label[data-career="entrepreneur"] i { background: linear-gradient(135deg, #EF4444, #F87171); }
+        .row-label[data-career="researcher"] i { background: linear-gradient(135deg, #14B8A6, #2DD4BF); }
+
+        /* Görev Kutuları (Steps) - Her birinin kendi başarı puanı var */
+        .step-box {
+            height: 36px; background: var(--inactive); border-radius: 6px;
+            position: relative; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid #D1D5DB; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+            --progress-width: 0%;
+        }
+
+        /* Dolum çubuğu (::before pseudo-element) */
+        .step-box::before {
+            content: '';
+            position: absolute; left: 0; top: 0; height: 100%;
+            width: var(--progress-width);
+            border-radius: 6px; z-index: 1;
+            transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* Progress text (yüzde) - gizli, sadece veri olarak kullanılır */
+        .step-box::after {
+            content: '';
+            display: none;
+        }
+
+        /* Hover'da başlık göster */
+        .step-box:hover::after {
+            content: attr(data-title);
+            display: block;
+            bottom: 120%; top: auto; left: 50%; transform: translateX(-50%);
+            position: absolute;
+            background: var(--primary-dark); color: #fff; padding: 5px 10px; border-radius: 6px;
+            font-size: 11px; white-space: nowrap; pointer-events: none; z-index: 10;
+            font-weight: 600; text-shadow: none;
+        }
+        
+        /* Her kariyer tipi için gradyan renkler - dolum çubugu için */
+        .row-label[data-career="realistic"] ~ .step-box::before { background: linear-gradient(90deg, #8B5CF6, #A78BFA); }
+        .row-label[data-career="creative"] ~ .step-box::before { background: linear-gradient(90deg, #EC4899, #F472B6); }
+        .row-label[data-career="social"] ~ .step-box::before { background: linear-gradient(90deg, #06B6D4, #22D3EE); }
+        .row-label[data-career="organized"] ~ .step-box::before { background: linear-gradient(90deg, #F59E0B, #FBBF24); }
+        .row-label[data-career="entrepreneur"] ~ .step-box::before { background: linear-gradient(90deg, #EF4444, #F87171); }
+        .row-label[data-career="researcher"] ~ .step-box::before { background: linear-gradient(90deg, #14B8A6, #2DD4BF); }
+        
+        /* Dolum %70+ olduğunda text rengini beyaza çevir (artık text gösterilmediği için gerek yok) */
+
+        /* Sertifika Kapsülü (Son Sütun) */
+        .cert-capsule {
+            height: 40px; background: linear-gradient(135deg, #F3F4F6, #E5E7EB); border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            color: #6B7280; font-size: 13px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.5px; position: relative; overflow: hidden;
+            transition: 0.3s; border: 1.5px solid #D1D5DB;
+            min-height: 40px;
+        }
+
+        .cert-capsule.earned {
+            background: linear-gradient(135deg, #14B8A6 0%, #0D9488 100%);
+            color: #fff;
+            box-shadow: 0 0 25px rgba(20, 184, 166, 0.5);
+            border-color: #0D9488;
+            animation: pulse 2s infinite;
+        }
+        .cert-capsule i { margin-right: 6px; }
+
+        /* Animasyonlar */
+        @keyframes fillUp { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
+
+        /* Sidebar Collapse */
+        body.collapsed .sidebar { width: 80px; }
+        body.collapsed .logo-area { justify-content: center; padding: 24px 10px; }
+        body.collapsed .sidebar-logo { height: 32px; margin: 0; }
+        body.collapsed .logo-text { display: none; }
+        body.collapsed .nav-menu a { font-size: 0; justify-content: center; padding: 14px; }
+        body.collapsed .nav-menu a i { margin: 0; font-size: 22px; }
+        body.collapsed .sidebar-footer span { display: none; }
+        body.collapsed .main-content { margin-left: 80px; width: calc(100% - 80px); }
+
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo-area">
+            <img src="Gorseller/logo 2.png" alt="GeniusMethods" class="sidebar-logo">
+            <span class="logo-text">Genius Profil</span>
+        </div>
+        
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="haberler.html"><i class="fa-regular fa-newspaper"></i> Haber Akışı</a></li>
+                <li><a href="Ana_Navigasyon.html"><i class="fa-solid fa-border-all"></i> Ana Navigasyon</a></li>
+                <li><a href="oyun_suresi.html"><i class="fa-solid fa-chart-simple"></i> Oyun Süresi</a></li>
+                <li><a href="yetenek.html"><i class="fa-solid fa-arrow-trend-up"></i> Yetenek Gelişimi</a></li>
+                <li><a href="kariyer_yolu.html"><i class="fa-solid fa-road"></i> Kariyer Yolu</a></li>
+                <li><a href="kariyer.html"><i class="fa-solid fa-book-open-reader"></i> Meslek Rehberi</a></li>
+                <li><a href="basarilar.html"><i class="fa-solid fa-medal"></i> Başarılar</a></li>
+                
+                <li class="active"><a href="gelisim_agaci.html"><i class="fa-solid fa-tree"></i> Gelişim Ağacı</a></li>
+                
+                <li><a href="#"><i class="fa-solid fa-gamepad"></i> Oyun Bilgileri</a></li>
+                <li><a href="#"><i class="fa-regular fa-circle-question"></i> Yardım Paneli</a></li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button class="collapse-btn">
+                <i class="fa-solid fa-chevron-left"></i>
+                <span>Menüyü Daralt</span>
+            </button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=Elif&background=10B981&color=fff" alt="Profil">
+            </div>
+        </header>
+
+        <div class="content-body">
+            
+            <div class="page-header">
+                <h1 class="page-title">Gelişim Ağacı</h1>
+                <p class="page-desc">Oyun içi görevlerde gösterilen performans ilerlemesi. Hangi alanlara daha yatkın ve ilgilisiniz keşfedelim.</p>
+            </div>
+
+            <div class="matrix-container">
+                
+                <div class="matrix-header">
+                    <h3 style="font-size:16px; color:var(--primary-dark); font-weight:700;">Görev İlerlemesi</h3>
+                    <div class="legend">
+                        <div class="legend-item"><div class="dot green"></div> Tamamlandı</div>
+                        <div class="legend-item"><div class="dot gray"></div> Bekliyor</div>
+                    </div>
+                </div>
+
+                <div class="progress-grid">
+                    
+                    <div></div> <div class="col-header">GÖREV 1</div>
+                    <div class="col-header">GÖREV 2</div>
+                    <div class="col-header">GÖREV 3</div>
+                    <div class="col-header">GÖREV 4</div>
+                    <div class="col-header">GÖREV 5</div>
+                    <div class="col-header">SERTİFİKA</div>
+
+                    <div class="row-label" data-career="realistic"><i class="fa-solid fa-hammer"></i> Gerçekçi</div>
+                    <div class="step-box" data-progress="0%" data-title="Henüz Başlanmadı"></div>
+                    <div class="step-box" data-progress="0%" data-title="Henüz Başlanmadı"></div>
+                    <div class="step-box" data-progress="0%" data-title="Henüz Başlanmadı"></div>
+                    <div class="step-box" data-progress="0%" data-title="Henüz Başlanmadı"></div>
+                    <div class="step-box" data-progress="0%" data-title="Henüz Başlanmadı"></div>
+                    <div class="cert-capsule">Kilitli</div>
+
+                    <div class="row-label" data-career="creative"><i class="fa-solid fa-palette"></i> Yaratıcı</div>
+                    <div class="step-box completed" style="animation-delay: 0.1s;" data-progress="100%" data-title="Tasarım Görevi Tamam"></div>
+                    <div class="step-box completed" style="animation-delay: 0.2s;" data-progress="95%" data-title="Renk Teorisi Tamam"></div>
+                    <div class="step-box completed" style="animation-delay: 0.3s;" data-progress="88%" data-title="Özgün Fikir Tamam"></div>
+                    <div class="step-box completed" style="animation-delay: 0.4s;" data-progress="72%" data-title="3D Modelleme Tamam"></div>
+                    <div class="step-box" data-progress="35%" data-title="Bekliyor: Portfolyo"></div>
+                    <div class="cert-capsule">Kilitli</div>
+
+                    <div class="row-label" data-career="social"><i class="fa-solid fa-users"></i> Sosyal</div>
+                    <div class="step-box completed" style="animation-delay: 0.2s;" data-progress="100%" data-title="İletişim Kuruldu"></div>
+                    <div class="step-box completed" style="animation-delay: 0.3s;" data-progress="92%" data-title="Takım Liderliği"></div>
+                    <div class="step-box completed" style="animation-delay: 0.4s;" data-progress="85%" data-title="Empati Testi"></div>
+                    <div class="step-box" data-progress="48%" data-title="Bekliyor"></div>
+                    <div class="step-box" data-progress="20%" data-title="Bekliyor"></div>
+                    <div class="cert-capsule">Kilitli</div>
+
+                    <div class="row-label" data-career="organized"><i class="fa-solid fa-clipboard-check"></i> Düzenli</div>
+                    <div class="step-box completed" style="animation-delay: 0.1s;" data-progress="100%" data-title="Veri Girişi"></div>
+                    <div class="step-box" data-progress="40%" data-title="Bekliyor"></div>
+                    <div class="step-box" data-progress="15%" data-title="Bekliyor"></div>
+                    <div class="step-box" data-progress="8%" data-title="Bekliyor"></div>
+                    <div class="step-box" data-progress="0%" data-title="Bekliyor"></div>
+                    <div class="cert-capsule">Kilitli</div>
+
+                    <div class="row-label" data-career="entrepreneur"><i class="fa-solid fa-briefcase"></i> Girişimci</div>
+                    <div class="step-box completed" style="animation-delay: 0.1s;" data-progress="100%" data-title="Pazar Analizi"></div>
+                    <div class="step-box completed" style="animation-delay: 0.2s;" data-progress="78%" data-title="Risk Yönetimi"></div>
+                    <div class="step-box" data-progress="52%" data-title="Bekliyor"></div>
+                    <div class="step-box" data-progress="25%" data-title="Bekliyor"></div>
+                    <div class="step-box" data-progress="5%" data-title="Bekliyor"></div>
+                    <div class="cert-capsule">Kilitli</div>
+
+                    <div class="row-label" data-career="researcher"><i class="fa-solid fa-microscope"></i> Araştırmacı</div>
+                    <div class="step-box completed" style="animation-delay: 0.1s;" data-progress="100%" data-title="Gözlem Yapıldı"></div>
+                    <div class="step-box completed" style="animation-delay: 0.2s;" data-progress="100%" data-title="Hipotez Kuruldu"></div>
+                    <div class="step-box completed" style="animation-delay: 0.3s;" data-progress="100%" data-title="Deney Yapıldı"></div>
+                    <div class="step-box completed" style="animation-delay: 0.4s;" data-progress="100%" data-title="Veri Analizi"></div>
+                    <div class="step-box completed" style="animation-delay: 0.5s;" data-progress="100%" data-title="Raporlama"></div>
+                    <div class="cert-capsule earned">
+                   <i class="fa-solid fa-certificate"></i> ALINDI
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <footer style="text-align:center; padding:30px; color:var(--text-muted); font-size:12px;">
+            © 2026 GeniusMethods. Tüm hakları saklıdır.
+        </footer>
+    </main>
+
+    <script>
+        const collapseBtn = document.querySelector('.collapse-btn');
+        const body = document.body;
+        if(collapseBtn) {
+            collapseBtn.addEventListener('click', () => {
+                body.classList.toggle('collapsed');
+                const icon = collapseBtn.querySelector('i');
+                if(body.classList.contains('collapsed')) {
+                    icon.classList.remove('fa-chevron-left');
+                    icon.classList.add('fa-chevron-right');
+                } else {
+                    icon.classList.remove('fa-chevron-right');
+                    icon.classList.add('fa-chevron-left');
+                }
+            });
+        }
+
+        // Başarı puanına göre bar doluluğu ve sertifika güncelleme
+        function updateProgressBars() {
+            const progressGrid = document.querySelector('.progress-grid');
+            const rows = [];
+            let currentRow = [];
+
+            // Satırları grupla
+            const cells = Array.from(progressGrid.children);
+            cells.forEach((cell, index) => {
+                currentRow.push(cell);
+                if ((index + 1) % 7 === 0) { // 7 hücre = 1 satır (label + 5 görev + sertifika)
+                    rows.push(currentRow);
+                    currentRow = [];
+                }
+            });
+
+            // Her satır için başarı oranını hesapla
+            rows.forEach(row => {
+                if (row.length === 7) {
+                    const stepBoxes = row.slice(1, 6); // 5 görev kutusu
+                    
+                    // Her step-box'un bar doluluğunu data-progress'e göre ayarla
+                    stepBoxes.forEach(box => {
+                        const progressStr = box.getAttribute('data-progress') || '0%';
+                        const progressValue = parseInt(progressStr);
+                        
+                        // ::before pseudo-element'in width'ini set et
+                        box.style.setProperty('--progress-width', progressValue + '%');
+                    });
+
+                    // Sertifika doluluğunu orana göre ayarla
+                    const completedCount = stepBoxes.filter(box => {
+                        const progress = parseInt(box.getAttribute('data-progress'));
+                        return progress >= 80; // 80% ve üzeri başarılı sayılsın
+                    }).length;
+                    const totalCount = stepBoxes.length;
+
+                    const certCapsule = row[6];
+                    if (completedCount === totalCount) {
+                        // Tüm görevler 80%+ tamamlandı
+                        certCapsule.classList.add('earned');
+                        certCapsule.innerHTML = '<i class="fa-solid fa-certificate"></i> ALINDI';
+                    } else {
+                        // Henüz tamamlanmadı - "Bekliyor" göster
+                        certCapsule.classList.remove('earned');
+                        certCapsule.innerHTML = 'Bekliyor';
+                    }
+                }
+            });
+        }
+
+        // Her step-box'un içini data-progress'e göre doldur (CSS kuralı ile)
+        function initializeProgressBars() {
+            const stepBoxes = document.querySelectorAll('.step-box');
+            stepBoxes.forEach(box => {
+                const progressStr = box.getAttribute('data-progress') || '0%';
+                const progressValue = parseInt(progressStr);
+                box.style.setProperty('--progress-width', progressValue + '%');
+            });
+        }
+
+        // Sayfa yüklendiğinde çalıştır
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeProgressBars();
+            updateProgressBars();
+        });
+    </script>
+
+</body>
+</html>

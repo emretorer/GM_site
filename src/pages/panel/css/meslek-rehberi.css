@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* =========================================
+   MESLEK REHBERİ - DIGITAL ENCYCLOPEDIA
+========================================= */
+
+:root {
+    --sidebar-width: 250px;
+    --collapsed-width: 80px;
+    --header-height: 70px;
+    --page-width: 1200px;
+    --gap-size: 24px;
+    
+    /* Kurumsal Renkler */
+    --primary-blue: #2563EB;
+    --primary-dark: #0F172A;
+    --bg-body: #F8FAFC;
+    --text-main: #1E293B;
+    --text-muted: #64748B;
+    --border-light: #E2E8F0;
+    
+    /* Kategori Renkleri (RIASEC) */
+    --c-real: #10B981;   /* Gerçekçi */
+    --c-invest: #3B82F6; /* Araştırmacı */
+    --c-art: #F43F5E;    /* Yaratıcı */
+    --c-soc: #F59E0B;    /* Sosyal */
+    --c-ent: #8B5CF6;    /* Girişimci */
+    --c-conv: #64748B;   /* Sistematik */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+body { background-color: var(--bg-body); color: var(--text-main); display: flex; min-height: 100vh; font-size: 14px; }
+
+/* --- SIDEBAR & LAYOUT --- */
+.sidebar { width: var(--collapsed-width); background: #fff; border-right: 1px solid var(--border-light); display: flex; flex-direction: column; padding: 20px 0; position: fixed; height: 100%; top: 0; left: 0; z-index: 100; transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); overflow: hidden; }
+.logo-area { display: flex; justify-content: center; padding: 0 0 20px 0; margin-bottom: 10px; }
+.logo-icon { min-width: 40px; height: 40px; background: var(--primary-blue); color: #fff; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+.logo-text { display: none; font-size: 18px; font-weight: 800; color: var(--primary-dark); margin-left: 12px; white-space: nowrap; }
+.nav-menu ul { list-style: none; padding: 0 10px; }
+.nav-menu li { margin-bottom: 6px; }
+.nav-menu a { display: flex; align-items: center; justify-content: center; padding: 12px; height: 48px; color: var(--text-muted); text-decoration: none; border-radius: 12px; font-size: 0; transition: all 0.2s; }
+.nav-menu a i { font-size: 20px; min-width: 24px; text-align: center; }
+.nav-menu li.active a { background-color: #EFF6FF; color: var(--primary-blue); }
+.nav-menu a:hover:not(.active) { background-color: #F9FAFB; color: var(--text-main); }
+.sidebar-footer { margin-top: auto; padding: 20px; border-top: 1px solid var(--border-light); display: flex; justify-content: center; }
+.collapse-btn { border: none; background: transparent; color: var(--text-muted); cursor: pointer; font-size: 20px; }
+
+/* Sidebar Açık Hali */
+body.expanded .sidebar { width: 250px; }
+body.expanded .logo-area { justify-content: flex-start; padding: 0 24px 20px; }
+body.expanded .logo-text { display: block; }
+body.expanded .nav-menu a { justify-content: flex-start; font-size: 14px; padding: 12px 16px; }
+body.expanded .nav-menu a i { margin-right: 12px; font-size: 18px; }
+body.expanded .sidebar-footer { justify-content: flex-start; padding: 20px 24px; }
+body.expanded .main-content { margin-left: 250px; width: calc(100% - 250px); }
+
+
+/* --- MAIN CONTENT --- */
+.main-content { margin-left: var(--collapsed-width); flex: 1; display: flex; flex-direction: column; width: calc(100% - var(--collapsed-width)); transition: margin-left 0.3s, width 0.3s; }
+.top-bar { height: var(--header-height); background: #fff; border-bottom: 1px solid var(--border-light); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 90; }
+.user-profile img { width: 40px; height: 40px; border-radius: 50%; border: 1px solid #E5E7EB; }
+
+/* --- CONTENT BODY --- */
+.content-body { padding: 40px; width: 100%; max-width: var(--page-width); margin: 0 auto; }
+.page-header { margin-bottom: 30px; text-align: center; }
+.page-title { font-size: 28px; font-weight: 800; color: var(--primary-dark); margin-bottom: 8px; }
+.page-desc { color: var(--text-muted); font-size: 15px; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+
+
+/* --- KATEGORİ IZGARASI (CATALOG GRID) --- */
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Geniş Kartlar */
+    gap: 30px;
+}
+
+/* Bilgi Kartı */
+.info-card {
+    background: #fff; border: 1px solid var(--border-light); border-radius: 20px;
+    overflow: hidden; transition: all 0.3s ease; position: relative;
+    display: flex; flex-direction: column;
+}
+.info-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -10px rgba(0,0,0,0.08); }
+
+/* Renkli Üst Başlık (Header) */
+.ic-header {
+    padding: 24px; color: #fff; position: relative; overflow: hidden;
+}
+.ic-bg-icon {
+    position: absolute; right: -10px; bottom: -20px; font-size: 100px; 
+    opacity: 0.2; transform: rotate(-15deg); pointer-events: none;
+}
+
+/* Kategori Temaları */
+.theme-r .ic-header { background: linear-gradient(135deg, #10B981, #059669); }
+.theme-i .ic-header { background: linear-gradient(135deg, #3B82F6, #2563EB); }
+.theme-a .ic-header { background: linear-gradient(135deg, #F43F5E, #E11D48); }
+.theme-s .ic-header { background: linear-gradient(135deg, #F59E0B, #D97706); }
+.theme-e .ic-header { background: linear-gradient(135deg, #8B5CF6, #7C3AED); }
+.theme-c .ic-header { background: linear-gradient(135deg, #64748B, #475569); }
+
+.ic-icon-box {
+    width: 50px; height: 50px; background: rgba(255,255,255,0.2); border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 16px;
+    backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.3);
+}
+.ic-title { font-size: 20px; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.5px; }
+.ic-subtitle { font-size: 13px; opacity: 0.9; font-weight: 500; line-height: 1.4; }
+
+
+/* İçerik Alanı */
+.ic-body { padding: 24px; flex: 1; display: flex; flex-direction: column; gap: 20px; }
+
+/* Tanım Bölümü */
+.def-box h4 { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px; }
+.def-box p { font-size: 13px; color: var(--text-main); line-height: 1.5; }
+
+/* Meslek Listesi */
+.job-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.job-tag {
+    background: #F8FAFC; border: 1px solid #E2E8F0; color: var(--text-main);
+    padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 600;
+    transition: 0.2s; cursor: default;
+}
+.job-tag:hover { border-color: var(--primary-blue); color: var(--primary-blue); background: #EFF6FF; }
+
+/* Geleceğin Meslekleri (Vurgulu) */
+.future-jobs { 
+    background: #F0F9FF; border: 1px solid #BAE6FD; border-radius: 12px; padding: 16px; 
+}
+.fj-title { display: flex; align-items: center; gap: 6px; color: #0284C7; font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+.fj-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.fj-tag {
+    background: #fff; color: #0369A1; font-size: 11px; font-weight: 600;
+    padding: 4px 10px; border-radius: 6px; border: 1px solid #BAE6FD;
+}
+
+
+/* Footer & Responsive */
+.footer { padding: 40px; text-align: center; color: var(--text-muted); font-size: 12px; }
+@media (max-width: 768px) {
+    .catalog-grid { grid-template-columns: 1fr; }
+    .sidebar { display: none; } 
+    .main-content { margin-left: 0; width: 100%; } 
+}
+/* Body collapse */
+body.collapsed .sidebar { width: 80px; }
+body.collapsed .logo-area { justify-content: center; padding: 20px 0; }
+body.collapsed .logo-text { display: none; }
+body.collapsed .nav-menu a { font-size: 0; justify-content: center; padding: 14px; }
+body.collapsed .nav-menu a i { margin: 0; font-size: 20px; }
+body.collapsed .collapse-btn span { display: none; }
+body.collapsed .collapse-btn { justify-content: center; }
+body.collapsed .collapse-btn i { transform: rotate(180deg); }
+body.collapsed .main-content { margin-left: 80px; width: calc(100% - 80px); }

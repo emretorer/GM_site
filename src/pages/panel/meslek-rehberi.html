@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meslek Rehberi - Veli Paneli</title>
+    <link rel="stylesheet" href="css/meslek-rehberi.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <aside class="sidebar" id="sidebarPanel">
+        <div class="logo-area">
+            <span class="logo-icon"><i class="fa-solid fa-shapes"></i></span>
+            <span class="logo-text">Veli Paneli</span>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="haberler.html" title="Haber Akışı"><i class="fa-regular fa-newspaper"></i> Haber Akışı</a></li>
+                <li><a href="ana-navigasyon.html" title="Ana Panel"><i class="fa-solid fa-border-all"></i> Ana Navigasyon</a></li>
+                <li><a href="oyun-suresi.html" title="Oyun Süresi"><i class="fa-solid fa-chart-simple"></i> Oyun Süresi</a></li>
+                <li><a href="yetenek.html" title="Yetenek Gelişimi"><i class="fa-solid fa-arrow-trend-up"></i> Yetenek Gelişimi</a></li>
+                <li><a href="kariyer-yolu.html" title="Kariyer Yolu"><i class="fa-solid fa-road"></i> Kariyer Yolu</a></li>
+                
+                <li class="active"><a href="meslek-rehberi.html" title="Meslek Rehberi"><i class="fa-solid fa-book-open-reader"></i> Meslek Rehberi</a></li>
+                
+                <li><a href="basarilar.html" title="Başarılar"><i class="fa-solid fa-medal"></i> Başarılar</a></li>
+                <li><a href="ilgi-alanlari.html" title="İlgi Alanları"><i class="fa-regular fa-lightbulb"></i> İlgi Alanları</a></li>
+                <li><a href="gelisim-agaci.html" title="Gelişim Ağacı"><i class="fa-solid fa-tree"></i> Gelişim Ağacı</a></li>
+                <li><a href="#"><i class="fa-solid fa-gamepad"></i> Oyun Bilgileri</a></li>
+                <li><a href="#"><i class="fa-regular fa-circle-question"></i> Yardım Paneli</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="collapse-btn" id="toggleBtn" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="search-box"></div>
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=Elif&background=2563EB&color=fff" alt="Profil">
+            </div>
+        </header>
+
+        <div class="content-body">
+            
+            <div class="page-header">
+                <h1 class="page-title">Meslek Rehberi ve Tanımları</h1>
+                <p class="page-desc">
+                    Holland (RIASEC) tipolojisine göre sınıflandırılmış, hem günümüzün hem de geleceğin mesleklerini içeren kapsamlı bilgi kütüphanesi.
+                </p>
+            </div>
+
+            <div class="catalog-grid">
+                
+                <div class="info-card theme-r">
+                    <div class="ic-header">
+                        <i class="fa-solid fa-wrench ic-bg-icon"></i>
+                        <div class="ic-icon-box"><i class="fa-solid fa-hammer"></i></div>
+                        <h3 class="ic-title">Gerçekçi (Realistic)</h3>
+                        <p class="ic-subtitle">"Yapanlar" - Nesnelerle, araçlarla ve makinelerle çalışmayı sevenler.</p>
+                    </div>
+                    <div class="ic-body">
+                        <div class="def-box">
+                            <h4>TEMEL ÖZELLİKLER</h4>
+                            <p>Pratik, fiziksel aktiviteyi seven, somut sonuçlar görmekten hoşlanan, el becerisi yüksek bireyler.</p>
+                        </div>
+                        <div class="def-box">
+                            <h4>KLASİK MESLEKLER</h4>
+                            <div class="job-list">
+                                <span class="job-tag">Mühendis</span>
+                                <span class="job-tag">Pilot</span>
+                                <span class="job-tag">Mimar</span>
+                                <span class="job-tag">Veteriner</span>
+                                <span class="job-tag">Şef (Aşçı)</span>
+                            </div>
+                        </div>
+                        <div class="future-jobs">
+                            <div class="fj-title"><i class="fa-solid fa-rocket"></i> GELECEĞİN MESLEKLERİ</div>
+                            <div class="fj-list">
+                                <span class="fj-tag">Robotik Teknisyeni</span>
+                                <span class="fj-tag">Drone Operatörü</span>
+                                <span class="fj-tag">Dikey Çiftçilik Uzmanı</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card theme-i">
+                    <div class="ic-header">
+                        <i class="fa-solid fa-microscope ic-bg-icon"></i>
+                        <div class="ic-icon-box"><i class="fa-solid fa-dna"></i></div>
+                        <h3 class="ic-title">Araştırmacı (Investigative)</h3>
+                        <p class="ic-subtitle">"Düşünenler" - Gözlem yapmayı, analiz etmeyi ve problem çözmeyi sevenler.</p>
+                    </div>
+                    <div class="ic-body">
+                        <div class="def-box">
+                            <h4>TEMEL ÖZELLİKLER</h4>
+                            <p>Analitik, meraklı, entelektüel, karmaşık problemleri çözmekten keyif alan, metodik bireyler.</p>
+                        </div>
+                        <div class="def-box">
+                            <h4>KLASİK MESLEKLER</h4>
+                            <div class="job-list">
+                                <span class="job-tag">Doktor</span>
+                                <span class="job-tag">Yazılımcı</span>
+                                <span class="job-tag">Bilim İnsanı</span>
+                                <span class="job-tag">Matematikçi</span>
+                                <span class="job-tag">Eczacı</span>
+                            </div>
+                        </div>
+                        <div class="future-jobs">
+                            <div class="fj-title"><i class="fa-solid fa-rocket"></i> GELECEĞİN MESLEKLERİ</div>
+                            <div class="fj-list">
+                                <span class="fj-tag">Veri Dedektifi</span>
+                                <span class="fj-tag">Yapay Zeka Mühendisi</span>
+                                <span class="fj-tag">Biyoinformatikçi</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card theme-a">
+                    <div class="ic-header">
+                        <i class="fa-solid fa-palette ic-bg-icon"></i>
+                        <div class="ic-icon-box"><i class="fa-solid fa-pen-nib"></i></div>
+                        <h3 class="ic-title">Yaratıcı (Artistic)</h3>
+                        <p class="ic-subtitle">"Yaratanlar" - Özgün fikirler üretmeyi ve kendini ifade etmeyi sevenler.</p>
+                    </div>
+                    <div class="ic-body">
+                        <div class="def-box">
+                            <h4>TEMEL ÖZELLİKLER</h4>
+                            <p>Hayal gücü geniş, kurallara bağlı kalmayı sevmeyen, sezgisel ve ifade yeteneği güçlü bireyler.</p>
+                        </div>
+                        <div class="def-box">
+                            <h4>KLASİK MESLEKLER</h4>
+                            <div class="job-list">
+                                <span class="job-tag">Grafik Tasarımcı</span>
+                                <span class="job-tag">Yazar</span>
+                                <span class="job-tag">Müzisyen</span>
+                                <span class="job-tag">Yönetmen</span>
+                                <span class="job-tag">Modacı</span>
+                            </div>
+                        </div>
+                        <div class="future-jobs">
+                            <div class="fj-title"><i class="fa-solid fa-rocket"></i> GELECEĞİN MESLEKLERİ</div>
+                            <div class="fj-list">
+                                <span class="fj-tag">VR Deneyim Tasarımcısı</span>
+                                <span class="fj-tag">Oyun Sanatçısı</span>
+                                <span class="fj-tag">Dijital İçerik Üreticisi</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card theme-s">
+                    <div class="ic-header">
+                        <i class="fa-solid fa-users ic-bg-icon"></i>
+                        <div class="ic-icon-box"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                        <h3 class="ic-title">Sosyal (Social)</h3>
+                        <p class="ic-subtitle">"Yardım Edenler" - İnsanlarla iletişim kurmayı ve öğretmeyi sevenler.</p>
+                    </div>
+                    <div class="ic-body">
+                        <div class="def-box">
+                            <h4>TEMEL ÖZELLİKLER</h4>
+                            <p>Empati yeteneği yüksek, işbirliğine açık, sözel iletişimi güçlü, yardımsever bireyler.</p>
+                        </div>
+                        <div class="def-box">
+                            <h4>KLASİK MESLEKLER</h4>
+                            <div class="job-list">
+                                <span class="job-tag">Öğretmen</span>
+                                <span class="job-tag">Psikolog</span>
+                                <span class="job-tag">Hemşire</span>
+                                <span class="job-tag">İK Uzmanı</span>
+                                <span class="job-tag">Rehber</span>
+                            </div>
+                        </div>
+                        <div class="future-jobs">
+                            <div class="fj-title"><i class="fa-solid fa-rocket"></i> GELECEĞİN MESLEKLERİ</div>
+                            <div class="fj-list">
+                                <span class="fj-tag">Eğitim Teknoloğu</span>
+                                <span class="fj-tag">Topluluk Yöneticisi</span>
+                                <span class="fj-tag">Kişisel Marka Koçu</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card theme-e">
+                    <div class="ic-header">
+                        <i class="fa-solid fa-briefcase ic-bg-icon"></i>
+                        <div class="ic-icon-box"><i class="fa-solid fa-bullhorn"></i></div>
+                        <h3 class="ic-title">Girişimci (Enterprising)</h3>
+                        <p class="ic-subtitle">"Etkileyenler" - İkna etmeyi, yönetmeyi ve liderlik yapmayı sevenler.</p>
+                    </div>
+                    <div class="ic-body">
+                        <div class="def-box">
+                            <h4>TEMEL ÖZELLİKLER</h4>
+                            <p>Dışa dönük, enerjik, risk alabilen, rekabetçi, ikna kabiliyeti yüksek ve lider ruhlu bireyler.</p>
+                        </div>
+                        <div class="def-box">
+                            <h4>KLASİK MESLEKLER</h4>
+                            <div class="job-list">
+                                <span class="job-tag">Avukat</span>
+                                <span class="job-tag">Satış Müdürü</span>
+                                <span class="job-tag">CEO</span>
+                                <span class="job-tag">Politikacı</span>
+                                <span class="job-tag">İşletmeci</span>
+                            </div>
+                        </div>
+                        <div class="future-jobs">
+                            <div class="fj-title"><i class="fa-solid fa-rocket"></i> GELECEĞİN MESLEKLERİ</div>
+                            <div class="fj-list">
+                                <span class="fj-tag">Startup Kurucusu</span>
+                                <span class="fj-tag">Ürün Yöneticisi (PM)</span>
+                                <span class="fj-tag">E-Ticaret Uzmanı</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card theme-c">
+                    <div class="ic-header">
+                        <i class="fa-solid fa-file-invoice ic-bg-icon"></i>
+                        <div class="ic-icon-box"><i class="fa-solid fa-list-check"></i></div>
+                        <h3 class="ic-title">Sistematik (Conventional)</h3>
+                        <p class="ic-subtitle">"Düzenleyenler" - Verilerle, sayılarla ve düzenli işlerle çalışmayı sevenler.</p>
+                    </div>
+                    <div class="ic-body">
+                        <div class="def-box">
+                            <h4>TEMEL ÖZELLİKLER</h4>
+                            <p>Dikkatli, düzenli, kurallara uyan, sayısal verilerle arası iyi, detaycı bireyler.</p>
+                        </div>
+                        <div class="def-box">
+                            <h4>KLASİK MESLEKLER</h4>
+                            <div class="job-list">
+                                <span class="job-tag">Muhasebeci</span>
+                                <span class="job-tag">Bankacı</span>
+                                <span class="job-tag">Editör</span>
+                                <span class="job-tag">Kütüphaneci</span>
+                                <span class="job-tag">İstatistikçi</span>
+                            </div>
+                        </div>
+                        <div class="future-jobs">
+                            <div class="fj-title"><i class="fa-solid fa-rocket"></i> GELECEĞİN MESLEKLERİ</div>
+                            <div class="fj-list">
+                                <span class="fj-tag">Veri Analisti</span>
+                                <span class="fj-tag">Fintech Uzmanı</span>
+                                <span class="fj-tag">Akıllı Ev Teknisyeni</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <footer class="footer">
+            © 2025 Çocuk Gelişim Platformu. Tüm hakları saklıdır.
+        </footer>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            document.body.classList.toggle('expanded');
+        }
+    </script>
+
+</body>
+</html>

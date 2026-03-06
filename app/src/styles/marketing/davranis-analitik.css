@@ -1,0 +1,371 @@
+/* =====================================================
+   DAVRANIS ANALITIK PAGE STYLES
+   ===================================================== */
+
+.marketing-davranis .hero {
+    padding: 180px 0 100px;
+    background: radial-gradient(circle at 50% 0%, #EEF2FF 0%, #fff 70%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.marketing-davranis .floating-icon {
+    position: absolute;
+    opacity: 0.1;
+    z-index: 0;
+    animation: float 6s ease-in-out infinite;
+    color: var(--primary);
+    font-size: 2.5rem;
+}
+
+.marketing-davranis .icon-1 { top: 20%; left: 10%; color: var(--neon-purple); }
+.marketing-davranis .icon-2 { top: 60%; right: 15%; animation-delay: 2s; color: var(--accent); }
+.marketing-davranis .icon-3 { bottom: 20%; left: 20%; animation-delay: 4s; color: var(--neon-blue); }
+
+.marketing-davranis .hero-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #EEF2FF;
+    color: var(--primary);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+}
+
+.marketing-davranis .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 24px;
+    line-height: 1.1;
+    position: relative;
+    z-index: 1;
+}
+
+.marketing-davranis .hero p {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    position: relative;
+    z-index: 1;
+    color: var(--text-muted);
+}
+
+.marketing-davranis .cycle-section {
+    padding: 100px 0;
+    background: #fff;
+    overflow: hidden;
+    position: relative;
+}
+
+.marketing-davranis .cycle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    min-height: 400px;
+    position: relative;
+}
+
+.marketing-davranis .cycle-container > * {
+    min-width: 0;
+}
+
+.marketing-davranis .core-analytics {
+    width: 140px;
+    height: 140px;
+    background: white;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 0 40px rgba(79, 70, 229, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: pulse 3s infinite;
+}
+
+.marketing-davranis .core-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.marketing-davranis .core-label {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--dark);
+}
+
+.marketing-davranis .data-ring {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    border: 2px dashed rgba(79, 70, 229, 0.2);
+    animation: spin 20s linear infinite;
+}
+
+.marketing-davranis .cycle-step {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--dark);
+}
+
+.marketing-davranis .step-1 { top: -30px; left: 50%; transform: translateX(-50%); color: var(--accent); }
+.marketing-davranis .step-2 { top: 50%; right: -30px; transform: translateY(-50%); color: var(--neon-blue); }
+.marketing-davranis .step-3 { bottom: -30px; left: 50%; transform: translateX(-50%); color: var(--neon-purple); }
+.marketing-davranis .step-4 { top: 50%; left: -30px; transform: translateY(-50%); color: var(--success); }
+
+.marketing-davranis .cycle-info {
+    max-width: 300px;
+    padding: 30px;
+    background: var(--bg-soft);
+    border-radius: var(--radius-xl);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.marketing-davranis .info-left { left: 0; border-right: 4px solid var(--accent); text-align: right; }
+.marketing-davranis .info-right { right: 0; border-left: 4px solid var(--success); text-align: left; }
+
+.marketing-davranis .solutions-section {
+    padding: 100px 0;
+    background: var(--bg-soft);
+}
+
+.marketing-davranis .solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.marketing-davranis .solution-card {
+    background: #fff;
+    padding: 35px 30px;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(0,0,0,0.03);
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-width: 0;
+}
+
+.marketing-davranis .solution-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.marketing-davranis .s-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.marketing-davranis .card-1 .s-icon { background: #EEF2FF; color: var(--primary); }
+.marketing-davranis .card-2 .s-icon { background: #FFF7ED; color: var(--accent); }
+.marketing-davranis .card-3 .s-icon { background: #F5F3FF; color: var(--neon-purple); }
+.marketing-davranis .card-4 .s-icon { background: #ECFDF5; color: var(--success); }
+.marketing-davranis .card-5 .s-icon { background: #EFF6FF; color: var(--neon-blue); }
+.marketing-davranis .card-6 .s-icon { background: #FFF1F2; color: #F43F5E; }
+
+.marketing-davranis .solution-card h3 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: var(--dark);
+}
+
+.marketing-davranis .solution-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.marketing-davranis .tech-summary {
+    padding: 80px 0;
+    background: var(--dark);
+    color: white;
+    text-align: center;
+}
+
+.marketing-davranis .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.marketing-davranis .tech-item h4 {
+    color: white;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.marketing-davranis .tech-item p {
+    color: #94A3B8;
+    font-size: 0.9rem;
+    overflow-wrap: break-word;
+}
+
+.marketing-davranis .tech-item i {
+    font-size: 2.5rem;
+    color: var(--primary-light);
+    margin-bottom: 20px;
+}
+
+@media (max-width: 1024px) {
+    .marketing-davranis .cycle-container { flex-direction: column; min-height: auto; gap: 80px; padding: 0 0 60px; }
+    .marketing-davranis .cycle-info { position: relative; top: auto; transform: none; width: 100%; max-width: 100%; text-align: center !important; border: none !important; border-top: 4px solid var(--primary); }
+    .marketing-davranis .solutions-grid { grid-template-columns: 1fr 1fr; }
+    .marketing-davranis .tech-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+    .marketing-davranis .hero {
+        padding: 148px 0 72px;
+    }
+
+    .marketing-davranis .floating-icon {
+        display: none;
+    }
+
+    .marketing-davranis .hero-badge {
+        max-width: 100%;
+        line-height: 1.4;
+        white-space: normal;
+    }
+
+    .marketing-davranis .hero h1 {
+        font-size: clamp(1.95rem, 8.6vw, 2.6rem);
+        line-height: 1.08;
+    }
+
+    .marketing-davranis .hero p {
+        font-size: 1rem;
+        margin-bottom: 28px;
+    }
+
+    .marketing-davranis .cycle-section,
+    .marketing-davranis .solutions-section,
+    .marketing-davranis .tech-summary {
+        padding: 72px 0;
+    }
+
+    .marketing-davranis .cycle-container {
+        gap: 56px;
+        padding-bottom: 40px;
+    }
+
+    .marketing-davranis .core-analytics {
+        width: 120px;
+        height: 120px;
+    }
+
+    .marketing-davranis .core-icon {
+        font-size: 2rem;
+    }
+
+    .marketing-davranis .core-label {
+        font-size: 0.72rem;
+    }
+
+    .marketing-davranis .data-ring {
+        width: min(78vw, 280px);
+        height: min(78vw, 280px);
+    }
+
+    .marketing-davranis .cycle-step {
+        width: 50px;
+        height: 50px;
+        font-size: 1rem;
+    }
+
+    .marketing-davranis .step-1 { top: -20px; }
+    .marketing-davranis .step-2 { right: -20px; }
+    .marketing-davranis .step-3 { bottom: -20px; }
+    .marketing-davranis .step-4 { left: -20px; }
+
+    .marketing-davranis .cycle-info {
+        padding: 22px 18px;
+    }
+
+    .marketing-davranis .solutions-grid {
+        margin-top: 40px;
+        gap: 20px;
+    }
+
+    .marketing-davranis .solution-card {
+        padding: 26px 22px;
+    }
+
+    .marketing-davranis .solution-card h3 {
+        font-size: 1.05rem;
+        overflow-wrap: break-word;
+    }
+
+    .marketing-davranis .solution-card p {
+        font-size: 0.9rem;
+    }
+
+    .marketing-davranis .tech-grid {
+        gap: 24px;
+        margin-top: 24px;
+    }
+
+    .marketing-davranis .tech-item i {
+        font-size: 2rem;
+        margin-bottom: 14px;
+    }
+
+    .marketing-davranis .tech-item h4 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .marketing-davranis .solutions-grid { grid-template-columns: 1fr; }
+    .marketing-davranis .tech-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+    .marketing-davranis .data-ring {
+        width: min(82vw, 240px);
+        height: min(82vw, 240px);
+    }
+
+    .marketing-davranis .cycle-step {
+        width: 44px;
+        height: 44px;
+        font-size: 0.9rem;
+    }
+
+    .marketing-davranis .step-1 { top: -18px; }
+    .marketing-davranis .step-2 { right: -18px; }
+    .marketing-davranis .step-3 { bottom: -18px; }
+    .marketing-davranis .step-4 { left: -18px; }
+}

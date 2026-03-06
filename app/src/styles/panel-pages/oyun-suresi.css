@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* =========================================
+   DİJİTAL AKTİVİTE VE PERFORMANS MERKEZİ
+   (Sidebar Entegreli Versiyon)
+========================================= */
+
+:root {
+    --header-height: 70px;
+    --page-width: 1250px;
+    
+    /* Renk Paleti */
+    --primary: #3B82F6;
+    --primary-dark: #1E293B;
+    --secondary: #8B5CF6; 
+    --success: #10B981;   
+    --warning: #F59E0B;   
+    --danger: #EF4444;    
+    --bg-body: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --text-main: #111827;
+    --text-muted: #6B7280;
+    --border-light: #E2E8F0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+body { background-color: var(--bg-body); color: var(--text-main); display: flex; min-height: 100vh; font-size: 14px; }
+
+/* =========================================
+   1. SIDEBAR & LAYOUT (DİNAMİK)
+========================================= */
+
+/* Sidebar Temel Yapı */
+.sidebar { 
+    width: 250px; /* Varsayılan genişlik */
+    background: #fff; 
+    border-right: 1px solid var(--border-light); 
+    display: flex; 
+    flex-direction: column; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    height: 100%; 
+    z-index: 100; 
+    transition: width 0.3s ease; /* Animasyon */
+    overflow: hidden;
+}
+
+/* Logo Alanı */
+.logo-area { 
+    padding: 24px; 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+.logo-icon { 
+    min-width: 32px; height: 32px; 
+    background: var(--primary); color: #fff; 
+    border-radius: 8px; display: flex; align-items: center; justify-content: center; 
+    font-size: 18px; 
+}
+.logo-text { 
+    font-size: 18px; font-weight: 800; color: var(--primary-dark); 
+    transition: opacity 0.2s;
+}
+
+/* Menü Linkleri */
+.nav-menu ul { list-style: none; padding: 0 12px; }
+.nav-menu li { margin-bottom: 4px; }
+.nav-menu a { 
+    display: flex; align-items: center; 
+    padding: 12px 14px; 
+    color: var(--text-muted); 
+    text-decoration: none; border-radius: 10px; 
+    font-size: 14px; font-weight: 500; 
+    transition: all 0.2s; 
+    white-space: nowrap; /* Metin taşmasın */
+}
+.nav-menu a i { 
+    min-width: 24px; margin-right: 12px; 
+    font-size: 18px; text-align: center; 
+    transition: margin 0.3s;
+}
+.nav-menu li.active a { background-color: #EFF6FF; color: var(--primary); font-weight: 600; }
+.nav-menu a:hover:not(.active) { background-color: #F8FAFC; color: var(--text-main); }
+
+/* Sidebar Footer (Daralt Butonu) */
+.sidebar-footer {
+    margin-top: auto; padding: 20px;
+    border-top: 1px solid var(--border-light);
+}
+.collapse-btn {
+    width: 100%;
+    background: transparent; border: none;
+    color: var(--text-muted); cursor: pointer;
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px; border-radius: 8px;
+    font-size: 14px; font-weight: 600;
+    transition: 0.2s;
+    white-space: nowrap;
+}
+.collapse-btn:hover { background: #F1F5F9; color: var(--primary); }
+
+/* --- ANA İÇERİK ALANI --- */
+.main-content { 
+    margin-left: 250px; /* Sidebar kadar boşluk */
+    flex: 1; 
+    display: flex; 
+    flex-direction: column; 
+    width: calc(100% - 250px);
+    transition: margin-left 0.3s ease, width 0.3s ease; /* Senkronize animasyon */
+}
+
+.top-bar { height: var(--header-height); background: #fff; border-bottom: 1px solid var(--border-light); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 90; }
+.user-profile img { width: 40px; height: 40px; border-radius: 50%; }
+.content-body { padding: 30px 40px; width: 100%; max-width: var(--page-width); margin: 0 auto; }
+
+
+/* =========================================
+   2. DARALTILMIŞ (COLLAPSED) DURUM 
+   (js/panel.js ile tetiklenir)
+========================================= */
+
+/* Sidebar Daralır */
+body.sidebar-collapsed .sidebar { width: 80px; }
+
+/* İçerik Genişler */
+body.sidebar-collapsed .main-content { margin-left: 80px; width: calc(100% - 80px); }
+
+/* Metinleri Gizle */
+body.sidebar-collapsed .logo-text,
+body.sidebar-collapsed .collapse-btn span {
+    display: none; opacity: 0;
+}
+
+/* Link Metinlerini Gizle (HTML'de span olmasa bile çalışır) */
+body.sidebar-collapsed .nav-menu a {
+    font-size: 0; /* Metni görünmez yap */
+    justify-content: center; /* İkonu ortala */
+    padding: 12px 0;
+}
+body.sidebar-collapsed .nav-menu a i {
+    font-size: 18px; /* İkon boyutunu koru */
+    margin-right: 0; /* Boşluğu sil */
+}
+
+/* Logo Alanını Ortala */
+body.sidebar-collapsed .logo-area {
+    justify-content: center; padding: 24px 0;
+}
+
+/* Buton İkonunu Döndür */
+body.sidebar-collapsed .collapse-btn { justify-content: center; }
+body.sidebar-collapsed .collapse-btn i { transform: rotate(180deg); margin: 0; }
+
+
+/* =========================================
+   3. İÇERİK BİLEŞENLERİ (GRAFİKLER, KARTLAR)
+========================================= */
+
+/* Chart Hover Effects */
+.chart-bar:hover::after {
+    content: attr(data-val); position: absolute; top: -35px; left: 50%; transform: translateX(-50%);
+    background: var(--primary-dark); color: #fff; padding: 4px 8px; border-radius: 6px;
+    font-size: 11px; font-weight: 700; white-space: nowrap; z-index: 10; box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.chart-bar:hover::before {
+    content: ''; position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+    border-width: 5px; border-style: solid; border-color: var(--primary-dark) transparent transparent transparent;
+}
+
+/* Header & Filter */
+.page-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 30px; }
+.page-title { font-size: 30px; font-weight: 800; color: var(--primary-dark); margin-bottom: 8px; }
+.page-desc { color: var(--text-muted); font-size: 14px; max-width: 700px; }
+.date-filter select { padding: 10px 16px; border: 1px solid var(--border-light); border-radius: 12px; font-weight: 600; color: var(--text-main); cursor: pointer; background: #fff; outline: none; }
+
+/* Metrics Grid */
+.metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 30px; }
+.metric-card { background: #fff; border: 1px solid var(--border-light); border-radius: 18px; padding: 27px; display: flex; align-items: center; gap: 20px; min-height: 85px; }
+.mc-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.mc-blue { background: #EFF6FF; color: var(--primary); }
+.mc-purple { background: #F5F3FF; color: var(--secondary); }
+.mc-orange { background: #FFF7ED; color: var(--warning); }
+.mc-green { background: #ECFDF5; color: var(--success); }
+.mc-info { overflow: hidden; }
+.mc-info h3 { font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 2px; white-space: nowrap; }
+.mc-value { font-size: 16px; font-weight: 800; color: var(--primary-dark); display: flex; align-items: baseline; gap: 3px; white-space: nowrap; }
+.mc-value span { font-size: 11px; font-weight: 600; opacity: 0.7; }
+.mc-sub { font-size: 10px; color: var(--success); font-weight: 600; margin-top: 2px; }
+
+/* Analysis Grid */
+.analysis-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-bottom: 30px; }
+.card { background: #fff; border: 1px solid var(--border-light); border-radius: 20px; padding: 24px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+.card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.card-title { font-size: 15px; font-weight: 700; color: var(--primary-dark); display: flex; align-items: center; gap: 10px; }
+
+/* Charts */
+.chart-container { height: 180px; display: flex; align-items: flex-end; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px dashed var(--border-light); }
+.chart-bar-group { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 10%; height: 100%; justify-content: flex-end; }
+.chart-bar { width: 100%; background-color: #DBEAFE; border-radius: 6px 6px 4px 4px; position: relative; transition: height 0.3s; min-height: 4px; }
+.chart-bar.current-day { background-color: var(--secondary) !important; box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2); }
+.chart-label { font-size: 11px; font-weight: 700; color: var(--text-muted); }
+.chart-label.current-label { color: var(--secondary); }
+
+/* Time Breakdown */
+.time-breakdown-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; align-items: start; }
+.tb-box { background: #F8FAFC; padding: 10px; border-radius: 10px; text-align: center; border: 1px solid var(--border-light); }
+.tb-label { font-size: 9px; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px; }
+.tb-val { font-size: 13px; font-weight: 800; color: var(--primary-dark); }
+
+/* Timeline */
+.session-timeline { position: relative; padding-left: 24px; border-left: 2px solid #E2E8F0; display: flex; flex-direction: column; gap: 24px; }
+.session-item { position: relative; }
+.session-item::before { content: ''; position: absolute; left: -29px; top: 4px; width: 12px; height: 12px; background: #fff; border: 3px solid var(--primary); border-radius: 50%; }
+.st-time { font-size: 12px; color: var(--text-muted); font-weight: 600; margin-bottom: 4px; }
+.st-game { font-size: 14px; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
+.st-tag { font-size: 10px; padding: 2px 8px; border-radius: 99px; font-weight: 600; }
+.tag-mission { background: #F5F3FF; color: var(--secondary); }
+.tag-free { background: #ECFDF5; color: var(--success); }
+
+/* Recent Tasks (En Son Görevler) */
+.recent-tasks-list { display: flex; flex-direction: column; gap: 14px; }
+.recent-task-item { padding: 14px 16px; background: #F8FAFC; border-radius: 14px; border: 1px solid var(--border-light); transition: box-shadow 0.2s; }
+.recent-task-item:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.rt-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+.rt-game { font-size: 15px; font-weight: 700; color: var(--primary-dark); }
+.rt-time { font-size: 12px; color: var(--text-muted); font-weight: 600; }
+.rt-duration { font-size: 13px; color: var(--primary); font-weight: 600; }
+
+/* Logs Slide Down */
+.logs-section { margin-top: 30px; }
+.logs-toggle-btn {
+    width: 100%;
+    padding: 16px 24px;
+    background: #fff;
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+}
+.logs-toggle-btn:hover { background: #F8FAFC; }
+.logs-toggle-btn.open { border-radius: 16px 16px 0 0; border-bottom-color: transparent; }
+.logs-chevron { margin-left: auto; font-size: 12px; transition: transform 0.3s ease; }
+.logs-chevron.rotated { transform: rotate(180deg); }
+.logs-slide-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+.logs-slide-panel.open {
+    max-height: min(70vh, 620px);
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+}
+
+/* Tables */
+.data-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+.data-table th { text-align: left; padding: 16px; background: #F8FAFC; color: var(--text-muted); font-size: 12px; font-weight: 700; text-transform: uppercase; border-bottom: 2px solid var(--border-light); }
+.data-table td { padding: 16px; border-bottom: 1px solid var(--border-light); font-size: 14px; color: var(--text-main); }
+.data-table tr:last-child td { border-bottom: none; }
+.log-type { font-weight: 600; padding: 4px 10px; border-radius: 6px; font-size: 12px; }
+.log-in { background: #EFF6FF; color: var(--primary); }
+.log-out { background: #F1F5F9; color: var(--text-muted); }
+.purchase-amount { font-weight: 700; color: var(--warning); }
+
+.logs-slide-panel.open .data-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+/* Footer & Responsive */
+.footer { padding: 40px; text-align: center; color: var(--text-muted); font-size: 12px; margin-top: 40px; border-top: 1px solid var(--border-light); }
+@media (max-width: 992px) { .metrics-grid { grid-template-columns: 1fr; } }
+@media (max-width: 992px) { .analysis-grid, .split-grid, .likes-grid { grid-template-columns: 1fr; } }
+

@@ -1,0 +1,352 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* =========================================
+   HABERLER - "VIBRANT MESH" & GLASS STYLE
+========================================= */
+
+:root {
+    /* CANLI RENK PALETİ */
+    --gradient-hero: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+    --accent-color: #6366f1;
+    --text-dark: #1e293b;
+    --text-gray: #64748B;
+    --text-white: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+.haberler-page,
+.haberler-page * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+.haberler-page {
+    background: transparent;
+    min-height: 100vh;
+    width: 100%;
+    padding: 0;
+    color: var(--text-dark);
+}
+
+body.panel-body.panel-no-sidebar {
+    background: radial-gradient(circle at top left, #e0f2fe, #fdf4ff, #fff7ed);
+    background-size: 200% 200%;
+    animation: gradientMove 10s ease infinite;
+}
+
+body.panel-body.panel-no-sidebar .main-content,
+body.panel-body.panel-no-sidebar .content-body {
+    background: transparent;
+}
+
+/* --- ANA KAPLAYICI --- */
+.haberler-page .container {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    width: calc(100% - 50px);
+    max-width: 1400px;
+    min-height: calc(100vh - 50px);
+    margin: 25px auto;
+    display: grid;
+    grid-template-columns: minmax(300px, 420px) 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 30px;
+    padding: 30px;
+    animation: popIn 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* --- BAŞLIK ALANI --- */
+.haberler-page .page-header {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.haberler-page .page-header h1 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #475569;
+    text-shadow:
+        0 2px 6px rgba(255,255,255,0.95),
+        0 0 10px rgba(99,102,241,0.35),
+        0 0 1px rgba(71,85,105,0.4);
+    -webkit-text-stroke: 0.35px rgba(71,85,105,0.28);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.haberler-page .live-dot {
+    width: 10px;
+    height: 10px;
+    background: #1f2937;
+    border-radius: 50%;
+    box-shadow:
+        0 0 10px rgba(255,255,255,0.85),
+        0 0 14px rgba(99,102,241,0.4);
+    animation: pulse 2s infinite;
+}
+.haberler-page .header-date {
+    color: rgba(31,41,55,0.7);
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* --- SOL KOLON: HERO KART --- */
+.haberler-page .left-panel { height: 100%; animation: slideRight 0.7s ease-out; }
+
+.haberler-page .hero-card {
+    background: var(--gradient-hero);
+    background-size: 200% 200%;
+    animation: gradientMove 5s ease infinite;
+    border-radius: 24px;
+    padding: 40px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 15px 35px rgba(168, 85, 247, 0.4);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.haberler-page .hero-card::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 100px;
+    height: 100px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+}
+.haberler-page .hero-card::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    right: -40px;
+    width: 150px;
+    height: 150px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+}
+
+.haberler-page .hero-content { position: relative; z-index: 2; margin-bottom: 30px; }
+.haberler-page .hero-content h2 { font-size: 32px; line-height: 1.2; margin-bottom: 15px; font-weight: 800; }
+.haberler-page .hero-content p { font-size: 16px; opacity: 0.95; line-height: 1.6; }
+
+.haberler-page .primary-btn {
+    background: #fff;
+    color: #6366f1;
+    text-decoration: none;
+    padding: 18px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.haberler-page .primary-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* --- SAĞ KOLON: HABER IZGARASI --- */
+.haberler-page .news-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 20px;
+    overflow-y: auto;
+    padding: 5px;
+}
+.haberler-page .news-grid::-webkit-scrollbar { width: 0; }
+
+.haberler-page .news-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid #fff;
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    position: relative;
+    cursor: default;
+}
+.haberler-page .news-card:hover {
+    background: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.haberler-page .card-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+
+.haberler-page .icon-box {
+    min-width: 48px;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.haberler-page .icon-box i {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.haberler-page .grad-orange { background: linear-gradient(135deg, #FF9966 0%, #FF5E62 100%); }
+.haberler-page .grad-blue { background: linear-gradient(135deg, #23a6d5 0%, #23d5ab 100%); }
+.haberler-page .grad-purple { background: linear-gradient(135deg, #8E2DE2 0%, #4A00E0 100%); }
+.haberler-page .grad-green { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+
+.haberler-page .card-info h3 { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+.haberler-page .card-info span { font-size: 12px; color: var(--text-gray); font-weight: 600; text-transform: uppercase; }
+.haberler-page .card-desc { font-size: 14px; color: #555; line-height: 1.5; margin-top: 12px; }
+
+/* --- BADGE --- */
+.haberler-page .card-badge {
+    margin-top: auto;
+    padding-top: 14px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent-color);
+    letter-spacing: 0.3px;
+}
+
+/* --- ANİMASYONLAR --- */
+@keyframes gradientMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+@keyframes popIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+@keyframes slideRight { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
+
+/* Responsive - Tablet */
+@media (max-width: 1024px) {
+    .haberler-page { padding: 0; }
+    .haberler-page .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr;
+        min-height: 0;
+        padding: 20px;
+        width: calc(100% - 20px);
+        margin: 10px auto;
+    }
+    .haberler-page .left-panel { height: auto; margin-bottom: 20px; }
+    .haberler-page .hero-card { padding: 30px; text-align: center; align-items: center; }
+    .haberler-page .news-grid { grid-template-columns: 1fr; padding: 0; }
+}
+
+/* Responsive - Mobil */
+@media (max-width: 768px) {
+    body.panel-body.panel-no-sidebar .content-body:has(.haberler-page) {
+        padding: 0;
+    }
+
+    .haberler-page {
+        padding: 0;
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+
+    .haberler-page .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr;
+        width: 100%;
+        min-height: 100vh;
+        min-height: 100dvh;
+        margin: 0;
+        padding: 16px;
+        border-radius: 0;
+        border: none;
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: none;
+        gap: 16px;
+    }
+
+    /* Başlık - büyük ve bold */
+    .haberler-page .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        padding-bottom: 12px;
+        padding-top: 8px;
+    }
+    .haberler-page .page-header h1 {
+        font-size: 28px;
+        font-weight: 800;
+    }
+    .haberler-page .header-date {
+        font-size: 14px;
+    }
+
+    /* Hero kart - tam genişlik */
+    .haberler-page .left-panel {
+        height: auto;
+        margin-bottom: 0;
+    }
+    .haberler-page .hero-card {
+        padding: 24px 20px;
+        border-radius: 18px;
+        text-align: center;
+        align-items: center;
+    }
+    .haberler-page .hero-content {
+        margin-bottom: 20px;
+    }
+    .haberler-page .hero-content h2 {
+        font-size: 22px;
+    }
+    .haberler-page .hero-content p {
+        font-size: 14px;
+    }
+    .haberler-page .primary-btn {
+        padding: 14px 24px;
+        font-size: 14px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Haber kartları - tam genişlik, tek kolon */
+    .haberler-page .news-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 0;
+        overflow-y: visible;
+    }
+    .haberler-page .news-card {
+        padding: 18px;
+        border-radius: 16px;
+    }
+    .haberler-page .icon-box {
+        width: 42px;
+        height: 42px;
+        font-size: 18px;
+        border-radius: 12px;
+    }
+    .haberler-page .card-info h3 {
+        font-size: 15px;
+    }
+    .haberler-page .card-desc {
+        font-size: 13px;
+    }
+}

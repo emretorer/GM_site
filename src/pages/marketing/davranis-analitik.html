@@ -1,0 +1,394 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DavranÄ±ÅŸ AnalitiÄŸi | Genius Methods</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- RENK PALETÄ° (SADIK KALINDI) --- */
+        :root {
+            --primary: #4F46E5;       
+            --primary-light: #818CF8;
+            --dark: #0F172A;          
+            --accent: #F59E0B;        
+            --success: #10B981;       
+            --neon-blue: #60A5FA;
+            --neon-purple: #A78BFA;
+            --bg-body: #FFFFFF;
+            --bg-soft: #F8FAFC;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            
+            --gradient-hero: radial-gradient(circle at 50% 0%, #EEF2FF 0%, #fff 70%);
+            --shadow-card: 0 10px 30px -5px rgba(0,0,0,0.08);
+            --radius: 20px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 { color: var(--dark); font-weight: 800; letter-spacing: -0.5px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; }
+        .text-center { text-align: center; }
+        
+        /* --- NAVBAR (GENIUS HEADER) --- */
+        .navbar {
+            padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 1000;
+            background: rgba(255,255,255,0.98); border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+        
+        .logo-area { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-text { font-size: 1.5rem; font-weight: 800; color: var(--dark); letter-spacing: -0.5px; }
+
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-item { 
+            text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 0.95rem; 
+            display: flex; align-items: center; gap: 6px; transition: 0.3s;
+        }
+        .nav-item:hover, .nav-item.active { color: var(--primary); }
+        .nav-item i { font-size: 0.75rem; margin-top: 2px; }
+
+        .nav-actions { display: flex; align-items: center; gap: 20px; }
+        .btn-login { text-decoration: none; color: var(--text-muted); font-weight: 700; font-size: 0.95rem; transition: 0.3s; }
+        .btn-login:hover { color: var(--primary); }
+        
+        .btn-register {
+            background: var(--dark); color: white; padding: 10px 24px; border-radius: 8px;
+            font-weight: 700; text-decoration: none; transition: 0.3s; font-size: 0.95rem;
+        }
+        .btn-register:hover { background: var(--primary); transform: translateY(-2px); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 180px 0 100px;
+            background: var(--gradient-hero);
+            text-align: center; position: relative; overflow: hidden;
+        }
+
+        /* Hareketli Arka Plan SÃ¼sleri */
+        .floating-icon { 
+            position: absolute; opacity: 0.1; z-index: 0; 
+            animation: float 6s ease-in-out infinite; color: var(--primary); font-size: 2.5rem;
+        }
+        .icon-1 { top: 20%; left: 10%; animation-delay: 0s; color: var(--neon-purple); }
+        .icon-2 { top: 60%; right: 15%; animation-delay: 2s; color: var(--accent); }
+        .icon-3 { bottom: 20%; left: 20%; animation-delay: 4s; color: var(--neon-blue); }
+
+        .hero-badge {
+            display: inline-block; padding: 8px 16px; background: #EEF2FF; color: var(--primary);
+            border-radius: 50px; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px;
+            margin-bottom: 24px; text-transform: uppercase;
+        }
+
+        .hero h1 { font-size: 3.5rem; margin-bottom: 24px; line-height: 1.1; position: relative; z-index: 1; }
+        .hero p { font-size: 1.25rem; max-width: 800px; margin: 0 auto 40px; position: relative; z-index: 1; color: var(--text-muted); }
+
+        /* --- ANALÄ°TÄ°K DÃ–NGÃœSÃœ (ANIMATÄ°K) --- */
+        .cycle-section {
+            padding: 100px 0; background: #fff; overflow: hidden; position: relative;
+        }
+        
+        .cycle-container {
+            display: flex; align-items: center; justify-content: center; gap: 50px;
+            min-height: 400px; position: relative;
+        }
+
+        /* Merkez Ä°ÅŸlemci */
+        .core-analytics {
+            width: 140px; height: 140px; background: white; border-radius: 50%;
+            position: relative; z-index: 2; border: 1px solid #E2E8F0;
+            box-shadow: 0 0 40px rgba(79, 70, 229, 0.15);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            animation: pulse 3s infinite;
+        }
+        .core-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 5px; }
+        .core-label { font-size: 0.8rem; font-weight: 800; color: var(--dark); }
+
+        /* DÃ¶nen Veri HalkasÄ± */
+        .data-ring {
+            position: absolute; width: 350px; height: 350px; border-radius: 50%;
+            border: 2px dashed rgba(79, 70, 229, 0.2); animation: spin 20s linear infinite;
+        }
+        
+        /* Halka Ãœzerindeki AdÄ±mlar */
+        .cycle-step {
+            position: absolute; width: 60px; height: 60px; background: white; border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; color: var(--dark);
+        }
+        .step-1 { top: -30px; left: 50%; transform: translateX(-50%); color: var(--accent); } /* Oyun */
+        .step-2 { top: 50%; right: -30px; transform: translateY(-50%); color: var(--neon-blue); } /* Veri */
+        .step-3 { bottom: -30px; left: 50%; transform: translateX(-50%); color: var(--neon-purple); } /* Yapay Zeka */
+        .step-4 { top: 50%; left: -30px; transform: translateY(-50%); color: var(--success); } /* Ä°Ã§gÃ¶rÃ¼ */
+
+        /* Yan Metinler */
+        .cycle-info {
+            max-width: 300px; padding: 30px; background: var(--bg-soft); border-radius: var(--radius);
+            position: absolute; top: 50%; transform: translateY(-50%);
+        }
+        .info-left { left: 0; border-right: 4px solid var(--accent); text-align: right; }
+        .info-right { right: 0; border-left: 4px solid var(--success); text-align: left; }
+
+        /* --- Ã‡Ã–ZÃœM KARTLARI (GRID) --- */
+        .solutions-section { padding: 100px 0; background: var(--bg-soft); }
+        .solutions-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 60px;
+        }
+
+        .solution-card {
+            background: #fff; padding: 35px 30px; border-radius: var(--radius);
+            box-shadow: var(--shadow-card); border: 1px solid rgba(0,0,0,0.03);
+            transition: 0.4s; position: relative; overflow: hidden;
+            display: flex; flex-direction: column; height: 100%;
+        }
+        .solution-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+
+        /* Kart Ä°konlarÄ± */
+        .s-icon {
+            width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem; margin-bottom: 20px; transition: 0.3s;
+        }
+        
+        /* Renk KodlamasÄ± */
+        .card-1 .s-icon { background: #EEF2FF; color: var(--primary); }
+        .card-2 .s-icon { background: #FFF7ED; color: var(--accent); }
+        .card-3 .s-icon { background: #F5F3FF; color: var(--neon-purple); }
+        .card-4 .s-icon { background: #ECFDF5; color: var(--success); }
+        .card-5 .s-icon { background: #EFF6FF; color: var(--neon-blue); }
+        .card-6 .s-icon { background: #FFF1F2; color: #F43F5E; }
+
+        .solution-card h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 15px; color: var(--dark); }
+        .solution-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+        /* --- TEKNOLOJÄ° Ã–ZETÄ° --- */
+        .tech-summary {
+            padding: 80px 0; background: var(--dark); color: white; text-align: center;
+        }
+        .tech-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-top: 40px; }
+        .tech-item h4 { color: white; margin-bottom: 10px; font-size: 1.5rem; }
+        .tech-item p { color: #94A3B8; font-size: 0.9rem; }
+        .tech-item i { font-size: 2.5rem; color: var(--primary-light); margin-bottom: 20px; }
+
+        /* --- FOOTER --- */
+        footer { padding: 60px 0 20px; border-top: 1px solid #E2E8F0; background: #fff; }
+        .footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #F8FAFC; font-size: 0.9rem; color: var(--text-muted); }
+
+        /* ANIMASYONLAR */
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); box-shadow: 0 0 60px rgba(79, 70, 229, 0.25); } }
+        
+        .fade-up { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .cycle-container { flex-direction: column; min-height: auto; gap: 80px; padding-bottom: 60px; }
+            .cycle-info { position: relative; top: auto; transform: none; width: 100%; max-width: 100%; text-align: center !important; border: none !important; border-top: 4px solid var(--primary); }
+            .solutions-grid { grid-template-columns: 1fr 1fr; }
+            .tech-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) { .solutions-grid { grid-template-columns: 1fr; } .tech-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo-area">
+                <span class="logo-text">GeniusMethods</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="davranis-analitik.html" class="nav-item">Neden GM? <i class="fas fa-chevron-down"></i></a>
+                <a href="davranis-analitik.html" class="nav-item active">Teknoloji & Bilim <i class="fas fa-chevron-down"></i></a>
+                <a href="#" class="nav-item">ÃœrÃ¼nlerimiz <i class="fas fa-chevron-down"></i></a>
+                <a href="#" class="nav-item">KeÅŸif YolculuÄŸu <i class="fas fa-chevron-down"></i></a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="index.html" class="btn-login">GiriÅŸ Yap</a>
+                <a href="index.html" class="btn-register">KayÄ±t Ol</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="floating-icon icon-1"><i class="fas fa-brain"></i></div>
+        <div class="floating-icon icon-2"><i class="fas fa-chart-pie"></i></div>
+        <div class="floating-icon icon-3"><i class="fas fa-mobile-alt"></i></div>
+
+        <div class="container">
+            <span class="hero-badge fade-up">DERÄ°N TEKNOLOJÄ° Ã‡Ã–ZÃœMÃœ</span>
+            <h1 class="fade-up">Kariyer RehberliÄŸindeki BoÅŸluklarÄ± <br> <span style="color:var(--primary);">Veriyle Dolduruyoruz.</span></h1>
+            <p class="fade-up">
+                Statik testlerin ve sÃ¼bjektif yorumlarÄ±n Ã¶tesine geÃ§in. DavranÄ±ÅŸsal veri analitiÄŸi ile geleceÄŸin potansiyelini bugÃ¼nden keÅŸfedin.
+            </p>
+        </div>
+    </header>
+
+    <section class="cycle-section">
+        <div class="container">
+            <div class="cycle-container">
+                
+                <div class="cycle-info info-left fade-up">
+                    <h3 style="color:var(--accent); margin-bottom:10px;">DoÄŸal Veri AkÄ±ÅŸÄ±</h3>
+                    <p style="font-size:0.9rem; color:var(--text-muted);">
+                        Oyun iÃ§i kararlar ve refleksler, yapay zeka motorumuz tarafÄ±ndan anlÄ±k veri noktalarÄ±na dÃ¶nÃ¼ÅŸtÃ¼rÃ¼lÃ¼r.
+                    </p>
+                </div>
+
+                <div class="core-analytics fade-up">
+                    <i class="fas fa-network-wired core-icon"></i>
+                    <span class="core-label">AI ENGINE</span>
+                    
+                    <div class="data-ring">
+                        <div class="cycle-step step-1"><i class="fas fa-gamepad"></i></div>
+                        <div class="cycle-step step-2"><i class="fas fa-fingerprint"></i></div>
+                        <div class="cycle-step step-3"><i class="fas fa-microchip"></i></div>
+                        <div class="cycle-step step-4"><i class="fas fa-lightbulb"></i></div>
+                    </div>
+                </div>
+
+                <div class="cycle-info info-right fade-up" style="transition-delay: 0.2s;">
+                    <h3 style="color:var(--success); margin-bottom:10px;">YÃ¼ksek Ã‡Ã¶zÃ¼nÃ¼rlÃ¼k</h3>
+                    <p style="font-size:0.9rem; color:var(--text-muted);">
+                        Psikometrik modellerle iÅŸlenen veriler, kiÅŸiye Ã¶zel ve %99.8 doÄŸrulukta yetkinlik haritalarÄ± oluÅŸturur.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="solutions-section">
+        <div class="container">
+            <div class="text-center fade-up">
+                <h2>BÃ¼tÃ¼ncÃ¼l Analitik Ã‡Ã¶zÃ¼m</h2>
+                <p style="color:var(--text-muted);">Sistemik sorunlara, derin teknoloji cevaplarÄ±.</p>
+            </div>
+
+            <div class="solutions-grid">
+                
+                <div class="solution-card card-1 fade-up">
+                    <div class="s-icon"><i class="fas fa-gamepad"></i></div>
+                    <h3>Oyun TabanlÄ± DeÄŸerlendirme</h3>
+                    <p>Geleneksel anketler yerine, oyun iÃ§i kararlardan elde edilen gerÃ§ek zamanlÄ± ve gÃ¶rev bazlÄ± metrikler kullanÄ±lÄ±r.</p>
+                </div>
+
+                <div class="solution-card card-2 fade-up" style="transition-delay: 0.1s;">
+                    <div class="s-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>YanlÄ±lÄ±k Direnci</h3>
+                    <p>DoÄŸal tepkileri deÄŸerlendirerek, sosyal istenirlik yanlÄ±lÄ±ÄŸÄ±nÄ± ve manipÃ¼lasyon riskini ortadan kaldÄ±rÄ±r.</p>
+                </div>
+
+                <div class="solution-card card-3 fade-up" style="transition-delay: 0.2s;">
+                    <div class="s-icon"><i class="fas fa-dna"></i></div>
+                    <h3>Dinamik Profilleme</h3>
+                    <p>Tek seferlik deÄŸil; uzunlamasÄ±na verilerle Ã¶ÄŸrenen ve geliÅŸimi zaman iÃ§inde takip eden canlÄ± motor.</p>
+                </div>
+
+                <div class="solution-card card-4 fade-up" style="transition-delay: 0.1s;">
+                    <div class="s-icon"><i class="fas fa-chart-bar"></i></div>
+                    <h3>YÃ¼ksek Ã‡Ã¶zÃ¼nÃ¼rlÃ¼klÃ¼ Analiz</h3>
+                    <p>FaktÃ¶r analizi, z-puan normalizasyonu ve OVERALS ile doÄŸrulanmÄ±ÅŸ, hassas beceri profilleri.</p>
+                </div>
+
+                <div class="solution-card card-5 fade-up" style="transition-delay: 0.2s;">
+                    <div class="s-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Mobil & EÅŸitlikÃ§i EriÅŸim</h3>
+                    <p>Kurumsal altyapÄ±ya baÄŸÄ±mlÄ± olmayan, dÃ¼ÅŸÃ¼k bariyerli ve her yerden eriÅŸilebilir mobil tasarÄ±m.</p>
+                </div>
+
+                <div class="solution-card card-6 fade-up" style="transition-delay: 0.3s;">
+                    <div class="s-icon"><i class="fas fa-users"></i></div>
+                    <h3>Ã‡ok PaydaÅŸlÄ± Paneller</h3>
+                    <p>Ã–ÄŸrenci, Veli, EÄŸitimci ve Kurumlar iÃ§in ayrÄ± analitik katmanlar ve Ã¶zelleÅŸtirilmiÅŸ iÃ§gÃ¶rÃ¼ ekranlarÄ±.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-summary">
+        <div class="container">
+            <h2 style="color:white; margin-bottom:40px;">Teknoloji AltyapÄ±sÄ±</h2>
+            <div class="tech-grid">
+                <div class="tech-item fade-up">
+                    <i class="fas fa-brain"></i>
+                    <h4>NÃ¶ro-Analitik</h4>
+                    <p>BiliÅŸsel Haritalama</p>
+                </div>
+                <div class="tech-item fade-up" style="transition-delay: 0.1s;">
+                    <i class="fas fa-robot"></i>
+                    <h4>Yapay Zeka</h4>
+                    <p>Ã–rÃ¼ntÃ¼ TanÄ±ma</p>
+                </div>
+                <div class="tech-item fade-up" style="transition-delay: 0.2s;">
+                    <i class="fas fa-database"></i>
+                    <h4>Big Data</h4>
+                    <p>UzunlamasÄ±na Veri</p>
+                </div>
+                <div class="tech-item fade-up" style="transition-delay: 0.3s;">
+                    <i class="fas fa-lock"></i>
+                    <h4>GÃ¼venlik</h4>
+                    <p>KVKK Uyumlu</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:40px;">
+                <div style="flex:1; min-width:250px;">
+                    <a href="#" class="logo-area" style="margin-bottom:15px; display:inline-flex;">
+                        <span class="logo-text">GeniusMethods</span>
+                    </a>
+                    <p style="font-size:0.9rem; color: var(--text-muted);">
+                        Veri tabanlÄ± davranÄ±ÅŸsal analiz ve yetenek keÅŸif platformu.
+                    </p>
+                </div>
+                
+                <div style="display:flex; gap:50px;">
+                    <div>
+                        <h4 style="font-size:1rem; margin-bottom:15px;">Kurumsal</h4>
+                        <ul style="list-style:none; font-size:0.9rem;">
+                            <li style="margin-bottom:8px;"><a href="#" style="text-decoration:none; color:var(--text-muted);">HakkÄ±mÄ±zda</a></li>
+                            <li><a href="#" style="text-decoration:none; color:var(--text-muted);">Ä°letiÅŸim</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                &copy; 2026 GM TECHNOLOGY. TÃ¼m haklarÄ± saklÄ±dÄ±r. Antalya Teknokent / AR-GE
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

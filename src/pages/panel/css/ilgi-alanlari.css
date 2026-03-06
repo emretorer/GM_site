@@ -1,0 +1,461 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* =========================================
+   İLGİ ALANLARI - "DIGITAL IDENTITY" THEME
+========================================= */
+
+:root {
+    --sidebar-width: 250px;
+    --header-height: 80px;
+    --page-width: 1200px;
+    
+    /* Canlı Renk Paleti */
+    --primary: #4F46E5;      /* İndigo */
+    --secondary: #06B6D4;    /* Camgöbeği */
+    --accent: #F43F5E;       /* Gül Rengi */
+    --dark: #0F172A;
+    --light: #F8FAFC;
+    --muted: #64748B;
+    
+    /* Kart Efektleri */
+    --glass-bg: #FFFFFF;
+    --glass-border: #E2E8F0;
+    --shadow-soft: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 20px 40px -10px rgba(79, 70, 229, 0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+body { background-color: #F1F5F9; color: var(--dark); display: flex; min-height: 100vh; font-size: 14px; }
+
+/* --- SIDEBAR & LAYOUT --- */
+/* (Standart Sidebar Kodları - Değişmedi) */
+.sidebar { width: var(--sidebar-width); background: #fff; border-right: 1px solid var(--glass-border); display: flex; flex-direction: column; padding: 24px 0; position: fixed; height: 100%; top: 0; left: 0; z-index: 100; transition: width 0.3s; }
+.logo-area { padding: 0 24px 30px; display: flex; align-items: center; gap: 12px; }
+.logo-icon { min-width: 36px; height: 36px; background: var(--primary); color: #fff; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+.logo-text { font-size: 18px; font-weight: 800; color: var(--dark); }
+.nav-menu ul { list-style: none; padding: 0 16px; }
+.nav-menu li { margin-bottom: 6px; }
+.nav-menu a { display: flex; align-items: center; padding: 14px 16px; color: var(--muted); text-decoration: none; border-radius: 12px; font-size: 14px; font-weight: 600; transition: all 0.2s; white-space: nowrap; overflow: hidden; }
+.nav-menu a i { min-width: 24px; margin-right: 12px; font-size: 18px; text-align: center; }
+.nav-menu li.active a { background-color: #EEF2FF; color: var(--primary); }
+.nav-menu a:hover:not(.active) { background-color: #F8FAFC; color: var(--dark); }
+.sidebar-footer { margin-top: auto; padding: 24px; border-top: 1px solid var(--glass-border); }
+.collapse-btn { border: none; background: transparent; color: var(--muted); cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; width: 100%; }
+
+.main-content { margin-left: var(--sidebar-width); flex: 1; display: flex; flex-direction: column; width: calc(100% - var(--sidebar-width)); }
+.top-bar { height: var(--header-height); background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); border-bottom: 1px solid var(--glass-border); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 90; }
+.user-profile img { width: 44px; height: 44px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+
+/* --- CONTENT --- */
+.content-body { padding: 40px; width: 100%; max-width: var(--page-width); margin: 0 auto; }
+.page-header { margin-bottom: 40px; text-align: center; }
+.page-title { font-size: 28px; font-weight: 800; color: var(--dark); margin-bottom: 8px; letter-spacing: -0.5px; }
+.page-desc { color: var(--muted); font-size: 15px; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+
+
+/* --- 1. HERO SECTION: PLAYER IDENTITY --- */
+.identity-section {
+    display: flex; gap: 30px; margin-bottom: 40px;
+    background: #fff; border-radius: 24px; padding: 30px;
+    box-shadow: var(--shadow-soft); border: 1px solid #fff;
+    position: relative; overflow: hidden;
+}
+/* Arka plan dekorasyonu */
+.identity-section::before {
+    content: ''; position: absolute; top: -50px; right: -50px; width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.1) 0%, transparent 70%); border-radius: 50%;
+}
+
+.avatar-area {
+    width: 250px; flex-shrink: 0; text-align: center;
+    border-right: 1px solid var(--glass-border); padding-right: 30px;
+}
+.big-avatar {
+    width: 100px; height: 100px; border-radius: 24px; background: linear-gradient(135deg, #EEF2FF, #E0E7FF);
+    margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;
+    font-size: 40px; color: var(--primary); box-shadow: 0 8px 20px rgba(79, 70, 229, 0.15);
+}
+.player-name { font-size: 20px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+.player-tag { 
+    background: var(--dark); color: #fff; padding: 4px 12px; border-radius: 20px; 
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+}
+
+.stats-area { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: center; }
+.stat-box { background: #F8FAFC; border-radius: 16px; padding: 20px; text-align: center; transition: 0.3s; }
+.stat-box:hover { background: #EEF2FF; transform: translateY(-5px); }
+.stat-icon { font-size: 24px; margin-bottom: 8px; display: block; }
+.stat-val { display: block; font-size: 22px; font-weight: 800; color: var(--dark); }
+.stat-label { font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+
+
+/* --- 2. MAIN GRID (Interest DNA) --- */
+.interest-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+
+/* Section Title */
+.sec-title { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+.sec-title i { color: var(--primary); }
+
+/* --- LEFT COLUMN: TOPICS --- */
+.topics-container { display: flex; flex-direction: column; gap: 20px; }
+
+.topic-row {
+    background: #fff; border-radius: 16px; padding: 20px;
+    display: flex; align-items: center; gap: 20px;
+    border: 1px solid var(--glass-border); box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.topic-row:hover { transform: scale(1.02); box-shadow: var(--shadow-hover); border-color: var(--primary); }
+
+.topic-visual {
+    width: 60px; height: 60px; border-radius: 16px; 
+    display: flex; align-items: center; justify-content: center; font-size: 24px;
+}
+.tv-space { background: #EEF2FF; color: #4F46E5; }
+.tv-tech { background: #ECFEFF; color: #06B6D4; }
+.tv-art { background: #FFF1F2; color: #F43F5E; }
+
+.topic-details { flex: 1; }
+.td-head { display: flex; justify-content: space-between; margin-bottom: 6px; }
+.td-name { font-size: 16px; font-weight: 700; color: var(--dark); }
+.td-perc { font-size: 16px; font-weight: 800; color: var(--primary); }
+
+.td-bar-bg { width: 100%; height: 8px; background: #F1F5F9; border-radius: 4px; overflow: hidden; margin-bottom: 8px; }
+.td-bar-fill { height: 100%; border-radius: 4px; }
+
+.td-games { display: flex; gap: 8px; }
+.game-pill { 
+    font-size: 10px; font-weight: 600; padding: 4px 8px; border-radius: 6px; 
+    background: #F8FAFC; color: var(--muted); border: 1px solid #E2E8F0;
+}
+
+
+/* --- RIGHT COLUMN: INSIGHTS --- */
+.right-col { display: flex; flex-direction: column; gap: 30px; }
+
+/* Radar / Örümcek Grafik Alanı */
+.radar-card {
+    background: #fff; border-radius: 20px; padding: 30px; text-align: center;
+    border: 1px solid var(--glass-border); position: relative;
+}
+.radar-wrapper { width: 100%; max-width: 220px; margin: 0 auto 20px; }
+.radar-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.legend-pill { font-size: 11px; padding: 4px 8px; border-radius: 6px; background: #F1F5F9; color: var(--muted); }
+
+/* Aksiyon Kartı (Call to Action) */
+.action-card {
+    background: linear-gradient(135deg, #4F46E5, #06B6D4);
+    border-radius: 20px; padding: 24px; color: #fff;
+    box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+    position: relative; overflow: hidden;
+}
+/* Desen */
+.action-card::after {
+    content: ''; position: absolute; bottom: -20px; right: -20px; width: 100px; height: 100px;
+    background: rgba(255,255,255,0.1); border-radius: 50%;
+}
+
+.ac-icon { font-size: 24px; margin-bottom: 12px; display: block; }
+.ac-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.ac-text { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+.ac-btn {
+    background: #fff; color: var(--primary); padding: 10px 20px; border-radius: 10px;
+    font-weight: 700; font-size: 12px; text-decoration: none; display: inline-block;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.2s;
+}
+.ac-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
+
+
+/* Footer */
+.footer { padding: 40px; text-align: center; color: var(--muted); font-size: 12px; }
+
+/* Collapse */
+body.collapsed .sidebar { width: 80px; }
+body.collapsed .logo-area { justify-content: center; padding: 20px 0; }
+body.collapsed .logo-text { display: none; }
+body.collapsed .nav-menu a { font-size: 0; justify-content: center; padding: 14px; }
+body.collapsed .nav-menu a i { margin: 0; font-size: 22px; }
+body.collapsed .collapse-btn span { display: none; }
+body.collapsed .collapse-btn { justify-content: center; }
+body.collapsed .collapse-btn i { transform: rotate(180deg); }
+body.collapsed .main-content { margin-left: 80px; width: calc(100% - 80px); }
+
+/* Responsive */
+@media (max-width: 1024px) { 
+    .interest-grid { grid-template-columns: 1fr; } 
+    .identity-section { flex-direction: column; }
+    .avatar-area { border-right: none; border-bottom: 1px solid #E2E8F0; padding-bottom: 20px; padding-right: 0; width: 100%; margin-bottom: 20px; }
+}
+
+/* --- RADAR GRAFİK DÜZENİ (YENİ) --- */
+.radar-card {
+    background: #fff;
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.radar-wrapper {
+    width: 100%;
+    max-width: 350px; /* Grafiğin aşırı büyümesini engeller */
+    aspect-ratio: 1;
+    position: relative;
+    margin: 10px 0 20px;
+}
+
+/* Grafik Etiketleri (Harfler) */
+.radar-label {
+    font-size: 12px;
+    font-weight: 800;
+    fill: var(--text-muted);
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+.radar-label.active {
+    fill: var(--primary); /* Baskın karakter rengi */
+    font-size: 14px;
+}
+
+/* Grafik Çizgileri */
+.grid-stroke {
+    stroke: #E2E8F0;
+    stroke-width: 1;
+    fill: none;
+}
+.axis-stroke {
+    stroke: #E2E8F0;
+    stroke-width: 1;
+    stroke-dasharray: 4 2; /* Kesik çizgiler */
+}
+
+/* Veri Alanı (Renkli Bölge) */
+.data-polygon {
+    fill: rgba(59, 130, 246, 0.2); /* Mavi transparan dolgu */
+    stroke: var(--primary);
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 4px 6px rgba(59, 130, 246, 0.3)); /* Hafif gölge */
+    transition: all 0.5s ease; /* Animasyonlu geçiş */
+    animation: pulseRadar 3s infinite alternate;
+}
+
+@keyframes pulseRadar {
+    0% { fill-opacity: 0.2; }
+    100% { fill-opacity: 0.35; }
+}
+
+/* Alt Açıklama (Legend) */
+.radar-legend-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--text-muted);
+    background: #F8FAFC;
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+.legend-dot {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: #E2E8F0;
+    color: #64748B;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 800;
+}
+/* Baskın Olanları Vurgula */
+.legend-item.highlight .legend-dot {
+    background: var(--primary);
+    color: #fff;
+}
+.legend-item.highlight {
+    color: var(--text-main);
+    font-weight: 600;
+    background: #EFF6FF;
+    border: 1px solid #DBEAFE;
+}
+/* --- AÇILIR/KAPANIR BEĞENİ PANELİ --- */
+.accordion-wrapper {
+    margin-bottom: 30px; /* Alt kısımla mesafe */
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    background: #fff;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 20px 25px;
+    background: #fff;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.accordion-header:hover { background-color: #F8FAFC; }
+
+.acc-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1E293B;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.acc-icon {
+    font-size: 14px;
+    color: #64748B;
+    transition: transform 0.3s ease;
+}
+
+/* İçerik Alanı (Varsayılan olarak kapalı) */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    background: #F8FAFC; /* Hafif farklı ton */
+    border-top: 1px solid transparent;
+}
+
+/* Açık Durum (JS ile eklenir) */
+.accordion-content.open {
+    border-top-color: #E2E8F0;
+    /* JS ile dinamik yükseklik verilecek ama fallback olarak: */
+    max-height: 500px; 
+}
+
+.acc-inner-padding {
+    padding: 25px;
+}
+
+/* İç Izgara Yapısı */
+.pref-grid {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 30px;
+    align-items: start;
+}
+.pref-divider {
+    width: 1px; height: 100%; background: #E2E8F0; min-height: 80px;
+}
+
+/* Başlıklar ve Etiketler */
+.pref-col h4 {
+    font-size: 13px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+}
+.text-love { color: #059669; }
+.text-hate { color: #DC2626; }
+
+.pref-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+.pref-tag {
+    padding: 8px 14px; border-radius: 10px; font-size: 12px; font-weight: 600;
+    display: flex; align-items: center; gap: 8px; background: #fff;
+    border: 1px solid transparent; box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+
+/* Renk Varyasyonları */
+.tag-love { color: #047857; border-color: #A7F3D0; background: #ECFDF5; }
+.tag-hate { color: #B91C1C; border-color: #FECACA; background: #FEF2F2; }
+
+/* Ok Dönme Efekti */
+.accordion-header.active .acc-icon { transform: rotate(180deg); }
+
+/* --- SOL RIASEC DETAY WIDGET --- */
+.topics-col {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.riasec-left-widget {
+    background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: var(--shadow-soft);
+}
+.riasec-left-head .sec-title {
+    margin-bottom: 8px;
+}
+.riasec-left-subtitle {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin-bottom: 14px;
+}
+.riasec-left-list {
+    display: grid;
+    gap: 10px;
+}
+.riasec-left-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+    padding: 10px 12px;
+}
+.riasec-left-item h4 {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 4px;
+}
+.riasec-left-item p {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--muted);
+}
+.riasec-left-source {
+    margin-top: 12px;
+    font-size: 11px;
+    color: var(--muted);
+}
+.riasec-left-source a {
+    color: var(--primary);
+    font-weight: 700;
+    text-decoration: none;
+}
+.riasec-left-source a:hover {
+    text-decoration: underline;
+}
+
+.riasec-tag {
+    width: 28px;
+    height: 28px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 13px;
+    color: #fff;
+    flex-shrink: 0;
+}
+.r-tag { background: #F59E0B; }
+.i-tag { background: #4F46E5; }
+.a-tag { background: #F43F5E; }
+.s-tag { background: #10B981; }
+.e-tag { background: #F97316; }
+.c-tag { background: #0EA5E9; }
+
+@media (max-width: 720px) {
+    .riasec-left-widget {
+        padding: 16px;
+    }
+}
